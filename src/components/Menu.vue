@@ -1,7 +1,7 @@
 <template>
    <div>
       <div class="navbar">
-         <router-link to="/" class="navbar__logo" tag="div">
+         <router-link to="/" class="navbar__logo" tag="a">
             <img src="/public/logo.png" alt="Дом молодежи Василеостровского района" title="Дом молодежи Василеостровского района" />
          </router-link>
          <div class="menu">
@@ -202,6 +202,7 @@
    }
    .navbar__logo {
       padding: 16px
+      display: block;
    }
    .navbar__logo img {
       width: 100%;

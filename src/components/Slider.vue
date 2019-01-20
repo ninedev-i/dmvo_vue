@@ -33,7 +33,9 @@
       },
 
       mounted() {
-         this.mySwiper.autoplay.start();
+         if (this.mySwiper) {
+            this.mySwiper.autoplay.start();
+         }
       },
 
       computed: {

@@ -10,10 +10,10 @@
                <div class="pastEvents__content"><h4 class="pastEvents__itemMonthTitle">{{month}}</h4></div>
             </div>
             <div v-for="event in events" class="pastEvents__item" :key="event.id">
-               <router-link tag="div" v-bind:to="'/events/' + event.id" class="pastEvents__itemLink">
+               <router-link tag="div" v-bind:to="'/events/' + event.id" class="pastEvents__itemLink" :title="event.title">
                   <div class="pastEvents__line"></div>
                   <div class="pastEvents__circle"></div>
-                  <div class="pastEvents__content" :title="event.title">
+                  <div class="pastEvents__content">
                      <span class="pastEvents__itemDate">{{getPeriod(event.date_from, event.date_to, false)}}</span>
                      <span>{{event.title}}</span>
                   </div>
@@ -84,12 +84,14 @@
       color: #1392BD;
       border-color: #1392BD;
       z-index: 2;
+      cursor: pointer;
    }
    .pastEvents__content {
       display: flex;
       position: relative;
       top: -5px;
       padding: 0 0 8px 40px;
+      cursor: pointer;
    }
    .pastEvents__itemLink:hover span {
       text-decoration: underline;

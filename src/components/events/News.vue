@@ -10,6 +10,7 @@
             <router-link v-bind:to="'events/' + event.id" tag="div">
                <div
                   class="news-list__item_picture"
+                  v-if="event.pictures[0]"
                   :title="event.title"
                   :style="'background-image: url(https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
                </div>
@@ -57,6 +58,7 @@
    };
 </script>
 <style lang="stylus" scoped>
+   @import '~../../variables.styl'
    .news-list {
       display: flex;
    }
@@ -76,7 +78,7 @@
       font-style: normal;
    }
    .news-list__item_picture {
-      background-color: #1392BD;
+      background-color: $mainColor;
       background-size: cover;
       background-position: center;
       height: 190px;
@@ -95,7 +97,7 @@
    }
    .news-list__addMoreButton {
       width: 100%;
-      background: #1392BD;
+      background: $mainColor;
       color: white;
       padding: 6px;
       text-align: center;

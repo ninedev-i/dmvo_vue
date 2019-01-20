@@ -5,7 +5,10 @@
          <div v-html="event.content"></div>
          <img :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0]" :alt="event.title" :title="event.title">
       </div>
-      <div class="sidebar">
+      <div class="sidebar-container sidebar">
+         <!-- <div class="sidebar-container">
+            qwe
+         </div> -->
          <img
             class="event_cover"
             v-if="!!event.cover"

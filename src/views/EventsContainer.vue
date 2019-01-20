@@ -1,5 +1,3 @@
 <template>
-   <div>
-      <router-view exact></router-view>
-   </div>
+   <router-view exact></router-view>
 </template>
