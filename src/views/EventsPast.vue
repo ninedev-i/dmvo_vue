@@ -95,6 +95,9 @@
       text-decoration: underline;
       cursor: pointer;
    }
+   .pastEvents__itemLink:hover .pastEvents__circle {
+      background: #1392bd;
+   }
    .pastEvents__itemMonthTitle {
       padding: 6px 0px;
       margin: 0;

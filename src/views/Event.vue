@@ -5,6 +5,14 @@
          <div v-html="event.content"></div>
          <img :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0]" :alt="event.title" :title="event.title">
       </div>
+      <div class="sidebar">
+         <img
+            class="event_cover"
+            v-if="!!event.cover"
+            :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.cover"
+            :alt="event.title"
+            :title="event.title">
+      </div>
    </div>
 </template>
 <script>
@@ -24,3 +32,8 @@
       }
    };
 </script>
+<style lang="stylus">
+   .event_cover {
+      width: 100%;
+   }
+</style>

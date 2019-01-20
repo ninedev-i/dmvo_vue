@@ -1,7 +1,7 @@
 {
   "name": "dmvo_vue",
   "description": "DMVO website",
-  "author": "Evan You <master-vva@narod.ru>",
+  "author": "Victor Vedenin <master-vva@narod.ru>",
   "private": true,
   "scripts": {
     "dev": "node server",

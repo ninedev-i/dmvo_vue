@@ -45,6 +45,9 @@
       margin: 0px;
       padding: 0px;
    }
+   ul li {
+      margin-left: 20px;
+   }
    a {
       color: #384047;
    }

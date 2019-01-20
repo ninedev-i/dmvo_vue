@@ -1,5 +1,9 @@
 <template>
-   <div v-swiper:mySwiper="swiperOption" class="swiper-container">
+   <div
+      v-if="!!slides.length"
+      v-swiper:mySwiper="swiperOption"
+      class="swiper-container"
+      >
       <div class="swiper-wrapper">
          <router-link v-for="event in slides" v-bind:to="'events/' + event.id" class="swiper-slide" :key="event.id">
             <img

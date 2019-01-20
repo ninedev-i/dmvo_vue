@@ -19,7 +19,9 @@ export function createStore () {
          events_closest_title: 'Ближайшие мероприятия дома молодежи Василеостровского района',
          events_closest: [],
          events_past_title: 'Архив мероприятий',
-         events_past: []
+         events_past: [],
+
+         page: {}
       },
 
       actions: {
@@ -45,6 +47,18 @@ export function createStore () {
             return axios.get(`${apiHost}/get_past_events/2018`).then(function(response) {
                commit('setPastEvents', response.data);
             });
+         },
+
+         getPage({commit}, request) {
+            return axios.get(`${apiHost}/get_page/${request.id}`).then(function(response) {
+               commit('setPageData', response.data);
+            });
+         },
+
+         getNews({commit}, request) {
+            return axios.get(`${apiHost}/get_news/${request.offset}`).then(function(response) {
+               commit('setNews', response.data);
+            });
          }
       },
 
@@ -54,6 +68,12 @@ export function createStore () {
             Vue.set(state, 'index_closestEvents', data.events);
             Vue.set(state, 'index_closestExhibitions', data.exhibitions);
             Vue.set(state, 'index_news', data.news);
+         },
+
+         setNews(state, data) {
+            let newArray = state.index_news.concat(data);
+            state.index_news.concat(data);
+            Vue.set(state, 'index_news', newArray);
          },
 
          setEventData(state, data) {
@@ -66,6 +86,11 @@ export function createStore () {
 
          setPastEvents(state, data) {
             Vue.set(state, 'events_past', data);
+         },
+
+         setPageData(state, data) {
+            Vue.set(state, 'page', data);
+
          }
       }
    })

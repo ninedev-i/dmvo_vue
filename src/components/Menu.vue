@@ -65,8 +65,7 @@
                {
                   name: 'aboutInfo',
                   link: '/about',
-                  caption: 'О доме молодежи',
-                  className: 'menu_emptyLink'
+                  caption: 'О доме молодежи'
                },
                {
                   name: 'aboutTeam',
@@ -79,15 +78,13 @@
                   name: 'aboutHalls',
                   link: '/about/halls',
                   caption: 'Материальная база',
-                  parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  parent: 'aboutInfo'
                },
                {
                   name: 'aboutStudio',
                   link: '/about/studio',
                   caption: 'Формы молодежного',
-                  parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  parent: 'aboutInfo'
                },
                {
                   name: 'aboutVolunteer',
@@ -201,7 +198,7 @@
       position: fixed;
       left: 0;
       top: 0;
-      overflow: hidden;
+      overflow-y: auto;
    }
    .navbar__logo {
       padding: 16px

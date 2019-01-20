@@ -18,6 +18,12 @@
             </router-link>
          </div>
       </masonry>
+      <div
+         class="news-list__addMoreButton"
+         v-on:click="addMore()"
+         >
+         Еще…
+      </div>
    </div>
 </template>
 <script>
@@ -41,6 +47,11 @@
                escapedText = txt.replace(/<\/?[^>]+>/g,''),
                commaSymbol = escapedText.match( /!|\./i ).index;
             return escapedText.substring(0, commaSymbol) + '…';
+         },
+
+         addMore() {
+            let offset = this.news.length / 12;
+            return this.$store.dispatch('getNews', {offset: offset});
          }
       }
    };
@@ -53,6 +64,7 @@
       /* font-family: "Open Sans", sans-serif; */
       background: white;
       margin-bottom: 15px;
+      cursor: pointer;
    }
    .news-list__item a,
    .news-list__item p,
@@ -65,6 +77,8 @@
    }
    .news-list__item_picture {
       background-color: #1392BD;
+      background-size: cover;
+      background-position: center;
       height: 190px;
    }
    .news-list__item_title {
@@ -78,5 +92,13 @@
    .news-list__item_text {
       padding: 0px 20px 15px;
       /* font-size: 14px; */
+   }
+   .news-list__addMoreButton {
+      width: 100%;
+      background: #1392BD;
+      color: white;
+      padding: 6px;
+      text-align: center;
+      cursor: pointer;
    }
 </style>
