@@ -21,7 +21,8 @@ export function createStore () {
          events_past_title: 'Архив мероприятий',
          events_past: [],
 
-         page: {}
+         page: {},
+         psychological: {}
       },
 
       actions: {
@@ -59,6 +60,12 @@ export function createStore () {
             return axios.get(`${apiHost}/get_news/${request.offset}`).then(function(response) {
                commit('setNews', response.data);
             });
+         },
+
+         getPsychological({commit}) {
+            return axios.get(`${apiHost}/get_psychological`).then(function(response) {
+               commit('setPsychological', response.data);
+            });
          }
       },
 
@@ -90,7 +97,10 @@ export function createStore () {
 
          setPageData(state, data) {
             Vue.set(state, 'page', data);
+         },
 
+         setPsychological(state, data) {
+            Vue.set(state, 'psychological', data);
          }
       }
    })

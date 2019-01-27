@@ -58,7 +58,6 @@
    };
 </script>
 <style lang="stylus" scoped>
-   @import '~../../variables.styl'
    .news-list {
       display: flex;
    }
@@ -78,7 +77,7 @@
       font-style: normal;
    }
    .news-list__item_picture {
-      background-color: $mainColor;
+      background-color: #1392BD;
       background-size: cover;
       background-position: center;
       height: 190px;
@@ -97,7 +96,7 @@
    }
    .news-list__addMoreButton {
       width: 100%;
-      background: $mainColor;
+      background: #1392BD;
       color: white;
       padding: 6px;
       text-align: center;

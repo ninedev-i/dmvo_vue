@@ -13,25 +13,32 @@
                v-show="!item.parent || item.parent === $route.name || item.name === $route.name || item.parent === $route.meta.parent"
                >
                <div class="menu_item__icon" v-if="item.name === 'aboutInfo'">
-                  <aboutIcon />
+                  <img src="/public/menuIcons/about.svg">
+                  <!-- <aboutIcon /> -->
                </div>
                <div class="menu_item__icon" v-else-if="item.name === 'closestEvents'">
-                  <eventsIcon />
+                  <img src="/public/menuIcons/events.svg">
+                  <!-- <eventsIcon /> -->
                </div>
                <div class="menu_item__icon" v-else-if="item.name === 'psychological'">
-                  <psychologicalIcon />
+                  <img src="/public/menuIcons/psychological.svg">
+                  <!-- <psychologicalIcon /> -->
                </div>
                <div class="menu_item__icon" v-else-if="item.name === 'volunteer'">
-                  <volunteerIcon />
+                  <img src="/public/menuIcons/volunteer.svg">
+                  <!-- <volunteerIcon /> -->
                </div>
                <div class="menu_item__icon" v-else-if="item.name === 'family'">
-                  <familyIcon />
+                  <img src="/public/menuIcons/family.svg">
+                  <!-- <familyIcon /> -->
                </div>
                <div class="menu_item__icon" v-else-if="item.name === 'aboutService'">
-                  <serviceIcon />
+                  <img src="/public/menuIcons/service.svg">
+                  <!-- <serviceIcon /> -->
                </div>
                <div class="menu_item__icon" v-else-if="item.name === 'contact'">
-                  <contactIcon />
+                  <img src="/public/menuIcons/contact.svg">
+                  <!-- <contactIcon /> -->
                </div>
                <div class="menu_item__icon" v-else></div>
                <div class="menu_item__caption">{{item.caption}}</div>
@@ -41,24 +48,14 @@
    </div>
 </template>
 <script>
-   import aboutIcon from '../../public/menuIcons/about.svg';
-   import eventsIcon from '../../public/menuIcons/events.svg';
-   import psychologicalIcon from '../../public/menuIcons/psychological.svg';
-   import volunteerIcon from '../../public/menuIcons/volunteer.svg';
-   import familyIcon from '../../public/menuIcons/family.svg';
-   import serviceIcon from '../../public/menuIcons/service.svg';
-   import contactIcon from '../../public/menuIcons/contact.svg';
+   import '../../public/menuIcons/about.svg';
+   import '../../public/menuIcons/events.svg';
+   import '../../public/menuIcons/psychological.svg';
+   import '../../public/menuIcons/volunteer.svg';
+   import '../../public/menuIcons/family.svg';
+   import '../../public/menuIcons/service.svg';
+   import '../../public/menuIcons/contact.svg';
    export default {
-      components: {
-         aboutIcon,
-         eventsIcon,
-         psychologicalIcon,
-         volunteerIcon,
-         familyIcon,
-         serviceIcon,
-         contactIcon
-      },
-
       data() {
          return {
             menuArray: [
@@ -198,7 +195,7 @@
       position: fixed;
       left: 0;
       top: 0;
-      overflow-y: auto;
+      overflow-y: hidden;
    }
    .navbar__logo {
       padding: 16px
@@ -222,12 +219,13 @@
       width: 35px;
       padding: 9px 12px 8px;
    }
-   .menu_item__icon svg {
+   .menu_item__icon svg,
+   .menu_item__icon img {
       height: 100%;
       width: 100%;
    }
    .menu_item__caption {
-      padding: 15px 15px 15px 5px;
+      padding: 15px 10px 15px 0px;
    }
    .menu .menu_item:hover {
       background-color: #47b3d8;
@@ -245,6 +243,26 @@
    .menu_emptyLink {
       color: #adadad !important;
    }
+   .navbar:hover {
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      -moz-overflow-scrolling: touch;
+      -ms-overflow-scrolling: touch;
+      -o-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+   }
+   .navbar::-webkit-scrollbar {
+   	-webkit-appearance: none;
+   	width: 7px;
+      cursor: pointer;
+   }
+   .navbar::-webkit-scrollbar-thumb {
+   	border-radius: 10px;
+   	background-color: #47b3d8;
+   	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+   }
+
 
    #nprogress .bar {
       background: #1392BD !important;

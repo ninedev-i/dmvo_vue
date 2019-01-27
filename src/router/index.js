@@ -10,6 +10,7 @@ import Event from '../views/Event.vue';
 import About from '../views/about/About.vue';
 import Halls from '../views/about/Halls.vue';
 import AboutStudio from '../views/about/Studio.vue';
+import Psychological from '../views/Psychological.vue';
 
 import Empty from '../views/Empty.vue';
 
@@ -44,7 +45,7 @@ export function createRouter() {
             {path: 'columnhall', name: 'columnhall', component: Empty, meta: {parent: 'aboutService'}},
             {path: 'bluehall', name: 'bluehall', component: Empty, meta: {parent: 'aboutService'}},
          ]},
-         {path: '/psychological', name: 'psychological', component: Empty},
+         {path: '/psychological', name: 'psychological', component: Psychological},
          {path: '/volunteer', name: 'volunteer', component: Empty},
          {path: '/transeforce', name: 'transeforce', component: Empty},
          {path: '/family', name: 'family', component: Empty},

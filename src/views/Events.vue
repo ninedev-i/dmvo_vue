@@ -84,6 +84,9 @@
       vertical-align: middle;
       padding: 10px;
       line-height: 24px;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
    }
    .event_date_info {
       height: 50px;

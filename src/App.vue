@@ -37,7 +37,7 @@
    h2 {
       margin: 15px 0px;
    }
-   h2.padding20 {
+   h2.padding20, h3.padding20 {
       padding: 5px 20px;
       margin: 10px 0px;
    }
