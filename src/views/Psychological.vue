@@ -1,35 +1,38 @@
 <template>
    <div>
-      <div class="padding20 container-whiteBg">
+      <article class="padding20 container-whiteBg">
          <h1>{{page.title}}</h1>
          <div v-html="page.description"></div>
-      </div>
+      </article>
 
-      <div class=" sidebar">
-         <!-- <div id="vk_groups"></div> -->
-         <div class="psychological__signUpButton">Записаться на прием</div>
-         <h3 class="padding20">Наши специалисты:</h3>
-         <div v-for="specialist in page.people" class="psychological__specialist">
-            <b>{{specialist.name}}</b>
-            <div class="">
-               <img
-                  :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
-                  class="psychological__specialistPhoto"
-                  :title="specialist.name"
-                  :alt="specialist.name"
-               />
-               <!-- <p>{{specialist.info}}</p> -->
-               заведующая отделом<br>часы приёма:<br>вт 16:00-18:00, чт 9:00 - 11:00
+      <aside>
+         <div class="sidebar">
+            <!-- <div id="vk_groups"></div> -->
+            <div class="psychological__signUpButton">Записаться на прием</div>
+            <h3 class="padding20">Наши специалисты:</h3>
+            <div v-for="specialist in page.people" class="psychological__specialist">
+               <b>{{specialist.name}}</b>
+               <div class="">
+                  <img
+                     :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
+                     class="psychological__specialistPhoto"
+                     :title="specialist.name"
+                     :alt="specialist.name"
+                  />
+                  <!-- <p>{{specialist.info}}</p> -->
+                  заведующая отделом<br>часы приёма:<br>вт 16:00-18:00, чт 9:00 - 11:00
+               </div>
             </div>
+            <!-- <h3>Направления работы</h3>
+            <div class="psychological__directions">
+               <li>Психологическое консультирование</li>
+               <li>Групповые формы работы</li>
+               <li>Профориентация и диагностика</li>
+               <li>Тренинги</li>
+            </div> -->
          </div>
-         <!-- <h3>Направления работы</h3>
-         <div class="psychological__directions">
-            <li>Психологическое консультирование</li>
-            <li>Групповые формы работы</li>
-            <li>Профориентация и диагностика</li>
-            <li>Тренинги</li>
-         </div> -->
-      </div>
+
+      </aside>
    </div>
 </template>
 <script>

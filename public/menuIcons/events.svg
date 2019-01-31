@@ -1,77 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+	 viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
-	.st1{opacity:0.3;fill:#FFFFFF;}
+	.st0{opacity:0;fill:#FFFFFF;}
+	.st1{opacity:0.3;fill:#FFFFFF;enable-background:new    ;}
+	.st2{fill:#FFFFFF;}
 </style>
+<rect class="st0" width="250" height="250"/>
 <g>
-	<polygon class="st1" points="168.14,148.06 143.95,148.06 143.95,172.07 165.56,150.62 	"/>
-	<polygon class="st1" points="173.64,27.46 149.98,27.46 149.98,41.42 137.63,41.42 137.63,27.46 62.37,27.46 62.37,41.42 
-		50.02,41.42 50.02,27.46 26.36,27.46 26.36,55.38 173.64,55.38 	"/>
-	<path class="st0" d="M149.98,19.74v-8h-12.35v8H62.37v-8H50.02v8H18.64V63.1v122.1h123.04l39.68-39.4V63.1V19.74H149.98z
-		 M173.64,55.38H26.36V27.46h23.66v13.96h12.35V27.46h75.26v13.96h12.35V27.46h23.66V55.38z M165.56,150.62l-21.61,21.45v-24.01
-		h24.19L165.56,150.62z M173.64,140.34h-33.55l-3.86,3.86v33.28H26.36V63.1h147.29V140.34z"/>
+	<polygon class="st1" points="193.14,174.59 168.95,174.59 168.95,198.6 190.56,177.15 	"/>
+	<polygon class="st1" points="198.64,53.99 174.98,53.99 174.98,67.95 162.63,67.95 162.63,53.99 87.37,53.99 87.37,67.95 
+		75.02,67.95 75.02,53.99 51.36,53.99 51.36,81.91 198.64,81.91 	"/>
+	<path class="st2" d="M174.98,46.27v-8h-12.35v8H87.37v-8H75.02v8H43.64v43.36v122.1h123.04l39.68-39.4v-82.7V46.27H174.98z
+		 M198.64,81.91H51.36V53.99h23.66v13.96h12.35V53.99h75.26v13.96h12.35V53.99h23.66V81.91L198.64,81.91z M190.56,177.15
+		l-21.61,21.45v-24.01h24.19L190.56,177.15z M198.64,166.87h-33.55l-3.86,3.86v33.28H51.36V89.63h147.29L198.64,166.87
+		L198.64,166.87z"/>
 	<g>
 		<g>
 			<g>
-				<rect x="68.25" y="83.07" class="st0" width="12.35" height="12.25"/>
+				<rect x="93.25" y="109.6" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="93.82" y="83.07" class="st0" width="12.35" height="12.25"/>
+				<rect x="118.82" y="109.6" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="119.4" y="83.07" class="st0" width="12.35" height="12.25"/>
+				<rect x="144.4" y="109.6" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="144.98" y="83.07" class="st0" width="12.35" height="12.25"/>
+				<rect x="169.98" y="109.6" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="144.98" y="110.93" class="st0" width="12.35" height="12.25"/>
+				<rect x="169.98" y="137.46" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="119.4" y="110.93" class="st0" width="12.35" height="12.25"/>
+				<rect x="144.4" y="137.46" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="93.82" y="110.93" class="st0" width="12.35" height="12.25"/>
+				<rect x="118.82" y="137.46" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="68.25" y="110.93" class="st0" width="12.35" height="12.25"/>
+				<rect x="93.25" y="137.46" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="42.67" y="110.93" class="st0" width="12.35" height="12.25"/>
+				<rect x="67.67" y="137.46" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="42.67" y="138.81" class="st0" width="12.35" height="12.25"/>
+				<rect x="67.67" y="165.34" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="68.25" y="138.81" class="st0" width="12.35" height="12.25"/>
+				<rect x="93.25" y="165.34" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="93.82" y="138.81" class="st0" width="12.35" height="12.25"/>
+				<rect x="118.82" y="165.34" class="st2" width="12.35" height="12.25"/>
 			</g>
 		</g>
 	</g>

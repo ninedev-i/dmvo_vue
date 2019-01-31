@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+	 viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
 <style type="text/css">
-	.st0{opacity:0.3;fill:#FFFFFF;}
-	.st1{fill:#FFFFFF;}
+	.st0{opacity:0;fill:#FFFFFF;}
+	.st1{opacity:0.3;fill:#FFFFFF;enable-background:new    ;}
+	.st2{fill:#FFFFFF;}
 </style>
+<rect class="st0" width="250" height="250"/>
 <g>
-	<polygon class="st0" points="53.15,131.84 83.61,131.84 83.61,177.98 116.39,177.98 116.39,131.84 146.85,131.84 146.85,177.98 
-		161.44,177.98 161.44,58.16 38.56,58.16 38.56,177.98 53.15,177.98 	"/>
-	<path class="st1" d="M169.15,55.49V24.26h-47.67V12.43H78.52v11.83H30.85v31.23H0v130.2h30.85h138.31H200V55.49H169.15z
-		 M30.85,177.98H7.71V63.2h23.14V177.98z M38.56,31.97h47.67V20.14h27.53v11.83h47.67v18.48H38.56V31.97z M161.44,177.98h-14.59
-		v-46.14h-30.46v46.14H83.61v-46.14H53.15v46.14H38.56V58.16h122.88V177.98z M75.9,177.98H60.86v-38.43H75.9V177.98z M139.14,177.98
-		H124.1v-38.43h15.04V177.98z M192.29,177.98h-23.14V63.2h23.14V177.98z"/>
+	<polygon class="st1" points="78.15,157.78 108.61,157.78 108.61,203.92 141.39,203.92 141.39,157.78 171.85,157.78 171.85,203.92 
+		186.44,203.92 186.44,84.1 63.56,84.1 63.56,203.92 78.15,203.92 	"/>
+	<path class="st2" d="M194.15,81.43V50.2h-47.67V38.37h-42.96V50.2H55.85v31.23H25v130.2h30.85h138.31H225V81.43H194.15z
+		 M55.85,203.92H32.71V89.14h23.14C55.85,89.14,55.85,203.92,55.85,203.92z M63.56,57.91h47.67V46.08h27.53v11.83h47.67v18.48H63.56
+		V57.91z M186.44,203.92h-14.59v-46.14h-30.46v46.14h-32.78v-46.14H78.15v46.14H63.56V84.1h122.88V203.92z M100.9,203.92H85.86
+		v-38.43h15.04V203.92z M164.14,203.92H149.1v-38.43h15.04V203.92z M217.29,203.92h-23.14V89.14h23.14V203.92z"/>
 	<g>
 		<g>
-			<rect x="93.83" y="146.23" class="st1" width="12.34" height="16.45"/>
+			<rect x="118.83" y="172.17" class="st2" width="12.34" height="16.45"/>
 		</g>
 	</g>
 	<g>
 		<g>
 			<g>
-				<rect x="60.86" y="73.23" class="st1" width="12.34" height="11.57"/>
+				<rect x="85.86" y="99.17" class="st2" width="12.34" height="11.57"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="60.86" y="98.68" class="st1" width="12.34" height="16.58"/>
+				<rect x="85.86" y="124.62" class="st2" width="12.34" height="16.58"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="94.47" y="73.23" class="st1" width="12.34" height="11.57"/>
+				<rect x="119.47" y="99.17" class="st2" width="12.34" height="11.57"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="94.47" y="98.68" class="st1" width="12.34" height="16.58"/>
+				<rect x="119.47" y="124.62" class="st2" width="12.34" height="16.58"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="126.8" y="73.23" class="st1" width="12.34" height="11.57"/>
+				<rect x="151.8" y="99.17" class="st2" width="12.34" height="11.57"/>
 			</g>
 		</g>
 		<g>
 			<g>
-				<rect x="126.8" y="98.68" class="st1" width="12.34" height="16.58"/>
+				<rect x="151.8" y="124.62" class="st2" width="12.34" height="16.58"/>
 			</g>
 		</g>
 	</g>

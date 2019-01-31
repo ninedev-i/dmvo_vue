@@ -53,11 +53,15 @@
    }
    #app {
       height: 100%;
+      width: 100%;
+      display: flex;
    }
    .container {
-      width: calc(100% - 660px);
-      margin: 0px 15px 0px 275px;
-      padding: 15px 0px;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row;
+      // padding: 15px 0px;
+      padding: 15px;
       font-family: 'PT Serif', serif;
       font-size: 18px;
       line-height: 1.5em;
@@ -68,12 +72,24 @@
    .padding20 {
       padding: 10px 20px;
    }
+   article {
+      width: 100%;
+   }
+   aside {
+      // right: 0px;
+      // top: 0px;
+      width: 320px;
+      min-width: 320px;
+      margin-left: 16px;
+      // margin: 16px;
+      // position: fixed;
+   }
    .sidebar {
-      right: 0px;
-      top: 0px;
-      width: 321px;
-      margin: 16px;
-      position: fixed;
+      position: fixed
+      // padding: 16px;
+      // background-color: white;
+      // width: calc(100% - 132px);
+      width: inherit;
    }
 
    .fade-enter-active,

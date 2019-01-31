@@ -7,7 +7,7 @@
          class="news-list"
          >
          <div v-for="event in news" class="news-list__item" :key="event.id">
-            <router-link v-bind:to="'events/' + event.id" tag="div">
+            <router-link v-bind:to="'events/' + event.id" tag="a">
                <div
                   class="news-list__item_picture"
                   v-if="event.pictures[0]"
@@ -62,7 +62,6 @@
       display: flex;
    }
    .news-list__item {
-      /* font-family: "Open Sans", sans-serif; */
       background: white;
       margin-bottom: 15px;
       cursor: pointer;
@@ -76,6 +75,9 @@
       margin: 0px;
       font-style: normal;
    }
+   .news-list__item:hover {
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+   }
    .news-list__item_picture {
       background-color: #1392BD;
       background-size: cover;
@@ -86,18 +88,15 @@
       padding: 5px 20px;
       font-size: 17px;
       font-weight: bold;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
    }
    .news-list__item_text {
       padding: 0px 20px 15px;
-      /* font-size: 14px; */
    }
    .news-list__addMoreButton {
       width: 100%;
       background: #1392BD;
       color: white;
+      margin-bottom: 6px;
       padding: 6px;
       text-align: center;
       cursor: pointer;

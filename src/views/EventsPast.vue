@@ -21,16 +21,15 @@
             </div>
          </div>
       </div>
-      <sidebar class="sidebar" />
+      <aside>
+         <div class="sidebar container-whiteBg">
+            Тут будет фильтр по годам
+         </div>
+      </aside>
    </div>
 </template>
 <script>
-   import sidebar from '../components/sidebar/EventsPast.vue';
    export default {
-      components: {
-         sidebar
-      },
-
       title () {
          return this.$store.state.events_past_title;
       },

@@ -1,9 +1,16 @@
 <template>
    <div>
-      <div class="padding20 container-whiteBg">
-         <h1>{{page.title}}</h1>
-         <div v-html="page.content"></div>
-      </div>
+      <article>
+         <div class="padding20 container-whiteBg">
+            <h1>{{page.title}}</h1>
+            <div v-html="page.content"></div>
+         </div>
+      </article>
+      <aside>
+         <div class="sidebar">
+            Сайдбар
+         </div>
+      </aside>
    </div>
 </template>
 <script>

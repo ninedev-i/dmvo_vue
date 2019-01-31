@@ -1,6 +1,6 @@
 <template>
-   <div>
-      <div class="navbar">
+   <nav class="navbar">
+      <div class="nav_container">
          <router-link to="/" class="navbar__logo" tag="a">
             <img src="/public/logo.png" alt="Дом молодежи Василеостровского района" title="Дом молодежи Василеостровского района" />
          </router-link>
@@ -9,43 +9,22 @@
                v-for="item in menuArray"
                :to="item.link"
                :key="item.name"
-               :class="'menu_item ' + item.className + (item.parent ? ' menu_childItem ' : '') + (item.name === 'closestEvents' && $route.name === 'event' ? ' router-link-exact-active ' : '')"
+               :class="`menu_item ${item.className} ${item.parent ? 'menu_childItem' : ''} ${item.name === 'closestEvents' && $route.name === 'event' ? 'router-link-exact-active' : ''}`"
                v-show="!item.parent || item.parent === $route.name || item.name === $route.name || item.parent === $route.meta.parent"
                >
-               <div class="menu_item__icon" v-if="item.name === 'aboutInfo'">
-                  <img src="/public/menuIcons/about.svg">
-                  <!-- <aboutIcon /> -->
+               <div class="menu_item__icon">
+                  <img
+                      v-if="item.icon"
+                     :src="item.icon"
+                     :alt="item.caption"
+                     :title="item.caption"
+                  />
                </div>
-               <div class="menu_item__icon" v-else-if="item.name === 'closestEvents'">
-                  <img src="/public/menuIcons/events.svg">
-                  <!-- <eventsIcon /> -->
-               </div>
-               <div class="menu_item__icon" v-else-if="item.name === 'psychological'">
-                  <img src="/public/menuIcons/psychological.svg">
-                  <!-- <psychologicalIcon /> -->
-               </div>
-               <div class="menu_item__icon" v-else-if="item.name === 'volunteer'">
-                  <img src="/public/menuIcons/volunteer.svg">
-                  <!-- <volunteerIcon /> -->
-               </div>
-               <div class="menu_item__icon" v-else-if="item.name === 'family'">
-                  <img src="/public/menuIcons/family.svg">
-                  <!-- <familyIcon /> -->
-               </div>
-               <div class="menu_item__icon" v-else-if="item.name === 'aboutService'">
-                  <img src="/public/menuIcons/service.svg">
-                  <!-- <serviceIcon /> -->
-               </div>
-               <div class="menu_item__icon" v-else-if="item.name === 'contact'">
-                  <img src="/public/menuIcons/contact.svg">
-                  <!-- <contactIcon /> -->
-               </div>
-               <div class="menu_item__icon" v-else></div>
                <div class="menu_item__caption">{{item.caption}}</div>
             </router-link>
          </div>
       </div>
-   </div>
+   </nav>
 </template>
 <script>
    import '../../public/menuIcons/about.svg';
@@ -62,7 +41,8 @@
                {
                   name: 'aboutInfo',
                   link: '/about',
-                  caption: 'О доме молодежи'
+                  caption: 'О доме молодежи',
+                  icon: '/public/menuIcons/about.svg'
                },
                {
                   name: 'aboutTeam',
@@ -115,7 +95,8 @@
                {
                   name: 'closestEvents',
                   link: '/events',
-                  caption: 'Мероприятия'
+                  caption: 'Мероприятия',
+                  icon: '/public/menuIcons/events.svg'
                },
                {
                   name: 'pastEvents',
@@ -135,19 +116,22 @@
                   name: 'psychological',
                   link: '/psychological',
                   caption: 'Психологи',
-                  className: 'menu_emptyLink'
+                  className: 'menu_emptyLink',
+                  icon: '/public/menuIcons/psychological.svg'
                },
                {
                   name: 'volunteer',
                   link: '/volunteer',
                   caption: 'Волонтерский центр',
-                  className: 'menu_emptyLink'
+                  className: 'menu_emptyLink',
+                  icon: '/public/menuIcons/volunteer.svg'
                },
                {
                   name: 'family',
                   link: '/family',
                   caption: 'Семейный клуб',
-                  className: 'menu_emptyLink'
+                  className: 'menu_emptyLink',
+                  icon: '/public/menuIcons/family.svg'
                },
                // {
                //    name: 'transeforce',
@@ -159,7 +143,8 @@
                   name: 'aboutService',
                   link: '/service',
                   caption: 'Услуги',
-                  className: 'menu_emptyLink'
+                  className: 'menu_emptyLink',
+                  icon: '/public/menuIcons/service.svg'
                },
                {
                   name: 'columnhall',
@@ -180,7 +165,8 @@
                   name: 'contact',
                   link: '/contact',
                   caption: 'Контакты',
-                  className: 'menu_emptyLink'
+                  className: 'menu_emptyLink',
+                  icon: '/public/menuIcons/contact.svg'
                }
             ]
          };
@@ -188,18 +174,22 @@
    };
 </script>
 <style lang="stylus">
-   .navbar {
+   nav {
+      height: 100%;
       width: 260px;
+      min-width: 260px
+   }
+   .nav_container {
+      width: inherit;
       height: 100%;
       background-color: #516D81;
       position: fixed;
-      left: 0;
-      top: 0;
       overflow-y: hidden;
    }
    .navbar__logo {
       padding: 16px
       display: block;
+      width: 228px;
    }
    .navbar__logo img {
       width: 100%;
@@ -215,9 +205,9 @@
       text-decoration: none;
    }
    .menu_item__icon {
-      height: 35px;
-      width: 35px;
-      padding: 9px 12px 8px;
+      height: 40px;
+      width: 40px;
+      padding: 6px 12px 6px;
    }
    .menu_item__icon svg,
    .menu_item__icon img {
@@ -243,7 +233,7 @@
    .menu_emptyLink {
       color: #adadad !important;
    }
-   .navbar:hover {
+   .nav_container:hover {
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
@@ -252,17 +242,17 @@
       -o-overflow-scrolling: touch;
       overflow-scrolling: touch;
    }
-   .navbar::-webkit-scrollbar {
+   .nav_container::-webkit-scrollbar {
    	-webkit-appearance: none;
-   	width: 7px;
+   	width: 5px;
       cursor: pointer;
    }
-   .navbar::-webkit-scrollbar-thumb {
+   .nav_container::-webkit-scrollbar-thumb {
    	border-radius: 10px;
    	background-color: #47b3d8;
+      cursor: pointer !important;
    	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
    }
-
 
    #nprogress .bar {
       background: #1392BD !important;
