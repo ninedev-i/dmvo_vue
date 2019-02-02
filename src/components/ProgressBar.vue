@@ -84,7 +84,7 @@
    }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="less">
    .progress {
       position: fixed;
       top: 0px;

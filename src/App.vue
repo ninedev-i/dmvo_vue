@@ -14,8 +14,8 @@
       }
    };
 </script>
-<style lang="stylus">
-   @import url('https://fonts.googleapis.com/css?family=Open+Sans|PT+Serif');
+<style lang="less">
+   @import (css) url('https://fonts.googleapis.com/css?family=Open+Sans|PT+Serif');
    html, body {
       padding: 0;
       margin: 0;
@@ -51,6 +51,9 @@
    a {
       color: #384047;
    }
+   p {
+      margin: 10px 0;
+   }
 
    // Контейнер
    #app {
@@ -79,24 +82,29 @@
    .margin-bottom-12 {
       margin-bottom: 12px;
    }
-   .padding-6 {
-      padding: 6px !important;
+   .padding {
+      &-6 {
+         padding: 6px !important;
+      }
+      &-12 {
+         padding: 12px !important;
+      }
+      &-20 {
+         padding: 10px 20px;
+      }
    }
-   .padding-12 {
-      padding: 12px !important;
-   }
-   .padding-20 {
-      padding: 10px 20px;
-   }
-   .button-blue {
-      background-color: #1392bd;
-      color: #fff;
-      padding: 12px;
-      text-align: center;
-      cursor: pointer;
-   }
-   .button-blue:hover {
-      background-color: #47b3d8;
+   .button {
+      &-blue {
+         background-color: #1392bd;
+         color: #fff;
+         padding: 12px;
+         text-align: center;
+         cursor: pointer;
+
+         &:hover {
+            background-color: #47b3d8;
+         }
+      }
    }
 
    // Сайдбар
@@ -106,17 +114,21 @@
       margin-left: 16px;
    }
    .sidebar {
-      position: fixed
+      position: fixed;
       width: inherit;
    }
 
    // Переходы между страницами
-   .fade-enter-active,
-   .fade-leave-active {
-      transition: all .2s ease;
-   }
-   .fade-enter,
-   .fade-leave-active {
-      opacity: 0;
+   .fade {
+      &-enter {
+         opacity: 0;
+         &-active {
+            transition: all .2s ease;
+         }
+      }
+      &-leave-active {
+         opacity: 0;
+         transition: all .2s ease;
+      }
    }
 </style>

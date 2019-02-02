@@ -4,9 +4,3 @@
       <div>Санкт-Петербург, Большой проспект В.О., дом 65 лит. А</div>
    </div>
 </template>
-<script>
-
-</script>
-<style lang="stylus">
-
-</style>

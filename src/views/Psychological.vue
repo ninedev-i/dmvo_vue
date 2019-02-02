@@ -1,8 +1,18 @@
 <template>
    <div>
-      <article class="padding-20 background-white">
-         <h1>{{page.title}}</h1>
-         <div v-html="page.description"></div>
+      <article>
+         <div class="padding-20 background-white">
+            <h1>{{page.title}}</h1>
+            <div v-html="page.description"></div>
+         </div>
+
+         <h3 class="padding-20">Направления работы</h3>
+         <div class="psychological__directions">
+            <div>Психологическое консультирование</div>
+            <div>Групповые формы работы</div>
+            <div>Профориентация и диагностика</div>
+            <div>Тренинги</div>
+         </div>
       </article>
 
       <aside>
@@ -15,7 +25,7 @@
                <div class="">
                   <img
                      :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
-                     class="psychological__specialistPhoto"
+                     class="psychological__specialist-photo"
                      :title="specialist.name"
                      :alt="specialist.name"
                   />
@@ -23,13 +33,6 @@
                   заведующая отделом<br>часы приёма:<br>вт 16:00-18:00, чт 9:00 - 11:00
                </div>
             </div>
-            <!-- <h3>Направления работы</h3>
-            <div class="psychological__directions">
-               <li>Психологическое консультирование</li>
-               <li>Групповые формы работы</li>
-               <li>Профориентация и диагностика</li>
-               <li>Тренинги</li>
-            </div> -->
          </div>
 
       </aside>
@@ -45,11 +48,11 @@
          return store.dispatch('getPsychological');
       },
 
-      mounted() {
-         if (VK) {
-            VK.Widgets.Group('vk_groups', {mode: 3, width: '300', height: '400', color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6', redesign: 1}, 123029997);
-         }
-      },
+      // mounted() {
+      //    if (VK) {
+      //       VK.Widgets.Group('vk_groups', {mode: 3, width: '300', height: '400', color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6', redesign: 1}, 123029997);
+      //    }
+      // },
 
       computed: {
          page() {
@@ -58,31 +61,26 @@
       }
    };
 </script>
-<style lang="stylus">
-   .psychological__specialist {
-      display: flex;
-      flex-grow: 1;
-      flex-direction: column;
-      background-color: white;
-      padding: 10px 20px 20px;
-      margin-bottom: 12px;
+<style lang="less">
+   .psychological {
+      &__specialist {
+         display: flex;
+         flex-grow: 1;
+         flex-direction: column;
+         background-color: white;
+         padding: 10px 20px 15px;
+         margin-bottom: 12px;
 
-   }
-   .psychological__specialist:last-of-type {
-      margin-right: 0;
-   }
-   img.psychological__specialistPhoto {
-      display: block;
-      float: left;
-      height: 120px;
-      margin-right: 12px;
-   }
+         &-photo {
+            display: block;
+            float: left;
+            height: 120px;
+            margin-right: 12px;
+         }
+      }
 
-   .psychological__directions li {
-      list-style: none;
-      background-color: #1392BD;
-      color: white;
-      padding: 5px;
-      margin-bottom: 5px;
+      &__directions {
+         display: flex;
+      }
    }
 </style>

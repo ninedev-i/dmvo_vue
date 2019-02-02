@@ -1,5 +1,5 @@
 <template>
-   <div class="widget__importantLinks background-white padding-20 margin-bottom-12">
+   <div class="widget-importantLinks background-white padding-20 margin-bottom-12">
       <b>Важные ссылки:</b>
       <a v-for="item in items" :href="item.url" rel="nofollow" target="blank" :title="item.title" :alt="item.title">
          <img v-if="item.img" :src="item.img" :alt="item.title">
@@ -36,16 +36,19 @@
       }
    }
 </script>
-<style lang="stylus">
-   .widget__importantLinks a {
-      display: block;
-      margin-top: 6px;
-      border-bottom: 1px solid #F5F5F5;
-   }
-   .widget__importantLinks a:first-of-type {
-      margin-top: 0px;
-   }
-   .widget__importantLinks a:last-of-type {
-      border: 0px;
+<style lang="less">
+   .widget-importantLinks {
+      a {
+         display: block;
+         margin-top: 6px;
+         border-bottom: 1px solid #F5F5F5;
+
+         &:first-of-type {
+            margin-top: 0px;
+         }
+         &:last-of-type {
+            border: 0px;
+         }
+      }
    }
 </style>

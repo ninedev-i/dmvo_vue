@@ -1,26 +1,25 @@
 <template>
    <div>
-      <div class="padding-20 background-white pastEvents__container">
+      <div class="padding-20 background-white">
          <h1>{{$store.state.events_past_title}}</h1>
 
          <div v-for="(events, month) in pastEvents" class="pastEvents__month">
             <div class="pastEvents__item">
-               <div class="pastEvents__line pastEvents__itemWithTitle"></div>
-               <div class="pastEvents__circle pastEvents__itemWithTitle"></div>
-               <div class="pastEvents__content"><h4 class="pastEvents__itemMonthTitle">{{month}}</h4></div>
+               <h4 class="pastEvents__item-monthTitle">{{month}}</h4>
             </div>
             <div v-for="event in events" class="pastEvents__item" :key="event.id">
-               <router-link tag="div" v-bind:to="'/events/' + event.id" class="pastEvents__itemLink" :title="event.title">
-                  <div class="pastEvents__line"></div>
-                  <div class="pastEvents__circle"></div>
-                  <div class="pastEvents__content">
-                     <span class="pastEvents__itemDate">{{getPeriod(event.date_from, event.date_to, false)}}</span>
+               <router-link tag="div" v-bind:to="'/events/' + event.id" class="pastEvents__item-link" :title="event.title">
+                  <div class="pastEvents__item-link-line"></div>
+                  <div class="pastEvents__item-link-circle"></div>
+                  <div class="pastEvents__item-link-content">
+                     <span class="pastEvents__item-link-content-date">{{getPeriod(event.date_from, event.date_to, false)}}</span>
                      <span>{{event.title}}</span>
                   </div>
                </router-link>
             </div>
          </div>
       </div>
+
       <aside>
          <div class="sidebar background-white">
             <div class="padding-20">
@@ -48,67 +47,68 @@
    };
 </script>
 
-<style lang="stylus">
-   .pastEvents__item {
-      position: relative;
-   }
-   .pastEvents__itemLink {
-      display: inline-block;
-   }
-   .pastEvents__line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 7px;
-      border-left: 2px solid #e8e4e4;
-   }
-   .pastEvents__month:first-of-type .pastEvents__item:first-of-type .pastEvents__line {
-      bottom: 0px;
-      top: 0px;
-   }
-   .pastEvents__container .pastEvents__month:last-child .pastEvents__item:last-child .pastEvents__line {
-      border: 0px;
-   }
-   .pastEvents__item:first-child .pastEvents__line {
-      bottom: -10px;
-      top: -7px;
-   }
-   .pastEvents__circle {
-      position: absolute;
-      left: 0;
-      top: 1px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid transparent;
-      border-radius: 50%;
-      background-color: #fff;
-      color: #1392BD;
-      border-color: #1392BD;
-      z-index: 2;
-      cursor: pointer;
-   }
-   .pastEvents__content {
-      display: flex;
-      position: relative;
-      top: -5px;
-      padding: 0 0 8px 40px;
-      cursor: pointer;
-   }
-   .pastEvents__itemLink:hover span {
-      text-decoration: underline;
-      cursor: pointer;
-   }
-   .pastEvents__itemLink:hover .pastEvents__circle {
-      background: #1392bd;
-   }
-   .pastEvents__itemMonthTitle {
-      padding: 6px 0px;
-      margin: 0;
-   }
-   .pastEvents__itemDate {
-      width: 100px;
-   }
-   .pastEvents__itemWithTitle {
-      margin-top: 6px;
+<style lang="less">
+   .pastEvents {
+      &__item {
+         position: relative;
+
+         &-monthTitle {
+            padding: 6px 0px;
+            margin: 0;
+         }
+
+         &:last-child .pastEvents__item-link-line {
+            border: 0px;
+         }
+
+         &-link {
+            display: inline-block;
+
+            &:hover span {
+               cursor: pointer;
+               border-bottom: 1px solid #384047;
+               margin-bottom: -1px;
+            }
+
+            &:hover .pastEvents__item-link-circle {
+               background: #1392bd;
+            }
+
+            &-line {
+               position: absolute;
+               top: 0;
+               bottom: 0;
+               left: 7px;
+               border-left: 2px solid #e8e4e4;
+            }
+
+            &-circle {
+               position: absolute;
+               left: 0;
+               top: 1px;
+               width: 12px;
+               height: 12px;
+               border: 2px solid transparent;
+               border-radius: 50%;
+               background-color: #fff;
+               color: #1392BD;
+               border-color: #1392BD;
+               z-index: 2;
+               cursor: pointer;
+            }
+
+            &-content {
+               display: flex;
+               position: relative;
+               top: -5px;
+               padding: 0 0 8px 40px;
+               cursor: pointer;
+
+               &-date {
+                  width: 100px;
+               }
+            }
+         }
+      }
    }
 </style>

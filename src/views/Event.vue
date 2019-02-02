@@ -13,11 +13,19 @@
                   <b v-else="event.date_from === event.date_to">Даты:</b>
                   {{getPeriod(event.date_from, event.date_to, true)}}
                </div>
-               <div class="margin-bottom-12" v-if="event.what_time">
+               <div v-if="event.what_time" class="margin-bottom-12">
                   <b>Время:</b> {{event.what_time}}
                </div>
+               <div class="margin-bottom-12" v-if="event.tags">
+                  <b>Упомянутые студии:</b>
+                  <div>
+                     <div v-for="tag in tags" class="event__tag padding-6">
+                        {{tag}}
+                     </div>
+                  </div>
+               </div>
                <img
-                  class="event_cover"
+                  class="event__cover"
                   v-if="!!event.cover"
                   :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.cover"
                   :alt="event.title"
@@ -41,12 +49,33 @@
       computed: {
          event() {
             return this.$store.state.event;
+         },
+
+         tags() {
+            let tags = this.$store.state.event.tags
+            return tags.split(' ');
          }
       }
    };
 </script>
-<style lang="stylus">
-   .event_cover {
-      width: 100%;
+<style lang="less">
+   .event {
+      &__cover {
+         width: 100%;
+      }
+
+      &__tag {
+         display: inline;
+         color: #00897b;
+         background-color: #E0F2F1;
+         margin: 6px 12px 6px 0px;
+         line-height: 40px;
+         font-size: 14px;
+         cursor: pointer;
+
+         &:hover {
+            background-color: #c8e0df;
+         }
+      }
    }
 </style>

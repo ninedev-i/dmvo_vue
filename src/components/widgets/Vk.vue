@@ -1,5 +1,5 @@
 <template>
-   <div class="widget__vk background-white margin-bottom-12">
+   <div class="widget-vk background-white margin-bottom-12">
       <div id="vk_groups"></div>
    </div>
 </template>
@@ -16,8 +16,8 @@
       }
    }
 </script>
-<style lang="stylus">
-   .widget__vk {
+<style lang="less">
+   .widget-vk {
       max-height: 188px;
       height: 188px;
       overflow: hidden;

@@ -1,18 +1,18 @@
 <template>
-   <nav class="navbar">
-      <div class="nav_container">
-         <router-link to="/" class="navbar__logo" tag="a">
+   <nav class="nav">
+      <div class="nav__container">
+         <router-link to="/" class="nav__logo" tag="a">
             <img src="/public/logo.png" alt="Дом молодежи Василеостровского района" title="Дом молодежи Василеостровского района" />
          </router-link>
-         <div class="menu">
+         <div class="nav__menu">
             <router-link
                v-for="item in menuArray"
                :to="item.link"
                :key="item.name"
-               :class="`menu_item ${item.className} ${item.parent ? 'menu_childItem' : ''} ${item.name === 'closestEvents' && $route.name === 'event' ? 'router-link-exact-active' : ''}`"
+               :class="`nav__menu-item ${item.className} ${item.parent ? 'nav__menu-childItem' : ''} ${item.name === 'closestEvents' && $route.name === 'event' ? 'router-link-exact-active' : ''}`"
                v-show="!item.parent || item.parent === $route.name || item.name === $route.name || item.parent === $route.meta.parent"
                >
-               <div class="menu_item__icon">
+               <div class="nav__menu-item-icon">
                   <img
                       v-if="item.icon"
                      :src="item.icon"
@@ -20,7 +20,7 @@
                      :title="item.caption"
                   />
                </div>
-               <div class="menu_item__caption">{{item.caption}}</div>
+               <div class="nav__menu-item-caption">{{item.caption}}</div>
             </router-link>
          </div>
       </div>
@@ -49,7 +49,7 @@
                   link: '/about/team',
                   caption: 'Коллектив',
                   parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
                {
                   name: 'aboutHalls',
@@ -68,28 +68,28 @@
                   link: '/about/volunteer',
                   caption: 'Инициативы',
                   parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
                {
                   name: 'aboutMassmedia',
                   link: '/about/massmedia',
                   caption: 'СМИ о нас',
                   parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
                {
                   name: 'aboutHistory',
                   link: '/about/history',
                   caption: 'История здания',
                   parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
                {
                   name: 'aboutBoard',
                   link: '/about/board',
                   caption: 'Информационный стенд',
                   parent: 'aboutInfo',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
 
                {
@@ -109,41 +109,41 @@
                   link: '/events/other',
                   caption: 'Городские и районные',
                   parent: 'closestEvents',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
 
                {
                   name: 'psychological',
                   link: '/psychological',
                   caption: 'Психологи',
-                  className: 'menu_emptyLink',
+                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/psychological.svg'
                },
                {
                   name: 'volunteer',
                   link: '/volunteer',
                   caption: 'Волонтерский центр',
-                  className: 'menu_emptyLink',
+                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/volunteer.svg'
                },
                {
                   name: 'family',
                   link: '/family',
                   caption: 'Семейный клуб',
-                  className: 'menu_emptyLink',
+                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/family.svg'
                },
                // {
                //    name: 'transeforce',
                //    link: '/transeforce',
                //    caption: 'Трансфорс',
-               //    className: 'menu_emptyLink'
+               //    className: 'nav__menu-emptyLink'
                // },
                {
                   name: 'aboutService',
                   link: '/service',
                   caption: 'Услуги',
-                  className: 'menu_emptyLink',
+                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/service.svg'
                },
                {
@@ -151,21 +151,21 @@
                   link: '/service/columnhall',
                   caption: 'Концертный зал',
                   parent: 'aboutService',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
                {
                   name: 'bluehall',
                   link: '/service/bluehall',
                   caption: 'Голубой зал',
                   parent: 'aboutService',
-                  className: 'menu_emptyLink'
+                  className: 'nav__menu-emptyLink'
                },
 
                {
                   name: 'contact',
                   link: '/contact',
                   caption: 'Контакты',
-                  className: 'menu_emptyLink',
+                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/contact.svg'
                }
             ]
@@ -173,92 +173,87 @@
       }
    };
 </script>
-<style lang="stylus">
+<style lang="less">
    nav {
       height: 100%;
       width: 260px;
-      min-width: 260px
+      min-width: 260px;
    }
-   .nav_container {
-      width: inherit;
-      height: 100%;
-      background-color: #516D81;
-      position: fixed;
-      overflow-y: hidden;
-   }
-   .navbar__logo {
-      padding: 16px
-      display: block;
-      width: 228px;
-   }
-   .navbar__logo img {
-      width: 100%;
-      cursor: pointer;
-   }
-   .menu {
-      margin-top: 15px;
-   }
-   .menu_item ,
-   .menu_item:visited {
-      display: flex;
-      color: white;
-      text-decoration: none;
-   }
-   .menu_item__icon {
-      height: 40px;
-      width: 40px;
-      padding: 6px 12px 6px;
-   }
-   .menu_item__icon svg,
-   .menu_item__icon img {
-      height: 100%;
-      width: 100%;
-   }
-   .menu_item__caption {
-      padding: 15px 10px 15px 0px;
-   }
-   .menu .menu_item:hover {
-      background-color: #47b3d8;
-   }
+   .nav {
+      &__container {
+         width: inherit;
+         height: 100%;
+         background-color: #516D81;
+         position: fixed;
+         overflow-y: hidden;
 
-   .menu a.router-link-exact-active,
-   .menu .router-link-exact-active:hover {
-      background-color: #1392BD !important;
-   }
+         &:hover {
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            -moz-overflow-scrolling: touch;
+            -ms-overflow-scrolling: touch;
+            -o-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+         }
+         &::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 5px;
+            cursor: pointer;
+         }
+         &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #47b3d8;
+            cursor: pointer !important;
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+         }
+      }
 
-   .menu_childItem {
-      background-color: #394e5d;
-   }
+      &__logo {
+         padding: 16px;
+         display: block;
+         width: 228px;
 
-   .menu_emptyLink {
-      color: #adadad !important;
-   }
-   .nav_container:hover {
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-      -moz-overflow-scrolling: touch;
-      -ms-overflow-scrolling: touch;
-      -o-overflow-scrolling: touch;
-      overflow-scrolling: touch;
-   }
-   .nav_container::-webkit-scrollbar {
-   	-webkit-appearance: none;
-   	width: 5px;
-      cursor: pointer;
-   }
-   .nav_container::-webkit-scrollbar-thumb {
-   	border-radius: 10px;
-   	background-color: #47b3d8;
-      cursor: pointer !important;
-   	-webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
-   }
+         & img {
+            width: 100%;
+            cursor: pointer;
+         }
+      }
 
-   #nprogress .bar {
-      background: #1392BD !important;
-      top: 0px;
-      padding: 2px;
-      position: fixed;
-      width: 100%;
+      &__menu {
+         margin-top: 15px;
+
+         &-item {
+            display: flex;
+            color: white;
+            text-decoration: none;
+            &:hover {
+               background-color: #47b3d8;
+            }
+
+            &-icon {
+               height: 40px;
+               width: 40px;
+               padding: 6px 12px 6px;
+            }
+
+            &-caption {
+               padding: 15px 10px 15px 0px;
+            }
+         }
+
+         &-childItem {
+            background-color: #394e5d;
+         }
+
+         &-emptyLink {
+            color: #adadad !important;
+         }
+
+         & .router-link-exact-active, .router-link-exact-active:hover {
+            background-color: #1392BD !important;
+            cursor: default;
+         }
+      }
    }
 </style>

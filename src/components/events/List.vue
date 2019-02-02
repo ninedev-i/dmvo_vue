@@ -2,7 +2,7 @@
    <div>
       <h2 class="padding-20" v-if="closestEvents.length">{{title}}</h2>
       <ul class="events-list">
-         <li v-for="item in closestEvents">
+         <li v-for="item in closestEvents" :key="item.id">
             <router-link v-bind:to="'events/' + item.id">
                <span class="events-list__period">
                   {{getPeriod(item.date_from, item.date_to, true)}}<span v-if="item.what_time">, {{item.what_time}}</span>
@@ -27,25 +27,30 @@
       }
    };
 </script>
-<style lang="stylus">
-   .events-list li {
-      list-style: none;
-      border-bottom: 1px solid #EDEFF0;
-      margin-left: 0px;
-   }
-   .events-list li:last-of-type {
-      border-bottom: 0px;
-   }
-   .events-list li:hover {
-      background-color: #e8f5f9;
-   }
-   .events-list li a {
-      padding: 10px 20px 10px 20px;
-      text-decoration: none;
-      display: block;
-   }
-   .events-list__period {
-      width: 220px;
-      display: inline-block;
+<style lang="less">
+   .events-list {
+      li {
+         list-style: none;
+         border-bottom: 1px solid #EDEFF0;
+         margin-left: 0px;
+
+         &:last-of-type {
+            border-bottom: 0px;
+         }
+         &:hover {
+            background-color: #e8f5f9;
+         }
+
+         & a {
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+            display: block;
+         }
+      }
+
+      &__period {
+         width: 220px;
+         display: inline-block;
+      }
    }
 </style>
