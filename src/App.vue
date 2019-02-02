@@ -37,7 +37,7 @@
    h2 {
       margin: 15px 0px;
    }
-   h2.padding20, h3.padding20 {
+   h2.padding-20, h3.padding-20 {
       padding: 5px 20px;
       margin: 10px 0px;
    }
@@ -51,8 +51,9 @@
    a {
       color: #384047;
    }
+
+   // Контейнер
    #app {
-      height: 100%;
       width: 100%;
       display: flex;
    }
@@ -60,38 +61,56 @@
       display: flex;
       flex-grow: 1;
       flex-direction: row;
-      // padding: 15px 0px;
+      min-width: 1px;
       padding: 15px;
+      line-height: 1.5em;
       font-family: 'PT Serif', serif;
       font-size: 18px;
-      line-height: 1.5em;
-   }
-   .container-whiteBg {
-      background-color: white;
-   }
-   .padding20 {
-      padding: 10px 20px;
    }
    article {
       width: 100%;
+      min-width: 1px;
    }
+
+   // Общие классы
+   .background-white {
+      background-color: white;
+   }
+   .margin-bottom-12 {
+      margin-bottom: 12px;
+   }
+   .padding-6 {
+      padding: 6px !important;
+   }
+   .padding-12 {
+      padding: 12px !important;
+   }
+   .padding-20 {
+      padding: 10px 20px;
+   }
+   .button-blue {
+      background-color: #1392bd;
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+   }
+   .button-blue:hover {
+      background-color: #47b3d8;
+   }
+
+   // Сайдбар
    aside {
-      // right: 0px;
-      // top: 0px;
       width: 320px;
       min-width: 320px;
       margin-left: 16px;
-      // margin: 16px;
-      // position: fixed;
    }
    .sidebar {
       position: fixed
-      // padding: 16px;
-      // background-color: white;
-      // width: calc(100% - 132px);
       width: inherit;
    }
 
+   // Переходы между страницами
    .fade-enter-active,
    .fade-leave-active {
       transition: all .2s ease;

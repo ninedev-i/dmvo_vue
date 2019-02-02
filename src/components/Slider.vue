@@ -48,9 +48,11 @@
 <style lang="stylus" scoped>
    .swiper-container {
       width: calc(100% - 40px);
+      flex-shrink: 1;
       margin-left: 20px;
       height: 280px;
       overflow: hidden;
+      min-width: 1px;
    }
    .swiper-wrapper {
       display: flex;

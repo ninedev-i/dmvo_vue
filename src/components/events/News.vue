@@ -1,6 +1,6 @@
 <template>
    <div>
-      <h2 class="padding20">{{title}}</h2>
+      <h2 class="padding-20">{{title}}</h2>
       <masonry
          :cols="{default: 3, 1450: 2, 1200: 1}"
          :gutter="{default: '20px'}"
@@ -19,12 +19,7 @@
             </router-link>
          </div>
       </masonry>
-      <div
-         class="news-list__addMoreButton"
-         v-on:click="addMore()"
-         >
-         Еще…
-      </div>
+      <div class="button-blue padding-6 margin-bottom-12" v-on:click="addMore()">Еще…</div>
    </div>
 </template>
 <script>
@@ -91,14 +86,5 @@
    }
    .news-list__item_text {
       padding: 0px 20px 15px;
-   }
-   .news-list__addMoreButton {
-      width: 100%;
-      background: #1392BD;
-      color: white;
-      margin-bottom: 6px;
-      padding: 6px;
-      text-align: center;
-      cursor: pointer;
    }
 </style>

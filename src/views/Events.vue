@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div class="padding20">
+      <div class="padding-20">
          <h1>{{$store.state.events_closest_title}}</h1>
          <masonry
             :cols="{default: 6, 1450: 2, 1200: 1}"
@@ -30,6 +30,13 @@
             </div>
          </masonry>
       </div>
+      <aside>
+         <div class="sidebar background-white">
+            <div class="padding-20">
+               Здесь нужно что-то придумать с сайдбаром
+            </div>
+         </div>
+      </aside>
    </div>
 </template>
 <script>

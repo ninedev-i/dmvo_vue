@@ -1,6 +1,6 @@
 <template>
    <div>
-      <article class="padding20 container-whiteBg">
+      <article class="padding-20 background-white">
          <h1>{{page.title}}</h1>
          <div v-html="page.description"></div>
       </article>
@@ -8,8 +8,8 @@
       <aside>
          <div class="sidebar">
             <!-- <div id="vk_groups"></div> -->
-            <div class="psychological__signUpButton">Записаться на прием</div>
-            <h3 class="padding20">Наши специалисты:</h3>
+            <div class="button-blue">Записаться на прием</div>
+            <h3 class="padding-20">Наши специалисты:</h3>
             <div v-for="specialist in page.people" class="psychological__specialist">
                <b>{{specialist.name}}</b>
                <div class="">
@@ -59,13 +59,6 @@
    };
 </script>
 <style lang="stylus">
-   .psychological__signUpButton {
-      background-color: #1392BD;
-      color: white;
-      padding: 12px;
-      text-align: center;
-      cursor: pointer;
-   }
    .psychological__specialist {
       display: flex;
       flex-grow: 1;

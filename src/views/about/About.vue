@@ -1,20 +1,31 @@
 <template>
    <div>
       <article>
-         <div class="padding20 container-whiteBg">
+         <div class="padding-20 background-white">
             <h1>{{page.title}}</h1>
             <div v-html="page.content"></div>
          </div>
       </article>
       <aside>
          <div class="sidebar">
-            Сайдбар
+            <widgetAddress />
+            <widgetVk group="20668429" />
+            <widgetImportantLinks />
          </div>
       </aside>
    </div>
 </template>
 <script>
+   import widgetAddress from '../../components/widgets/Address.vue';
+   import widgetVk from '../../components/widgets/Vk.vue';
+   import widgetImportantLinks from '../../components/widgets/ImportantLinks.vue';
    export default {
+      components: {
+         widgetAddress,
+         widgetVk,
+         widgetImportantLinks
+      },
+
       title () {
          return this.page.title;
       },

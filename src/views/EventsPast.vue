@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div class="padding20 container-whiteBg pastEvents__container">
+      <div class="padding-20 background-white pastEvents__container">
          <h1>{{$store.state.events_past_title}}</h1>
 
          <div v-for="(events, month) in pastEvents" class="pastEvents__month">
@@ -22,8 +22,10 @@
          </div>
       </div>
       <aside>
-         <div class="sidebar container-whiteBg">
-            Тут будет фильтр по годам
+         <div class="sidebar background-white">
+            <div class="padding-20">
+               Тут будет фильтр по годам
+            </div>
          </div>
       </aside>
    </div>

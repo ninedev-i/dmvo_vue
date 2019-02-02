@@ -1,6 +1,6 @@
 <template>
    <div>
-      <h2 class="padding20" v-if="closestEvents.length">{{title}}</h2>
+      <h2 class="padding-20" v-if="closestEvents.length">{{title}}</h2>
       <ul class="events-list">
          <li v-for="item in closestEvents">
             <router-link v-bind:to="'events/' + item.id">
