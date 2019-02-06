@@ -1,17 +1,40 @@
 <template>
    <div>
       <article>
-         <div class="padding-20 background-white">
-            <h1>{{page.title}}</h1>
-            <div v-html="page.description"></div>
+         <div class="background-white">
+            <div class="psychological__contentContainer padding-20">
+               <h1>{{page.title}}</h1>
+               <div v-html="page.description"></div>
+            </div>
+            <eventsList title="Ближайшие мероприятия" titleTag="h3" type="psychological_closestEvents" data-server-rendered="true" />
          </div>
 
          <h3 class="padding-20">Направления работы</h3>
          <div class="psychological__directions">
-            <div>Психологическое консультирование</div>
-            <div>Групповые формы работы</div>
-            <div>Профориентация и диагностика</div>
-            <div>Тренинги</div>
+            <div class="psychological__directions-item padding-20 background-white">
+                <b>Консультирование</b>
+                <div class="">
+                   Оказание психологом помощи людям, которые нуждаются в ней, испытывают трудности с самоопределением, с отношениями в семье, со сверстниками, страдают от неуверенности в себе, переживаний обиды, гнева, апатии, испытывают зависимость от чего-либо.
+                </div>
+            </div>
+            <div class="psychological__directions-item padding-20 background-white">
+               <b>Групповые формы работы</b>
+               <div class="">
+                  Особое направление в консультировании, которое часто оказывается эффективным средством помощи в решении личностных и межличностных проблем. Групповое взаимодействие весьма важно для самовыражения личности.
+               </div>
+            </div>
+            <div class="psychological__directions-item padding-20 background-white">
+               <b>Профориентация и диагностика</b>
+               <div class="">
+                  Программа профориентации создана для подростков и молодёжи. Она помогает понять, кем ты хочешь быть, какие у вас есть склонности, способности, интересы. Вы сможете ответить себе на вопрос - как сделать самостоятельный осознанный правильный выбор.
+               </div>
+           </div>
+            <div class="psychological__directions-item padding-20 background-white">
+               <b>Тренинги</b>
+               <div class="">
+                  Тренинг – это активная форма работы, направленная на изменение мировоззрения, поведения, способа самовыражения посредством разыгрывания социальных ситуаций, выполнения упражнений с последующим анализом результатов.
+               </div>
+           </div>
          </div>
       </article>
 
@@ -29,8 +52,8 @@
                      :title="specialist.name"
                      :alt="specialist.name"
                   />
-                  <!-- <p>{{specialist.info}}</p> -->
-                  заведующая отделом<br>часы приёма:<br>вт 16:00-18:00, чт 9:00 - 11:00
+                  <div class="psychological__specialist-position">{{specialist.position}}</div>
+                  <div><b>Консультации:</b><br />{{specialist.reception_time}}</div>
                </div>
             </div>
          </div>
@@ -39,7 +62,11 @@
    </div>
 </template>
 <script>
+   import eventsList from '../components/events/List.vue';
    export default {
+      components: {
+         eventsList
+      },
       title () {
          return this.page.title;
       },
@@ -47,12 +74,6 @@
       asyncData({store}) {
          return store.dispatch('getPsychological');
       },
-
-      // mounted() {
-      //    if (VK) {
-      //       VK.Widgets.Group('vk_groups', {mode: 3, width: '300', height: '400', color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6', redesign: 1}, 123029997);
-      //    }
-      // },
 
       computed: {
          page() {
@@ -71,6 +92,9 @@
          padding: 10px 20px 15px;
          margin-bottom: 12px;
 
+         &-position {
+            text-transform: capitalize;
+         }
          &-photo {
             display: block;
             float: left;
@@ -81,6 +105,19 @@
 
       &__directions {
          display: flex;
+
+         &-item {
+            margin-right: 12px;
+            cursor: pointer;
+            &:hover {
+               background-color: #e8f5f9;
+               box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+            }
+
+            &:last-of-type {
+               margin: 0px;
+            }
+         }
       }
    }
 </style>

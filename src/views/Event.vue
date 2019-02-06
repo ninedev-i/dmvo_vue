@@ -1,9 +1,25 @@
 <template>
    <div>
-      <article class="padding-20 background-white">
-         <h1>{{event.title}}</h1>
-         <div v-html="event.content"></div>
-         <!-- <img :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0]" :alt="event.title" :title="event.title"> -->
+      <article>
+         <div class="padding-20 background-white">
+            <h1>{{event.title}}</h1>
+            <div v-html="event.content || event.post_reliz"></div>
+         </div>
+         <div class="event__photos">
+            <div
+               v-if="event.pictures.length"
+               v-for="picture in event.pictures"
+               class="event__photos-item"
+               >
+               <img
+                  :src="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${picture}`"
+                  :alt="event.title"
+                  :title="event.title"
+               />
+            </div>
+         </div>
+
+
       </article>
       <aside>
          <div class="sidebar background-white">
@@ -60,6 +76,35 @@
 </script>
 <style lang="less">
    .event {
+      &__photos {
+         display: flex;
+         width: 100%;
+         max-width: 100%;
+         min-width: 1px;
+         margin-top: 12px;
+         overflow: hidden;
+
+         &-item {
+            // margin-right: 12px;
+            // flex-shrink: 1;
+            // min-width: 1px;
+            // display: flex;
+            &:last-of-type {
+               margin-right: 0px;
+            }
+
+            & img {
+               // max-width: 100%;
+               margin-right: 12px;
+               flex-shrink: 1;
+               min-width: 1px;
+               display: flex;
+               width: auto;
+               height: 220px;
+            }
+         }
+      }
+
       &__cover {
          width: 100%;
       }

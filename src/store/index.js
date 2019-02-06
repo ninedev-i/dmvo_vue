@@ -22,7 +22,12 @@ export function createStore () {
          events_past: [],
 
          page: {},
-         psychological: {}
+         psychological: {},
+         psychological_closestEvents: [],
+
+         volunteer: {},
+
+         family: {}
       },
 
       actions: {
@@ -66,6 +71,18 @@ export function createStore () {
             return axios.get(`${apiHost}/get_psychological`).then(function(response) {
                commit('setPsychological', response.data);
             });
+         },
+
+         getVolunteer({commit}) {
+            return axios.get(`${apiHost}/get_volunteer`).then(function(response) {
+               commit('setVolunteer', response.data);
+            });
+         },
+
+         getFamily({commit}) {
+            return axios.get(`${apiHost}/get_family`).then(function(response) {
+               commit('setFamily', response.data);
+            });
          }
       },
 
@@ -101,6 +118,14 @@ export function createStore () {
 
          setPsychological(state, data) {
             Vue.set(state, 'psychological', data);
+         },
+
+         setVolunteer(state, data) {
+            Vue.set(state, 'volunteer', data);
+         },
+
+         setFamily(state, data) {
+            Vue.set(state, 'family', data);
          }
       }
    })

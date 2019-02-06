@@ -113,24 +113,29 @@
                },
 
                {
+                  name: 'studio',
+                  link: '/studio',
+                  caption: 'Студии',
+                  className: 'nav__menu-emptyLink',
+                  icon: '/public/menuIcons/studio.svg'
+               },
+
+               {
                   name: 'psychological',
                   link: '/psychological',
                   caption: 'Психологи',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/psychological.svg'
                },
                {
                   name: 'volunteer',
                   link: '/volunteer',
                   caption: 'Волонтерский центр',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/volunteer.svg'
                },
                {
                   name: 'family',
                   link: '/family',
                   caption: 'Семейный клуб',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/family.svg'
                },
                // {

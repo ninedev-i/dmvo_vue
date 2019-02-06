@@ -11,6 +11,8 @@ import About from '../views/about/About.vue';
 import Halls from '../views/about/Halls.vue';
 import AboutStudio from '../views/about/Studio.vue';
 import Psychological from '../views/Psychological.vue';
+import Volunteer from '../views/Volunteer.vue';
+import Family from '../views/Family.vue';
 
 import Empty from '../views/Empty.vue';
 
@@ -46,9 +48,9 @@ export function createRouter() {
             {path: 'bluehall', name: 'bluehall', component: Empty, meta: {parent: 'aboutService'}},
          ]},
          {path: '/psychological', name: 'psychological', component: Psychological},
-         {path: '/volunteer', name: 'volunteer', component: Empty},
+         {path: '/volunteer', name: 'volunteer', component: Volunteer},
          {path: '/transeforce', name: 'transeforce', component: Empty},
-         {path: '/family', name: 'family', component: Empty},
+         {path: '/family', name: 'family', component: Family},
          {path: '/contact', name: 'contact', component: Empty}
       ]
    });

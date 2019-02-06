@@ -62,6 +62,7 @@
          cursor: pointer;
 
          &:hover {
+            background-color: #e8f5f9;
             box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
          }
 
@@ -71,7 +72,7 @@
             background-position: center;
             height: 190px;
          }
-         
+
          &-title {
             padding: 5px 20px;
             font-size: 17px;

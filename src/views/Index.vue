@@ -4,8 +4,8 @@
          <div :class="whiteBgIfEvents()">
             <h1 class="padding-20">{{$store.state.index_title}}</h1>
             <slider data-server-rendered="true" />
-            <eventsList title="Ближайшие мероприятия" type="index_closestEvents" data-server-rendered="true" />
-            <eventsList title="Конкурсы и выставки" type="index_closestExhibitions" data-server-rendered="true" />
+            <eventsList title="Ближайшие мероприятия" titleTag="h2" type="index_closestEvents" data-server-rendered="true" />
+            <eventsList title="Конкурсы и выставки" titleTag="h2" type="index_closestExhibitions" data-server-rendered="true" />
          </div>
          <news title="Отчеты о мероприятиях" data-server-rendered="true" />
       </article>

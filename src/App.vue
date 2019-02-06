@@ -54,6 +54,9 @@
    p {
       margin: 10px 0;
    }
+   address {
+      font-style: normal;
+   }
 
    // Контейнер
    #app {
