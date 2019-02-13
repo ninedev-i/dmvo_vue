@@ -122,16 +122,16 @@
    }
 
    // Переходы между страницами
-   .fade {
-      &-enter {
-         opacity: 0;
-         &-active {
-            transition: all .2s ease;
-         }
-      }
-      &-leave-active {
-         opacity: 0;
-         transition: all .2s ease;
-      }
-   }
+   // .fade {
+   //    &-enter {
+   //       opacity: 0;
+   //       &-active {
+   //          transition: all .2s ease;
+   //       }
+   //    }
+   //    &-leave-active {
+   //       opacity: 0;
+   //       transition: all .2s ease;
+   //    }
+   // }
 </style>

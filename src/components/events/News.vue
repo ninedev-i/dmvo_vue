@@ -10,7 +10,7 @@
             <router-link v-bind:to="'events/' + event.id" tag="a">
                <div
                   class="news__item-picture"
-                  v-if="event.pictures[0]"
+                  v-if="event.pictures.length"
                   :title="event.title"
                   :style="'background-image: url(https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
                </div>

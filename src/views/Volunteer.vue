@@ -14,7 +14,7 @@
          <div class="sidebar volunteer__sidebar">
             <div class="button-blue">Напиши нам</div>
 
-            <widgetVk group="145772884" />
+            <!-- <widgetVk group="145772884" /> -->
 
             <h3 class="padding-20">Руководитель:</h3>
             <div v-for="specialist in page.people" class="volunteer__specialist">

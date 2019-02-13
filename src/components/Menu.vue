@@ -27,17 +27,16 @@
    </nav>
 </template>
 <script>
-   import '../../public/menuIcons/about.svg';
-   import '../../public/menuIcons/events.svg';
-   import '../../public/menuIcons/psychological.svg';
-   import '../../public/menuIcons/volunteer.svg';
-   import '../../public/menuIcons/family.svg';
-   import '../../public/menuIcons/service.svg';
-   import '../../public/menuIcons/contact.svg';
    export default {
       data() {
          return {
             menuArray: [
+               // {
+               //    name: 'admin',
+               //    link: '/admin',
+               //    caption: 'Админка',
+               //    icon: '/public/menuIcons/admin3.svg'
+               // },
                {
                   name: 'aboutInfo',
                   link: '/about',
@@ -138,17 +137,17 @@
                   caption: 'Семейный клуб',
                   icon: '/public/menuIcons/family.svg'
                },
-               // {
-               //    name: 'transeforce',
-               //    link: '/transeforce',
-               //    caption: 'Трансфорс',
-               //    className: 'nav__menu-emptyLink'
-               // },
+               {
+                  name: 'tranceforce',
+                  link: '/tranceforce',
+                  caption: 'Трансфорс',
+                  className: 'nav__menu-emptyLink',
+                  icon: '/public/menuIcons/tranceforce.svg'
+               },
                {
                   name: 'aboutService',
                   link: '/service',
                   caption: 'Услуги',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/service.svg'
                },
                {

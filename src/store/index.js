@@ -27,7 +27,9 @@ export function createStore () {
 
          volunteer: {},
 
-         family: {}
+         family: {},
+
+         service: {}
       },
 
       actions: {
@@ -83,6 +85,12 @@ export function createStore () {
             return axios.get(`${apiHost}/get_family`).then(function(response) {
                commit('setFamily', response.data);
             });
+         },
+
+         getService({commit}) {
+            return axios.get(`${apiHost}/get_service`).then(function(response) {
+               commit('setService', response.data);
+            });
          }
       },
 
@@ -126,6 +134,10 @@ export function createStore () {
 
          setFamily(state, data) {
             Vue.set(state, 'family', data);
+         },
+
+         setService(state, data) {
+            Vue.set(state, 'service', data);
          }
       }
    })

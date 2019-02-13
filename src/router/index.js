@@ -13,6 +13,7 @@ import AboutStudio from '../views/about/Studio.vue';
 import Psychological from '../views/Psychological.vue';
 import Volunteer from '../views/Volunteer.vue';
 import Family from '../views/Family.vue';
+import Service from '../views/Service.vue';
 
 import Empty from '../views/Empty.vue';
 
@@ -42,11 +43,7 @@ export function createRouter() {
             {path: ':id', name: 'event', component: Event, meta: {parent: 'closestEvents'}}
          ]},
          {path: '/studio', name: 'studio', component: Empty},
-         {path: '/service/', component: Empty, children: [
-            {path: '', name: 'aboutService', component: Empty, meta: {parent: 'aboutService'}},
-            {path: 'columnhall', name: 'columnhall', component: Empty, meta: {parent: 'aboutService'}},
-            {path: 'bluehall', name: 'bluehall', component: Empty, meta: {parent: 'aboutService'}},
-         ]},
+         {path: '/service', name: 'service', component: Service},
          {path: '/psychological', name: 'psychological', component: Psychological},
          {path: '/volunteer', name: 'volunteer', component: Volunteer},
          {path: '/transeforce', name: 'transeforce', component: Empty},
