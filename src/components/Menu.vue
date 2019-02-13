@@ -260,4 +260,21 @@
          }
       }
    }
+
+   @media (max-width: 450px) {
+      nav {
+         width: 65px;
+         min-width: 65px;
+      }
+      .nav {
+         &__logo {
+            display: none;
+         }
+         &__menu-item {
+            &-caption {
+               display: none;
+            }
+         }
+      }
+   }
 </style>

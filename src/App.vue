@@ -134,4 +134,25 @@
    //       transition: all .2s ease;
    //    }
    // }
+
+   @media (max-width: 450px) {
+      h1 {
+         line-height: 1em;
+         font-size: 1.4em;
+         margin-bottom: 10px;
+         padding-top: 0 !important;
+      }
+      .container {
+         flex-direction: column;
+         padding: 0;
+      }
+      aside {
+         width: auto;
+         margin: 12px 0 0;
+      }
+      .sidebar {
+         position: relative;
+         padding: 0;
+      }
+   }
 </style>

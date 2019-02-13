@@ -55,4 +55,11 @@
          display: inline-block;
       }
    }
+
+   @media (max-width: 450px) {
+      .events-list__period {
+         display: block;
+         font-weight: bold;
+      }
+   }
 </style>
