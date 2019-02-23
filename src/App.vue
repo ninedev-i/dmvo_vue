@@ -37,9 +37,11 @@
    h2 {
       margin: 15px 0px;
    }
-   h2.padding-20, h3.padding-20 {
-      padding: 5px 20px;
-      margin: 10px 0px;
+   h2, h3 {
+      &.padding-20 {
+         padding: 5px 20px;
+         margin: 10px 0px;
+      }
    }
    ul {
       margin: 0px;
@@ -56,6 +58,18 @@
    }
    address {
       font-style: normal;
+   }
+   label,
+   input[type="radio"] {
+      cursor: pointer;
+   }
+   input {
+      &[type="text"],
+      &[type="number"] {
+         padding: 6px;
+         font-family: 'Open Sans', sans-serif;
+         font-size: 16px;
+      }
    }
 
    // Контейнер
@@ -97,15 +111,27 @@
       }
    }
    .button {
-      &-blue {
-         background-color: #1392bd;
+      .buttonCommon {
          color: #fff;
          padding: 12px;
          text-align: center;
          cursor: pointer;
-
+      }
+      &-blue {
+         .buttonCommon;
+         background-color: #1392bd;
          &:hover {
             background-color: #47b3d8;
+         }
+      }
+      &-red {
+         .buttonCommon;
+         padding: 6px 12px;
+         background-color: #DC3522;
+         display: inline-block;
+
+         &:hover {
+            background-color: #AB291A;
          }
       }
    }
@@ -121,19 +147,6 @@
       width: inherit;
    }
 
-   // Переходы между страницами
-   // .fade {
-   //    &-enter {
-   //       opacity: 0;
-   //       &-active {
-   //          transition: all .2s ease;
-   //       }
-   //    }
-   //    &-leave-active {
-   //       opacity: 0;
-   //       transition: all .2s ease;
-   //    }
-   // }
 
    @media (max-width: 450px) {
       h1 {

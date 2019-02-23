@@ -115,7 +115,6 @@
                   name: 'studio',
                   link: '/studio',
                   caption: 'Студии',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/studio.svg'
                },
 

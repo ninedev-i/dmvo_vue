@@ -21,6 +21,9 @@ export function createStore () {
          events_past_title: 'Архив мероприятий',
          events_past: [],
 
+         studio_page: [],
+         studio_page_title: 'Студии и секции дома молодежи Василеостровского района',
+
          page: {},
          psychological: {},
          psychological_closestEvents: [],
@@ -48,6 +51,13 @@ export function createStore () {
          getClosestEvents({commit}) {
             return axios.get(`${apiHost}/get_closest_events`).then(function(response) {
                commit('setClosestEvents', response.data);
+            });
+         },
+
+
+         getStudioPage({commit}) {
+            return axios.get(`${apiHost}/get_studio_page`).then(function(response) {
+               commit('setStudioList', response.data);
             });
          },
 
@@ -118,6 +128,10 @@ export function createStore () {
 
          setPastEvents(state, data) {
             Vue.set(state, 'events_past', data);
+         },
+
+         setStudioList(state, data) {
+            Vue.set(state, 'studio_page', data);
          },
 
          setPageData(state, data) {

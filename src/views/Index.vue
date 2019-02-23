@@ -53,7 +53,7 @@
 
       methods: {
          whiteBgIfEvents() {
-            let hasEvents = this.$store.state.index_carousel.length && this.$store.state.index_closestEvents.length && this.$store.state.index_closestExhibitions.length;
+            let hasEvents = this.$store.state.index_carousel.length || this.$store.state.index_closestEvents.length || this.$store.state.index_closestExhibitions.length;
             return hasEvents ? 'background-white' : '';
          },
       }
