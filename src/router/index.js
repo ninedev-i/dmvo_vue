@@ -2,21 +2,20 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NProgress from 'nprogress';
 
-import Index from '../views/Index.vue';
-import EventsContainer from '../views/EventsContainer.vue';
-import EventsPast from '../views/EventsPast.vue';
-import Events from '../views/Events.vue';
-import Event from '../views/Event.vue';
-import About from '../views/about/About.vue';
-import Halls from '../views/about/Halls.vue';
-import AboutStudio from '../views/about/Studio.vue';
-import Psychological from '../views/Psychological.vue';
-import Volunteer from '../views/Volunteer.vue';
-import Family from '../views/Family.vue';
-import Service from '../views/Service.vue';
-import Studio from '../views/Studio.vue';
-
-import Empty from '../views/Empty.vue';
+const Index = () => import('../views/Index.vue');
+const EventsContainer = () => import('../views/EventsContainer.vue');
+const EventsPast = () => import('../views/EventsPast.vue');
+const Events = () => import('../views/Events.vue');
+const Event = () => import('../views/Event.vue');
+const About = () => import('../views/about/About.vue');
+const Halls = () => import('../views/about/Halls.vue');
+const AboutStudio = () => import('../views/about/Studio.vue');
+const Psychological = () => import('../views/Psychological.vue');
+const Volunteer = () => import('../views/Volunteer.vue');
+const Family = () => import('../views/Family.vue');
+const Service = () => import('../views/Service.vue');
+const Studio = () => import('../views/Studio.vue');
+const Empty = () => import('../views/Empty.vue');
 
 Vue.use(Router);
 
