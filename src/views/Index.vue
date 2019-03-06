@@ -7,7 +7,7 @@
             <eventsList title="Ближайшие мероприятия" titleTag="h2" type="index_closestEvents" data-server-rendered="true" />
             <eventsList title="Конкурсы и выставки" titleTag="h2" type="index_closestExhibitions" data-server-rendered="true" />
          </div>
-         <news title="Отчеты о мероприятиях" data-server-rendered="true" />
+         <news title="Мероприятия" v-bind:showText="false" data-server-rendered="true" />
       </article>
 
       <aside>

@@ -3,7 +3,7 @@
       <div class="padding-20">
          <h1>{{$store.state.events_closest_title}}</h1>
          <masonry
-            :cols="{default: 6, 1450: 2, 1200: 1}"
+            :cols="{default: 3, 1450: 2, 1200: 1}"
             :gutter="{default: '20px'}"
             class="events__list"
             >
@@ -60,27 +60,32 @@
       display: flex;
 
       &-block {
-         height: 300px;
-         width: 180px;
+         height: 240px;
+         // width: 350px;
          background-color: white;
-         display: inline-block;
+         // display: inline-block;
          overflow: hidden;
          border: 1px solid #ededed;
          text-decoration: none;
+         display: flex;
+         flex-direction: column;
 
          &-withbg {
-            display: table-row;
-            vertical-align: middle;
+            // display: table-row;
+            // vertical-align: middle;
             width: 100%;
-            height: 250px;
+            height: 200px;
             background-size: cover;
             font-weight: bold;
             text-align: center;
             line-height: 0;
+            display: flex;
+            justify-content: center;
+            align-content: center;
          }
 
          &-img {
-            height: 250px;
+            height: 200px;
             width: 100%;
             object-fit: cover;
          }
@@ -90,7 +95,7 @@
             vertical-align: middle;
             padding: 10px;
             line-height: 24px;
-            max-width: 160px;
+            // max-width: 380px;
             overflow: hidden;
             text-overflow: ellipsis;
          }

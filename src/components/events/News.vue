@@ -14,8 +14,8 @@
                   :title="event.title"
                   :style="'background-image: url(https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
                </div>
-               <div class="news__item-title" :title="event.title">{{event.title}}</div>
-               <div class="news__item-text" v-html="getDescription(event.post_reliz)"></div>
+               <div class="news__item-title" :title="event.title">{{slicedTitle(event.title)}}</div>
+               <div class="news__item-text" v-if="showText || !event.pictures.length" v-html="getDescription(event.post_reliz)"></div>
             </router-link>
          </div>
       </masonry>
@@ -28,9 +28,10 @@
    Vue.use(VueMasonry);
 
    export default {
-      props: [
-         'title'
-      ],
+      props: {
+         title: String,
+         showText: Boolean
+      },
 
       computed: {
          news() {
@@ -48,6 +49,10 @@
          addMore() {
             let offset = this.news.length / 12;
             return this.$store.dispatch('getNews', {offset: offset});
+         },
+
+         slicedTitle(title) {
+            return title.length > 80 ? `${title.slice(0, 80).trim()}…` : title;
          }
       }
    };
@@ -69,8 +74,12 @@
          &-picture {
             background-color: #1392BD;
             background-size: cover;
-            background-position: center;
+            background-position: 50% 20%;
             height: 190px;
+
+            @media (min-width: 2000px) {
+               height: 240px;
+             }
          }
 
          &-title {
@@ -81,6 +90,7 @@
 
          &-text {
             padding: 0px 20px 15px;
+            color: #8a8a8a;
          }
 
          a, p, b, i {

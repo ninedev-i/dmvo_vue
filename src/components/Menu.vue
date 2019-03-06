@@ -40,7 +40,7 @@
                {
                   name: 'aboutInfo',
                   link: '/about',
-                  caption: 'О доме молодежи',
+                  caption: 'О Доме молодежи',
                   icon: '/public/menuIcons/about.svg'
                },
                {
@@ -59,7 +59,7 @@
                {
                   name: 'aboutStudio',
                   link: '/about/studio',
-                  caption: 'Формы молодежного',
+                  caption: 'Формы досуга',
                   parent: 'aboutInfo'
                },
                {
