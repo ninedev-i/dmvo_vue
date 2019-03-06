@@ -27,7 +27,7 @@
                <div class="margin-bottom-12">
                   <b v-if="event.date_from === event.date_to">Дата:</b>
                   <b v-else="event.date_from === event.date_to">Даты:</b>
-                  {{getPeriod(event.date_from, event.date_to, true)}}
+                  {{getPeriod(event.date_from, event.date_to, true, true)}}
                </div>
                <div v-if="event.what_time" class="margin-bottom-12">
                   <b>Время:</b> {{event.what_time}}

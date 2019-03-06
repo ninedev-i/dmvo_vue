@@ -59,9 +59,14 @@
    address {
       font-style: normal;
    }
-   label,
    input[type="radio"] {
       cursor: pointer;
+   }
+   label {
+      cursor: pointer;
+      &::selection {
+         background-color: transparent;
+      }
    }
    input {
       &[type="text"],

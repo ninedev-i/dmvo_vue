@@ -23,7 +23,7 @@
                      {{event.title}}</div>
                </div>
                <div class="events__list-block-dateInfo">
-                  {{getPeriod(event.date_from, event.date_to, true)}}
+                  {{getPeriod(event.date_from, event.date_to, true, true)}}
                </div>
             </router-link>
          </masonry>

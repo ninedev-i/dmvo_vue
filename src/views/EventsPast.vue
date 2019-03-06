@@ -12,7 +12,7 @@
                   <div class="pastEvents__item-link-line"></div>
                   <div class="pastEvents__item-link-circle"></div>
                   <div class="pastEvents__item-link-content">
-                     <span class="pastEvents__item-link-content-date">{{getPeriod(event.date_from, event.date_to, false)}}</span>
+                     <span class="pastEvents__item-link-content-date">{{getPeriod(event.date_from, event.date_to, false, false)}}</span>
                      <span>{{event.title}}</span>
                   </div>
                </router-link>
@@ -101,11 +101,13 @@
                display: flex;
                position: relative;
                top: -5px;
-               padding: 0 0 8px 40px;
+               padding: 0 0 8px 35px;
                cursor: pointer;
 
                &-date {
                   width: 100px;
+                  // text-align: right;
+                  margin-right: 12px;
                }
             }
          }

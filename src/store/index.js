@@ -56,7 +56,7 @@ export function createStore () {
 
 
          getStudioPage({commit}) {
-            return axios.get(`${apiHost}/get_studio_page`).then(function(response) {
+            return axios.get(`${apiHost}/get_studios_by_directions`).then(function(response) {
                commit('setStudioList', response.data);
             });
          },

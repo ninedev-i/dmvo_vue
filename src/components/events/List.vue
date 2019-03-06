@@ -6,9 +6,9 @@
          <li v-for="item in closestEvents" :key="item.id">
             <router-link v-bind:to="'events/' + item.id">
                <span class="events-list__period">
-                  {{getPeriod(item.date_from, item.date_to, true)}}<span v-if="item.what_time">, {{item.what_time}}</span>
+                  {{getPeriod(item.date_from, item.date_to, true, true)}}<span v-if="item.what_time">, {{item.what_time}}</span>
                </span>
-               {{item.title}}
+               <span class="events-list__title">{{item.title}}</span>
             </router-link>
          </li>
       </ul>
@@ -46,13 +46,19 @@
          & a {
             padding: 10px 20px 10px 20px;
             text-decoration: none;
-            display: block;
+            display: flex;
          }
       }
 
       &__period {
          width: 220px;
          display: inline-block;
+      }
+
+      &__title {
+         text-overflow: ellipsis;
+         overflow: hidden;
+         white-space: nowrap;
       }
    }
 
