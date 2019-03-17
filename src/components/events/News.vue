@@ -39,11 +39,10 @@
          }
       },
       methods: {
-         getDescription(txt) {
-            let
-               escapedText = txt.replace(/<\/?[^>]+>/g,''),
-               commaSymbol = escapedText.match( /!|\./i ).index;
-            return escapedText.substring(0, commaSymbol) + '…';
+         getDescription(txt = '') {
+            let escapedText = txt.replace(/<\/?[^>]+>/g,'');
+            let commaSymbol = escapedText.match( /!|\./i ) ? escapedText.match( /!|\./i ).index : null;
+            return commaSymbol ? escapedText.substring(0, commaSymbol) + '…' : '';
          },
 
          addMore() {
