@@ -43,16 +43,18 @@
             <!-- <div id="vk_groups"></div> -->
             <div class="button-blue">Записаться на прием</div>
             <h3 class="padding-20">Наши специалисты:</h3>
-            <div v-for="specialist in page.people" class="psychological__specialist">
+            <div v-for="(specialist, key) in page.people" class="psychological__specialist">
                <b>{{specialist.name}}</b>
-               <div class="">
+               <div>
                   <img
                      :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
                      class="psychological__specialist-photo"
                      :title="specialist.name"
                      :alt="specialist.name"
                   />
-                  <div class="psychological__specialist-position">{{specialist.position}}</div>
+                  <div class="psychological__specialist-position">
+                     <span v-if="key === 0">Заведующая отделом</span>
+                     <span v-else>{{specialist.position}}</span></div>
                   <div><b>Консультации:</b><br />{{specialist.reception_time}}</div>
                </div>
             </div>

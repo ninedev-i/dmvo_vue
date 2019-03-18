@@ -69,6 +69,7 @@
          text-decoration: none;
          display: flex;
          flex-direction: column;
+         margin-bottom: 12px;
 
          &-withbg {
             // display: table-row;

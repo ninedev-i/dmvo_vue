@@ -15,6 +15,7 @@ const Volunteer = () => import('../views/Volunteer.vue');
 const Family = () => import('../views/Family.vue');
 const Service = () => import('../views/Service.vue');
 const Studio = () => import('../views/Studio.vue');
+const Contact = () => import('../views/Contact.vue');
 const Empty = () => import('../views/Empty.vue');
 
 Vue.use(Router);
@@ -48,7 +49,7 @@ export function createRouter() {
          {path: '/volunteer', name: 'volunteer', component: Volunteer},
          {path: '/transeforce', name: 'transeforce', component: Empty},
          {path: '/family', name: 'family', component: Family},
-         {path: '/contact', name: 'contact', component: Empty}
+         {path: '/contact', name: 'contact', component: Contact}
       ]
    });
 }

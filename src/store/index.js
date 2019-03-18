@@ -32,7 +32,10 @@ export function createStore () {
 
          family: {},
 
-         service: {}
+         service: {},
+
+         contact_page_title: 'Контактная информация Дома молодежи Василеостровского района',
+         contacts: []
       },
 
       actions: {
@@ -101,6 +104,12 @@ export function createStore () {
             return axios.get(`${apiHost}/get_service`).then(function(response) {
                commit('setService', response.data);
             });
+         },
+
+         getContacts({commit}) {
+            return axios.get(`${apiHost}/get_contacts`).then(function(response) {
+               commit('setContacts', response.data);
+            });
          }
       },
 
@@ -152,6 +161,10 @@ export function createStore () {
 
          setService(state, data) {
             Vue.set(state, 'service', data);
+         },
+
+         setContacts(state, data) {
+            Vue.set(state, 'contacts', data);
          }
       }
    })

@@ -168,7 +168,6 @@
                   name: 'contact',
                   link: '/contact',
                   caption: 'Контакты',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/contact.svg'
                }
             ]
