@@ -6,9 +6,11 @@
             <div v-html="event.content || event.post_reliz"></div>
          </div>
          <div class="event__photos">
-            <div
+            <a
                v-if="event.pictures.length"
                v-for="picture in event.pictures"
+               :href="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${picture}`"
+               data-nice="gallery"
                class="event__photos-item"
                >
                <img
@@ -16,10 +18,8 @@
                   :alt="event.title"
                   :title="event.title"
                />
-            </div>
+            </a>
          </div>
-
-
       </article>
       <aside>
          <div class="sidebar background-white">
@@ -40,19 +40,25 @@
                      </div>
                   </div>
                </div>
-               <img
-                  class="event__cover"
+               <a
                   v-if="!!event.cover"
-                  :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.cover"
-                  :alt="event.title"
-                  :title="event.title"
-               />
+                  :href="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
+                  data-nice="gallery"
+                  >
+                  <img
+                     class="event__cover"
+                     :src="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
+                     :alt="event.title"
+                     :title="event.title"
+                  />
+               </a>
             </div>
          </div>
       </aside>
    </div>
 </template>
 <script>
+   import {NicePopup} from 'nice-popup';
    export default {
       title () {
          return this.event.title;
@@ -68,9 +74,13 @@
          },
 
          tags() {
-            let tags = this.$store.state.event.tags
+            let tags = this.$store.state.event.tags;
             return tags.split(' ');
          }
+      },
+
+      mounted() {
+         new NicePopup({overlayColor: '#0f0f11'});
       }
    };
 </script>

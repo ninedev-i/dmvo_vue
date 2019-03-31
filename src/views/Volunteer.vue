@@ -47,7 +47,7 @@
       },
 
       asyncData({store}) {
-         return store.dispatch('getVolunteer');
+         return store.dispatch('getData', {name: 'volunteer'});
       },
 
       computed: {

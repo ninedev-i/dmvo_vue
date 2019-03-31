@@ -6,6 +6,41 @@ Vue.use(Vuex);
 
 let apiHost = process.env.NODE_ENV === 'production' ? 'https://доммолодежи.рф/api' : 'http://dmvo.local/api';
 
+const requestData = {
+   closestEvents: {
+      state: 'events_closest',
+      method: 'get_closest_events',
+   },
+   contacts: {
+      state: 'contacts',
+      method: 'get_contacts'
+   },
+   eventsPast: {
+      state: 'events_past',
+      method: `get_past_events/${new Date().getFullYear()}`
+   },
+   family: {
+      state: 'family',
+      method: 'get_family'
+   },
+   psychological: {
+      state: 'psychological',
+      method: 'get_psychological'
+   },
+   service: {
+      state: 'service',
+      method: 'get_service'
+   },
+   studio: {
+      state: 'studio_page',
+      method: 'get_studios_by_directions'
+   },
+   volunteer: {
+      state: 'volunteer',
+      method: 'get_volunteer'
+   }
+};
+
 export function createStore () {
    return new Vuex.Store({
       state: {
@@ -39,81 +74,46 @@ export function createStore () {
       },
 
       actions: {
+         getData({commit}, request) {
+            return axios.get(`${apiHost}/${requestData[request.name].method}`).then((response) => {
+               response.data.name = requestData[request.name].state;
+               commit('setData', response.data);
+            });
+         },
+
          getIndexData({commit}) {
-            return axios.get(`${apiHost}/get_index`).then(function(response) {
+            return axios.get(`${apiHost}/get_index`).then((response) => {
                commit('setIndexData', response.data);
             });
          },
 
          getEvent({commit}, request) {
-            return axios.get(`${apiHost}/get_event/${request.id}`).then(function(response) {
+            return axios.get(`${apiHost}/get_event/${request.id}`).then((response) => {
                commit('setEventData', response.data);
             });
          },
 
-         getClosestEvents({commit}) {
-            return axios.get(`${apiHost}/get_closest_events`).then(function(response) {
-               commit('setClosestEvents', response.data);
-            });
-         },
-
-
-         getStudioPage({commit}) {
-            return axios.get(`${apiHost}/get_studios_by_directions`).then(function(response) {
-               commit('setStudioList', response.data);
-            });
-         },
-
-         getPastEvents({commit}) {
-            return axios.get(`${apiHost}/get_past_events/2018`).then(function(response) {
-               commit('setPastEvents', response.data);
-            });
-         },
-
          getPage({commit}, request) {
-            return axios.get(`${apiHost}/get_page/${request.id}`).then(function(response) {
+            return axios.get(`${apiHost}/get_page/${request.id}`).then((response) => {
                commit('setPageData', response.data);
             });
          },
 
          getNews({commit}, request) {
-            return axios.get(`${apiHost}/get_news/${request.offset}`).then(function(response) {
+            return axios.get(`${apiHost}/get_news/${request.offset}`).then((response) => {
                commit('setNews', response.data);
-            });
-         },
-
-         getPsychological({commit}) {
-            return axios.get(`${apiHost}/get_psychological`).then(function(response) {
-               commit('setPsychological', response.data);
-            });
-         },
-
-         getVolunteer({commit}) {
-            return axios.get(`${apiHost}/get_volunteer`).then(function(response) {
-               commit('setVolunteer', response.data);
-            });
-         },
-
-         getFamily({commit}) {
-            return axios.get(`${apiHost}/get_family`).then(function(response) {
-               commit('setFamily', response.data);
-            });
-         },
-
-         getService({commit}) {
-            return axios.get(`${apiHost}/get_service`).then(function(response) {
-               commit('setService', response.data);
-            });
-         },
-
-         getContacts({commit}) {
-            return axios.get(`${apiHost}/get_contacts`).then(function(response) {
-               commit('setContacts', response.data);
             });
          }
       },
 
       mutations: {
+         /**
+          * @param data – возвращаем то что вернулось в запросе. в data.name лежит имя поля, куда все записываем
+          */
+         setData(state, data) {
+            Vue.set(state, data.name, data);
+         },
+
          setIndexData(state, data) {
             Vue.set(state, 'index_carousel', data.carousel);
             Vue.set(state, 'index_closestEvents', data.events);
@@ -131,40 +131,8 @@ export function createStore () {
             Vue.set(state, 'event', data);
          },
 
-         setClosestEvents(state, data) {
-            Vue.set(state, 'events_closest', data);
-         },
-
-         setPastEvents(state, data) {
-            Vue.set(state, 'events_past', data);
-         },
-
-         setStudioList(state, data) {
-            Vue.set(state, 'studio_page', data);
-         },
-
          setPageData(state, data) {
-            Vue.set(state, 'page', data);
-         },
-
-         setPsychological(state, data) {
-            Vue.set(state, 'psychological', data);
-         },
-
-         setVolunteer(state, data) {
-            Vue.set(state, 'volunteer', data);
-         },
-
-         setFamily(state, data) {
-            Vue.set(state, 'family', data);
-         },
-
-         setService(state, data) {
-            Vue.set(state, 'service', data);
-         },
-
-         setContacts(state, data) {
-            Vue.set(state, 'contacts', data);
+            Vue.set(state.page, data.id, data);
          }
       }
    })

@@ -1,15 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NProgress from 'nprogress';
 
 const Index = () => import('../views/Index.vue');
-const EventsContainer = () => import('../views/EventsContainer.vue');
+const ViewContainer = () => import('../views/ViewContainer.vue');
 const EventsPast = () => import('../views/EventsPast.vue');
 const Events = () => import('../views/Events.vue');
 const Event = () => import('../views/Event.vue');
-const About = () => import('../views/about/About.vue');
-const Halls = () => import('../views/about/Halls.vue');
-const AboutStudio = () => import('../views/about/Studio.vue');
 const Psychological = () => import('../views/Psychological.vue');
 const Volunteer = () => import('../views/Volunteer.vue');
 const Family = () => import('../views/Family.vue');
@@ -17,27 +13,28 @@ const Service = () => import('../views/Service.vue');
 const Studio = () => import('../views/Studio.vue');
 const Contact = () => import('../views/Contact.vue');
 const Empty = () => import('../views/Empty.vue');
+const Page = () => import('../views/Page.vue');
 
 Vue.use(Router);
 
-export function createRouter() {
+export const createRouter = () => {
    return new Router({
       mode: 'history',
       fallback: false,
       scrollBehavior: () => ({ y: 0 }),
       routes: [
          {path: '', name: 'main', component: Index},
-         {path: '/about/', component: About, children: [
-            {path: '', name: 'aboutInfo', component: About, meta: {parent: 'aboutInfo'}},
+         {path: '/about/', component: ViewContainer, children: [
+            {path: '', name: 'aboutInfo', component: Page, meta: {parent: 'aboutInfo', id: 19}},
             {path: 'team', name: 'aboutTeam', component: Empty, meta: {parent: 'aboutInfo'}},
-            {path: 'halls', name: 'aboutHalls', component: Halls, meta: {parent: 'aboutInfo'}},
-            {path: 'studio', name: 'aboutStudio', component: AboutStudio, meta: {parent: 'aboutInfo'}},
-            {path: 'volunteer', name: 'aboutVolunteer', component: Empty, meta: {parent: 'aboutInfo'}},
+            {path: 'halls', name: 'aboutHalls', component: Page, meta: {parent: 'aboutInfo', id: 22}},
+            {path: 'studio', name: 'aboutStudio', component: Page, meta: {parent: 'aboutInfo', id: 23}},
+            {path: 'volunteer', name: 'aboutVolunteer', component: Page, meta: {parent: 'aboutInfo', id: 17}},
             {path: 'massmedia', name: 'aboutMassmedia', component: Empty, meta: {parent: 'aboutInfo'}},
-            {path: 'history', name: 'aboutHistory', component: Empty, meta: {parent: 'aboutInfo'}},
+            {path: 'history', name: 'aboutHistory', component: Page, meta: {parent: 'aboutInfo', id: 20}},
             {path: 'board', name: 'aboutBoard', component: Empty, meta: {parent: 'aboutInfo'}}
          ]},
-         {path: '/events/', component: EventsContainer, children: [
+         {path: '/events/', component: ViewContainer, children: [
             {path: '', name: 'closestEvents', component: Events, meta: {parent: 'closestEvents'}},
             {path: 'past', name: 'pastEvents', component: EventsPast, meta: {parent: 'closestEvents'}},
             {path: 'other', name: 'otherEvents', component: Empty, meta: {parent: 'closestEvents'}},
@@ -47,7 +44,7 @@ export function createRouter() {
          {path: '/service', name: 'service', component: Service},
          {path: '/psychological', name: 'psychological', component: Psychological},
          {path: '/volunteer', name: 'volunteer', component: Volunteer},
-         {path: '/transeforce', name: 'transeforce', component: Empty},
+         {path: '/transforce', name: 'transforce', component: Empty},
          {path: '/family', name: 'family', component: Family},
          {path: '/contact', name: 'contact', component: Contact}
       ]

@@ -12,7 +12,7 @@ const serverTitleMixin = {
          this.$ssrContext.title = title;
       }
    }
-}
+};
 
 const clientTitleMixin = {
    mounted () {
@@ -21,6 +21,6 @@ const clientTitleMixin = {
          document.title = title;
       }
    }
-}
+};
 
 export default process.env.VUE_ENV === 'server' ? serverTitleMixin : clientTitleMixin;

@@ -66,8 +66,7 @@
                   name: 'aboutVolunteer',
                   link: '/about/volunteer',
                   caption: 'Инициативы',
-                  parent: 'aboutInfo',
-                  className: 'nav__menu-emptyLink'
+                  parent: 'aboutInfo'
                },
                {
                   name: 'aboutMassmedia',
@@ -80,8 +79,7 @@
                   name: 'aboutHistory',
                   link: '/about/history',
                   caption: 'История здания',
-                  parent: 'aboutInfo',
-                  className: 'nav__menu-emptyLink'
+                  parent: 'aboutInfo'
                },
                {
                   name: 'aboutBoard',
@@ -137,8 +135,8 @@
                   icon: '/public/menuIcons/family.svg'
                },
                {
-                  name: 'tranceforce',
-                  link: '/tranceforce',
+                  name: 'transforce',
+                  link: '/transforce',
                   caption: 'Трансфорс',
                   className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/tranceforce.svg'

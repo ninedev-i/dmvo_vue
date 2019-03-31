@@ -40,11 +40,9 @@
 
       <aside>
          <div class="sidebar">
-            <!-- <div id="vk_groups"></div> -->
             <div class="button-blue">Записаться на прием</div>
-            <h3 class="padding-20">Наши специалисты:</h3>
+            <h3 class="padding-12">Наши специалисты:</h3>
             <div v-for="(specialist, key) in page.people" class="psychological__specialist">
-               <b>{{specialist.name}}</b>
                <div>
                   <img
                      :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
@@ -53,9 +51,10 @@
                      :alt="specialist.name"
                   />
                   <div class="psychological__specialist-position">
-                     <span v-if="key === 0">Заведующая отделом</span>
-                     <span v-else>{{specialist.position}}</span></div>
-                  <div><b>Консультации:</b><br />{{specialist.reception_time}}</div>
+                     <b>{{specialist.name}}</b>
+                     <div v-if="key === 0">Заведующая отделом</div>
+                     <div v-else>{{specialist.position}}</div>
+                  </div>
                </div>
             </div>
          </div>
@@ -74,7 +73,7 @@
       },
 
       asyncData({store}) {
-         return store.dispatch('getPsychological');
+         return store.dispatch('getData', {name: 'psychological'});
       },
 
       computed: {
@@ -91,7 +90,7 @@
          flex-grow: 1;
          flex-direction: column;
          background-color: white;
-         padding: 10px 20px 15px;
+         padding: 15px;
          margin-bottom: 12px;
 
          &-position {

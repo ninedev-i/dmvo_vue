@@ -45,7 +45,7 @@
       },
 
       asyncData({store}) {
-         return store.dispatch('getFamily');
+         return store.dispatch('getData', {name: 'family'});
       },
 
       computed: {

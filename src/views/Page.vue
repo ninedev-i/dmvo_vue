@@ -16,26 +16,33 @@
    </div>
 </template>
 <script>
-   import widgetAddress from '../../components/widgets/Address.vue';
-   import widgetVk from '../../components/widgets/Vk.vue';
-   import widgetImportantLinks from '../../components/widgets/ImportantLinks.vue';
+   import widgetAddress from '../components/widgets/Address.vue';
+   import widgetVk from '../components/widgets/Vk.vue';
+   import widgetImportantLinks from '../components/widgets/ImportantLinks.vue';
    export default {
       components: {
          widgetAddress,
          widgetVk,
          widgetImportantLinks
       },
+
       title () {
          return this.page.title;
       },
 
       asyncData({store, route}) {
-         return store.dispatch('getPage', {id: 23});
+         return store.dispatch('getPage', {id: route.meta.id});
+      },
+
+      beforeRouteLeave (to, from, next) {
+         this.$store.dispatch('getPage', {id: to.meta.id}).then(() => {
+            next();
+         });
       },
 
       computed: {
          page() {
-            return this.$store.state.page;
+            return this.$store.state.page[this.$router.currentRoute.meta.id];
          }
       }
    };

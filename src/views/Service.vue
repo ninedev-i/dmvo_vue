@@ -28,7 +28,7 @@
       },
 
       asyncData({store}) {
-         return store.dispatch('getService');
+         return store.dispatch('getData', {name: 'service'});
       },
 
       computed: {

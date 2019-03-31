@@ -92,7 +92,7 @@
       },
 
       asyncData({store}) {
-         return store.dispatch('getStudioPage');
+         return store.dispatch('getData', {name: 'studio'});
       },
 
       computed: {

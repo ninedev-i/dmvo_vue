@@ -4,11 +4,11 @@
          <h1>{{$store.state.events_past_title}}</h1>
 
          <div v-for="(events, month) in pastEvents" class="pastEvents__month">
-            <div class="pastEvents__item">
+            <div v-if="events.length && month!== 'name'" class="pastEvents__item">
                <h4 class="pastEvents__item-monthTitle">{{month}}</h4>
             </div>
             <div v-for="event in events" class="pastEvents__item" :key="event.id">
-               <router-link tag="div" v-bind:to="'/events/' + event.id" class="pastEvents__item-link" :title="event.title">
+               <router-link tag="a" v-bind:to="'/events/' + event.id" class="pastEvents__item-link" :title="event.title" v-if="event.date_from">
                   <div class="pastEvents__item-link-line"></div>
                   <div class="pastEvents__item-link-circle"></div>
                   <div class="pastEvents__item-link-content">
@@ -36,7 +36,7 @@
       },
 
       asyncData({store, route}) {
-         return store.dispatch('getPastEvents');
+         return store.dispatch('getData', {name: 'eventsPast'});
       },
 
       computed: {
@@ -63,6 +63,7 @@
 
          &-link {
             display: inline-block;
+            text-decoration: none;
 
             &:hover span {
                cursor: pointer;

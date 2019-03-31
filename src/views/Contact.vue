@@ -54,7 +54,7 @@
       },
 
       asyncData({store}) {
-         return store.dispatch('getContacts');
+         return store.dispatch('getData', {name: 'contacts'});
       },
 
       mounted() {
