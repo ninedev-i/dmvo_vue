@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="news__container">
       <h2 class="padding-20">{{title}}</h2>
       <masonry
          :cols="{default: 3, 1450: 2, 1200: 1}"
@@ -97,6 +97,14 @@
             font-weight: normal;
             margin: 0px;
             font-style: normal;
+         }
+      }
+   }
+
+   @media (max-width: 450px) {
+      .news__container {
+         .button-blue {
+            margin: 12px;
          }
       }
    }

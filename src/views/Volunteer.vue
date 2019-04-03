@@ -12,7 +12,7 @@
 
       <aside>
          <div class="sidebar volunteer__sidebar">
-            <div class="button-blue">Напиши нам</div>
+            <div class="button-blue volunteer__button">Напиши нам</div>
 
             <!-- <widgetVk group="145772884" /> -->
 
@@ -79,6 +79,13 @@
          &-photo {
             width: 100%;
             margin: 10px 0 0;
+         }
+      }
+   }
+   @media (max-width: 450px) {
+      .volunteer {
+         &__button {
+            margin: 12px;
          }
       }
    }

@@ -40,7 +40,7 @@
 
       <aside>
          <div class="sidebar">
-            <div class="button-blue">Записаться на прием</div>
+            <div class="button-blue psychological__button">Записаться на прием</div>
             <h3 class="padding-12">Наши специалисты:</h3>
             <div v-for="(specialist, key) in page.people" class="psychological__specialist">
                <div>
@@ -118,6 +118,21 @@
             &:last-of-type {
                margin: 0px;
             }
+         }
+      }
+   }
+   @media (max-width: 450px) {
+      .psychological {
+         &__directions {
+            flex-direction: column;
+            margin-right: 0;
+
+            &-item {
+               margin: 0;
+            }
+         }
+         &__button {
+            margin: 12px;
          }
       }
    }

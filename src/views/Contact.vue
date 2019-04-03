@@ -116,4 +116,18 @@
       width: 100%;
       height: 360px;
    }
+
+   @media (max-width: 450px) {
+      .contact__specialist {
+         margin: 6px;
+         height: auto;
+         flex-direction: column;
+         border-bottom: 1px solid gainsboro;
+
+         &-photo {
+            display: none;
+            /*height: auto;*/
+         }
+      }
+   }
 </style>

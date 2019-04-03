@@ -158,6 +158,9 @@
 
 
    @media (max-width: 450px) {
+      body, html {
+         background-color: #fff;
+      }
       h1 {
          line-height: 1em;
          font-size: 1.4em;
@@ -170,6 +173,7 @@
       }
       aside {
          width: auto;
+         min-width: auto;
          margin: 12px 0 0;
       }
       .sidebar {

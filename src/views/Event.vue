@@ -58,7 +58,7 @@
    </div>
 </template>
 <script>
-   import {NicePopup} from 'nice-popup';
+   // import {NicePopup} from 'nice-popup';
    export default {
       title () {
          return this.event.title;
@@ -80,7 +80,7 @@
       },
 
       mounted() {
-         new NicePopup({overlayColor: '#0f0f11'});
+         // new NicePopup({overlayColor: '#0f0f11'});
       }
    };
 </script>
