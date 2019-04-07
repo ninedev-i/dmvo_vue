@@ -31,6 +31,10 @@ const requestData = {
       state: 'service',
       method: 'get_service'
    },
+   transforce: {
+      state: 'transforce',
+      method: 'get_transforce'
+   },
    studio: {
       state: 'studio_page',
       method: 'get_studios_by_directions'
@@ -56,6 +60,7 @@ export function createStore () {
          events_past_title: 'Архив мероприятий',
          events_past: [],
 
+         studio: {},
          studio_page: [],
          studio_page_title: 'Студии и секции дома молодежи Василеостровского района',
 
@@ -68,6 +73,8 @@ export function createStore () {
          family: {},
 
          service: {},
+
+         transforce: {},
 
          contact_page_title: 'Контактная информация Дома молодежи Василеостровского района',
          contacts: []
@@ -90,6 +97,12 @@ export function createStore () {
          getEvent({commit}, request) {
             return axios.get(`${apiHost}/get_event/${request.id}`).then((response) => {
                commit('setEventData', response.data);
+            });
+         },
+
+         getStudio({commit}, request) {
+            return axios.get(`${apiHost}/get_studio/${request.id}`).then((response) => {
+               commit('setStudioData', response.data);
             });
          },
 
@@ -129,6 +142,10 @@ export function createStore () {
 
          setEventData(state, data) {
             Vue.set(state, 'event', data);
+         },
+
+         setStudioData(state, data) {
+            Vue.set(state, 'studio', data);
          },
 
          setPageData(state, data) {

@@ -11,7 +11,13 @@
          class="studio__direction-item"
          :title="studio.studio_name"
          >
-         {{studio.studio_name}}
+         <router-link
+            tag="a"
+            v-bind:to="'/studio/' + studio.shortname"
+            class="pastEvents__item-link"
+            >
+            {{studio.studio_name}}
+         </router-link>
       </div>
    </div>
 </template>
@@ -55,7 +61,7 @@
          }
       }
 
-      &-item {
+      &-item a {
          margin: 10px;
          background-color: #E5E7E8;
          display: block;

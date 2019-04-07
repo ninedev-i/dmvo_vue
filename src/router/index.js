@@ -9,7 +9,9 @@ const Event = () => import('../views/Event.vue');
 const Psychological = () => import('../views/Psychological.vue');
 const Volunteer = () => import('../views/Volunteer.vue');
 const Family = () => import('../views/Family.vue');
+const Transforce = () => import('../views/Transforce.vue');
 const Service = () => import('../views/Service.vue');
+const Studios = () => import('../views/Studios.vue');
 const Studio = () => import('../views/Studio.vue');
 const Contact = () => import('../views/Contact.vue');
 const Empty = () => import('../views/Empty.vue');
@@ -40,13 +42,16 @@ export const createRouter = () => {
             {path: 'other', name: 'otherEvents', component: Empty, meta: {parent: 'closestEvents'}},
             {path: ':id', name: 'event', component: Event, meta: {parent: 'closestEvents'}}
          ]},
-         {path: '/studio', name: 'studio', component: Studio},
+         {path: '/studio', component: ViewContainer, children: [
+            {path: '', name: 'studios', component: Studios, meta: {parent: 'studios'}},
+            {path: ':shortName', name: 'studios', component: Studio, meta: {parent: 'studios'}},
+         ]},
          {path: '/service', name: 'service', component: Service},
          {path: '/psychological', name: 'psychological', component: Psychological},
          {path: '/volunteer', name: 'volunteer', component: Volunteer},
-         {path: '/transforce', name: 'transforce', component: Empty},
+         {path: '/transforce', name: 'transforce', component: Transforce},
          {path: '/family', name: 'family', component: Family},
          {path: '/contact', name: 'contact', component: Contact}
       ]
    });
-}
+};

@@ -9,7 +9,9 @@
                v-for="item in menuArray"
                :to="item.link"
                :key="item.name"
-               :class="`nav__menu-item ${item.className} ${item.parent ? 'nav__menu-childItem' : ''} ${item.name === 'closestEvents' && $route.name === 'event' ? 'router-link-exact-active' : ''}`"
+               :class="`nav__menu-item ${item.className} ${item.parent ? 'nav__menu-childItem' : ''}
+                        ${item.name === 'closestEvents' && $route.name === 'event' ? 'router-link-exact-active' : ''}
+                        ${item.name === 'studio' && $route.name === 'studios' ? 'router-link-exact-active' : ''}`"
                v-show="!item.parent || item.parent === $route.name || item.name === $route.name || item.parent === $route.meta.parent"
                >
                <div class="nav__menu-item-icon">
@@ -138,7 +140,6 @@
                   name: 'transforce',
                   link: '/transforce',
                   caption: 'Трансфорс',
-                  className: 'nav__menu-emptyLink',
                   icon: '/public/menuIcons/tranceforce.svg'
                },
                {
@@ -229,6 +230,7 @@
             text-decoration: none;
             &:hover {
                background-color: #47b3d8;
+               color: #fff;
             }
 
             &-icon {

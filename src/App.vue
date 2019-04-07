@@ -56,6 +56,9 @@
    }
    a {
       color: #384047;
+      &:hover {
+         color: #1392BD;
+      }
    }
    p {
       margin: 10px 0;

@@ -53,22 +53,22 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
-      /*justify-content: space-between;*/
       margin: auto;
 
       &-block {
          height: 320px;
-         width: 280px;
          width: calc(25% - 9px);
          background-color: white;
          overflow: hidden;
-         /*border: 1px solid #ededed;*/
          text-decoration: none;
          margin-bottom: 12px;
          margin-right: 12px;
          display: flex;
          flex-direction: column;
 
+         &:hover {
+            color: inherit;
+         }
 
          &-shadow {
             height: 40px;
@@ -89,7 +89,7 @@
          &-container {
             width: 100%;
             height: 100%;
-            background-size: cover;
+            background-size: 100% auto;
             background-position: top center;
             display: flex;
             flex-direction: column;
