@@ -5,21 +5,7 @@
             <h1>{{event.title}}</h1>
             <div v-html="event.content || event.post_reliz"></div>
          </div>
-         <div class="event__photos">
-            <a
-               v-if="event.pictures.length"
-               v-for="picture in event.pictures"
-               :href="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${picture}`"
-               data-nice="gallery"
-               class="event__photos-item"
-               >
-               <img
-                  :src="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${picture}`"
-                  :alt="event.title"
-                  :title="event.title"
-               />
-            </a>
-         </div>
+         <photoGallery :title="event.title" :photos="event.pictures" />
       </article>
       <aside>
          <div class="sidebar background-white">
@@ -58,8 +44,11 @@
    </div>
 </template>
 <script>
-   // import {NicePopup} from 'nice-popup';
+   import photoGallery from '../components/events/PhotoGallery.vue';
    export default {
+      components: {
+         photoGallery
+      },
       title () {
          return this.event.title;
       },
@@ -77,44 +66,11 @@
             let tags = this.$store.state.event.tags;
             return tags.split(' ');
          }
-      },
-
-      mounted() {
-         // new NicePopup({overlayColor: '#0f0f11'});
       }
    };
 </script>
 <style lang="less">
    .event {
-      &__photos {
-         display: flex;
-         width: 100%;
-         max-width: 100%;
-         min-width: 1px;
-         margin-top: 12px;
-         overflow: hidden;
-
-         &-item {
-            // margin-right: 12px;
-            // flex-shrink: 1;
-            // min-width: 1px;
-            // display: flex;
-            &:last-of-type {
-               margin-right: 0px;
-            }
-
-            & img {
-               // max-width: 100%;
-               margin-right: 12px;
-               flex-shrink: 1;
-               min-width: 1px;
-               display: flex;
-               width: auto;
-               height: 220px;
-            }
-         }
-      }
-
       &__cover {
          width: 100%;
       }

@@ -1,6 +1,4 @@
-import Vue from 'vue';
-
-Vue.mixin({
+export const getPeriod = {
    methods: {
       getPeriod(from, to, withMonth, withMonthName) {
          from = new Date(from);
@@ -19,4 +17,4 @@ Vue.mixin({
          }
       }
    }
-})
+};

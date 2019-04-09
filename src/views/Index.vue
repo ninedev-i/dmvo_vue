@@ -26,12 +26,6 @@
    import widgetAddress from '../components/widgets/Address.vue';
    import widgetVk from '../components/widgets/Vk.vue';
    import widgetImportantLinks from '../components/widgets/ImportantLinks.vue';
-   import Vue from 'vue'
-
-   if (process.browser) {
-      const VueAwesomeSwiper = require('vue-awesome-swiper/dist/ssr');
-      Vue.use(VueAwesomeSwiper);
-   }
 
    export default {
       components: {

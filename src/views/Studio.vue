@@ -13,22 +13,8 @@
                <p><b>Достижения:</b></p>
                <div v-html="studio.achievements"></div>
             </div>-->
-
          </div>
-         <div class="studio__photos">
-            <a
-               v-if="studio.images.length"
-               v-for="picture in studio.images"
-               :href="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${picture}`"
-               class="studio__photos-item"
-               >
-               <img
-                  :src="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${picture}`"
-                  :alt="studio.title"
-                  :title="studio.title"
-               />
-            </a>
-         </div>
+         <photoGallery :title="studio.title" :photos="studio.images" />
       </article>
       <aside>
          <div class="sidebar">
@@ -65,7 +51,11 @@
    </div>
 </template>
 <script>
+   import photoGallery from '../components/events/PhotoGallery.vue';
    export default {
+      components: {
+         photoGallery
+      },
       title () {
          return this.studio.studio_name;
       },
@@ -83,33 +73,6 @@
 </script>
 <style lang="less">
    .studio {
-      &__photos {
-         display: flex;
-         width: 100%;
-         max-width: 100%;
-         min-width: 1px;
-         margin-top: 12px;
-         overflow: hidden;
 
-         &-item {
-            // margin-right: 12px;
-            // flex-shrink: 1;
-            // min-width: 1px;
-            // display: flex;
-            &:last-of-type {
-               margin-right: 0px;
-            }
-
-            & img {
-               // max-width: 100%;
-               margin-right: 12px;
-               flex-shrink: 1;
-               min-width: 1px;
-               display: flex;
-               width: auto;
-               height: 220px;
-            }
-         }
-      }
    }
 </style>

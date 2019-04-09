@@ -4,9 +4,15 @@ import {createStore} from './store';
 import {createRouter} from './router';
 import {sync} from 'vuex-router-sync';
 import titleMixin from './util/title';
-import helpers from './util/helpers';
+import {getPeriod} from './util/helpers';
 
 Vue.mixin(titleMixin);
+Vue.mixin(getPeriod);
+
+if (process.browser) {
+   const VueAwesomeSwiper = require('vue-awesome-swiper/dist/ssr');
+   Vue.use(VueAwesomeSwiper);
+}
 
 export function createApp () {
    const store = createStore();

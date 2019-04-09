@@ -7,6 +7,7 @@
                <div v-html="page.description"></div>
             </div>
          </div>
+         <photoGallery :title="page.title" :photos="photos" />
       </article>
 
       <aside>
@@ -18,11 +19,20 @@
 </template>
 <script>
    import widgetAddress from '../components/widgets/Address.vue';
+   import photoGallery from '../components/events/PhotoGallery.vue';
 
    export default {
       components: {
+         photoGallery,
          widgetAddress
       },
+
+      data() {
+         return {
+            photos: ['halls/kz-bottom.jpg', 'halls/kz-top.JPG', 'halls/scene_size.jpg']
+         }
+      },
+
       title () {
          return this.page.title;
       },

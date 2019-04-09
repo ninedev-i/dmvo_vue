@@ -6,8 +6,8 @@
                <h1>{{page.title}}</h1>
                <div v-html="page.description"></div>
             </div>
-            <!-- <eventsList title="Ближайшие мероприятия" titleTag="h3" type="volunteer_closestEvents" data-server-rendered="true" /> -->
          </div>
+         <photoGallery :title="page.title" :photos="photos" />
       </article>
 
       <aside>
@@ -30,18 +30,24 @@
                </div>
             </div>
          </div>
-
       </aside>
    </div>
 </template>
 <script>
-   // import eventsList from '../components/events/List.vue';
-   import widgetVk from '../components/widgets/Vk.vue';
+   // import widgetVk from '../components/widgets/Vk.vue';
+   import photoGallery from '../components/events/PhotoGallery.vue';
+
    export default {
       components: {
-         // eventsList,
-         widgetVk
+         photoGallery,
+         // widgetVk
       },
+      data() {
+         return {
+            photos: ['volunteer_1.jpg', 'volunteer_2.jpg', 'volunteer_3.jpg', 'volunteer_4.jpg']
+         }
+      },
+
       title () {
          return this.page.title;
       },

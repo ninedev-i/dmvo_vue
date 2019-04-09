@@ -25,9 +25,6 @@
                loop: true,
                loopFillGroupWithBlank: true,
                slidesPerView: 'auto'
-            },
-            autoplay: {
-               delay: 200
             }
          };
       },
