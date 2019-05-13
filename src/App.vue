@@ -77,12 +77,22 @@
          background-color: transparent;
       }
    }
+   .input() {
+      padding: 6px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      border: 1px solid #ccc;
+   }
+   textarea,
+   select,
+   button {
+      .input();
+   }
    input {
       &[type="text"],
+      &[type="email"],
       &[type="number"] {
-         padding: 6px;
-         font-family: 'Open Sans', sans-serif;
-         font-size: 16px;
+         .input();
       }
    }
 
@@ -107,6 +117,9 @@
    }
 
    // Общие классы
+   .hidden {
+      display: none;
+   }
    .background-white {
       background-color: white;
    }
@@ -130,12 +143,15 @@
          padding: 12px;
          text-align: center;
          cursor: pointer;
+         text-decoration: none;
+         display: block;
       }
       &-blue {
          .buttonCommon;
          background-color: #1392bd;
          &:hover {
             background-color: #47b3d8;
+            color: white;
          }
       }
       &-red {

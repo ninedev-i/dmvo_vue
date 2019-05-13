@@ -15,6 +15,7 @@
             </div>-->
          </div>
          <photoGallery :title="studio.title" :photos="studio.images" />
+<!--         <news title="Участие в мероприятиях" v-bind:showText="false" directionTag="icebreaker" data-server-rendered="true" />-->
       </article>
       <aside>
          <div class="sidebar">
@@ -24,7 +25,7 @@
                      <b>Возраст:</b> от {{studio.age_min}} до {{studio.age_max}}
                   </div>
                   <div v-if="studio.price">
-                     <b>Стоимость:</b> {{studio.price}}
+                     <b style="margin-right: 4px;">Стоимость:</b> <span v-html="studio.price"></span>
                   </div>
                   <div v-if="studio.room">
                      <b>Кабинет:</b> {{studio.room}}
@@ -52,9 +53,11 @@
 </template>
 <script>
    import photoGallery from '../components/events/PhotoGallery.vue';
+   import news from '../components/events/News.vue';
    export default {
       components: {
-         photoGallery
+         photoGallery,
+         news
       },
       title () {
          return this.studio.studio_name;
@@ -62,6 +65,10 @@
 
       asyncData({store, route}) {
          return store.dispatch('getStudio', {id: route.params.shortName});
+      },
+
+      mounted() {
+         this.$store.dispatch('getNews', {offset: 0, tag: this.studio.shortname});
       },
 
       computed: {

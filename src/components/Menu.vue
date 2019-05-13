@@ -49,8 +49,7 @@
                   name: 'aboutTeam',
                   link: '/about/team',
                   caption: 'Коллектив',
-                  parent: 'aboutInfo',
-                  className: 'nav__menu-emptyLink'
+                  parent: 'aboutInfo'
                },
                {
                   name: 'aboutHalls',
@@ -70,26 +69,26 @@
                   caption: 'Инициативы',
                   parent: 'aboutInfo'
                },
-               {
+               /*{
                   name: 'aboutMassmedia',
                   link: '/about/massmedia',
                   caption: 'СМИ о нас',
                   parent: 'aboutInfo',
                   className: 'nav__menu-emptyLink'
-               },
+               },*/
                {
                   name: 'aboutHistory',
                   link: '/about/history',
                   caption: 'История здания',
                   parent: 'aboutInfo'
                },
-               {
+               /*{
                   name: 'aboutBoard',
                   link: '/about/board',
                   caption: 'Информационный стенд',
                   parent: 'aboutInfo',
                   className: 'nav__menu-emptyLink'
-               },
+               },*/
 
                {
                   name: 'closestEvents',
@@ -103,13 +102,13 @@
                   caption: 'Прошедшие',
                   parent: 'closestEvents'
                },
-               {
+               /*{
                   name: 'otherEvents',
                   link: '/events/other',
                   caption: 'Городские и районные',
                   parent: 'closestEvents',
                   className: 'nav__menu-emptyLink'
-               },
+               },*/
 
                {
                   name: 'studio',

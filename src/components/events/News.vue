@@ -19,7 +19,7 @@
             </router-link>
          </div>
       </masonry>
-      <div class="button-blue padding-6" v-on:click="addMore()">Еще…</div>
+      <div class="button-blue padding-6" v-on:click="addMore()" v-if="showMore">Еще…</div>
    </div>
 </template>
 <script>
@@ -30,12 +30,22 @@
    export default {
       props: {
          title: String,
-         showText: Boolean
+         showText: Boolean,
+         directionTag: {
+            type: String,
+            default: ''
+         }
+      },
+
+      data() {
+        return {
+           showMore: true
+        }
       },
 
       computed: {
          news() {
-            return this.$store.state.index_news;
+            return this.directionTag ? this.$store.state.studio_news : this.$store.state.index_news;
          }
       },
       methods: {
@@ -47,7 +57,12 @@
 
          addMore() {
             let offset = this.news.length / 12;
-            return this.$store.dispatch('getNews', {offset: offset});
+            this.$store.dispatch('getNews', {offset: offset, tag: this.directionTag}).then((data) => {
+               if (data.length < 12) {
+                  this.showMore = false;
+               }
+            });
+            // return this.$store.dispatch('getNews', {offset: offset, tag: this.directionTag});
          },
 
          slicedTitle(title) {

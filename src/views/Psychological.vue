@@ -40,7 +40,7 @@
 
       <aside>
          <div class="sidebar">
-            <div class="button-blue psychological__button">Записаться на прием</div>
+            <psyForm class="psychological__button" :specialists="page.people.slice(1)" />
             <h3 class="padding-12">Наши специалисты:</h3>
             <div v-for="(specialist, key) in page.people" class="psychological__specialist">
                <div>
@@ -64,9 +64,11 @@
 </template>
 <script>
    import eventsList from '../components/events/List.vue';
+   import psyForm from '../components/forms/Psy.vue';
    export default {
       components: {
-         eventsList
+         eventsList,
+         psyForm
       },
       title () {
          return this.page.title;

@@ -16,6 +16,7 @@ const Studio = () => import('../views/Studio.vue');
 const Contact = () => import('../views/Contact.vue');
 const Empty = () => import('../views/Empty.vue');
 const Page = () => import('../views/Page.vue');
+const Team = () => import('../views/Team.vue');
 
 Vue.use(Router);
 
@@ -28,7 +29,7 @@ export const createRouter = () => {
          {path: '', name: 'main', component: Index},
          {path: '/about/', component: ViewContainer, children: [
             {path: '', name: 'aboutInfo', component: Page, meta: {parent: 'aboutInfo', id: 19}},
-            {path: 'team', name: 'aboutTeam', component: Empty, meta: {parent: 'aboutInfo'}},
+            {path: 'team', name: 'aboutTeam', component: Team, meta: {parent: 'aboutInfo'}},
             {path: 'halls', name: 'aboutHalls', component: Page, meta: {parent: 'aboutInfo', id: 22}},
             {path: 'studio', name: 'aboutStudio', component: Page, meta: {parent: 'aboutInfo', id: 23}},
             {path: 'volunteer', name: 'aboutVolunteer', component: Page, meta: {parent: 'aboutInfo', id: 17}},

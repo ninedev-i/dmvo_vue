@@ -54,6 +54,9 @@ export function createStore () {
          index_news: [],
          index_title: 'Дом молодежи Василеостровского района Санкт-Петербурга',
 
+         team_title: 'Коллектив Дома молодежи',
+         team: [],
+
          event: {},
          events_closest_title: 'Ближайшие мероприятия дома молодежи Василеостровского района',
          events_closest: [],
@@ -62,6 +65,7 @@ export function createStore () {
 
          studio: {},
          studio_page: [],
+         studio_news: [],
          studio_page_title: 'Студии и секции дома молодежи Василеостровского района',
 
          page: {},
@@ -94,6 +98,12 @@ export function createStore () {
             });
          },
 
+         getTeam({commit}) {
+            return axios.get(`${apiHost}/get_people`).then((response) => {
+               commit('setTeamData', response.data);
+            });
+         },
+
          getEvent({commit}, request) {
             return axios.get(`${apiHost}/get_event/${request.id}`).then((response) => {
                commit('setEventData', response.data);
@@ -113,9 +123,15 @@ export function createStore () {
          },
 
          getNews({commit}, request) {
-            return axios.get(`${apiHost}/get_news/${request.offset}`).then((response) => {
-               commit('setNews', response.data);
+            return new Promise((resolve, reject) => {
+               let url = request.tag ? `${apiHost}/get_news/${request.offset}/${request.tag}` : `${apiHost}/get_news/${request.offset}`;
+               return axios.get(url).then((response) => {
+                  response.tag = request.tag;
+                  commit('setNews', response);
+                  resolve(response.data);
+               });
             });
+
          }
       },
 
@@ -134,10 +150,16 @@ export function createStore () {
             Vue.set(state, 'index_news', data.news);
          },
 
-         setNews(state, data) {
-            let newArray = state.index_news.concat(data);
-            state.index_news.concat(data);
-            Vue.set(state, 'index_news', newArray);
+         setNews(state, response) {
+            if (response.tag) {
+               let newArray = state.studio_news.concat(response.data);
+               state.studio_news.concat(response.data);
+               Vue.set(state, 'studio_news', newArray);
+            } else {
+               let newArray = state.index_news.concat(response.data);
+               state.index_news.concat(response.data);
+               Vue.set(state, 'index_news', newArray);
+            }
          },
 
          setEventData(state, data) {
@@ -150,6 +172,10 @@ export function createStore () {
 
          setPageData(state, data) {
             Vue.set(state.page, data.id, data);
+         },
+
+         setTeamData(state, data) {
+            Vue.set(state, 'team', data);
          }
       }
    })
