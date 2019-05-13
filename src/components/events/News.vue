@@ -7,7 +7,7 @@
          class="news"
          >
          <div v-for="event in news" class="news__item" :key="event.id">
-            <router-link v-bind:to="'events/' + event.id" tag="a">
+            <router-link :to="`/events/${event.id}/post`" tag="a">
                <div
                   class="news__item-picture"
                   v-if="event.pictures.length"

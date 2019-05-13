@@ -41,7 +41,8 @@ export const createRouter = () => {
             {path: '', name: 'closestEvents', component: Events, meta: {parent: 'closestEvents'}},
             {path: 'past', name: 'pastEvents', component: EventsPast, meta: {parent: 'closestEvents'}},
             {path: 'other', name: 'otherEvents', component: Empty, meta: {parent: 'closestEvents'}},
-            {path: ':id', name: 'event', component: Event, meta: {parent: 'closestEvents'}}
+            {path: ':id', name: 'event', component: Event, meta: {parent: 'closestEvents'}},
+            {path: ':id/post', name: 'event', component: Event, meta: {parent: 'closestEvents', post: true}}
          ]},
          {path: '/studio', component: ViewContainer, children: [
             {path: '', name: 'studios', component: Studios, meta: {parent: 'studios'}},

@@ -3,7 +3,12 @@
       <article>
          <div class="padding-20 background-white">
             <h1>{{event.title}}</h1>
-            <div v-html="event.content || event.post_reliz"></div>
+            <div v-if="event.post_reliz && event.content" class="event__tab-container">
+               <router-link tag="a" :to="`/events/${event.id}/post`" class="event__tab-box">Пост-релиз</router-link>
+               <router-link tag="a" :to="`/events/${event.id}`" class="event__tab-box">Анонс</router-link>
+            </div>
+            <div v-if="$route.meta.post" v-html="event.post_reliz"></div>
+            <div v-else v-html="event.content"></div>
          </div>
          <photoGallery :title="event.title" :photos="event.pictures" />
       </article>
@@ -71,6 +76,33 @@
 </script>
 <style lang="less">
    .event {
+      &__tab {
+         &-container {
+            width: 100%;
+            border-bottom: 1px solid #E5E7E8;
+            margin-bottom: 6px;
+         }
+         &-box {
+            display: inline-block;
+            border: 1px solid #E5E7E8;
+            color: #a0a0a0;
+            padding: 5px 12px;
+            margin: 0 6px -1px 0;
+            font-size: 16px;
+            text-decoration: none;
+
+            &.router-link-exact-active {
+               font-weight: bold;
+               cursor: default;
+               border-bottom: 1px solid white;
+               color: #384047;
+               &:hover {
+                  color: #384047;
+               }
+            }
+         }
+      }
+
       &__cover {
          width: 100%;
       }
