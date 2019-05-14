@@ -123,8 +123,13 @@
    .background-white {
       background-color: white;
    }
-   .margin-bottom-12 {
-      margin-bottom: 12px;
+   .margin {
+      &-bottom-12 {
+         margin-bottom: 12px;
+      }
+      &-top-6 {
+         margin-top: 6px;
+      }
    }
    .padding {
       &-6 {

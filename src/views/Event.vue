@@ -9,26 +9,43 @@
             </div>
             <div v-if="$route.meta.post" v-html="event.post_reliz"></div>
             <div v-else v-html="event.content"></div>
+            <!-- Вложения в виде ссылок -->
+            <div v-if="event.attachments.length" v-for="attachment in event.attachments">
+               <a v-if="attachment.exists == 'true' && attachment.is_button != 'true'"
+                  v-on:click="openLink(attachment)"
+                  class="event__link">{{attachment.title}}</a>
+            </div>
          </div>
          <photoGallery :title="event.title" :photos="event.pictures" />
       </article>
       <aside>
-         <div class="sidebar background-white">
-            <div class="padding-20">
-               <div class="margin-bottom-12">
+         <div class="sidebar">
+            <!-- Вложения в виде кнопок -->
+            <div v-if="event.attachments.length" v-for="attachment in event.attachments">
+               <a v-if="attachment.exists == 'true' && attachment.is_button == 'true'"
+                  v-on:click="openLink(attachment)"
+                  class="button-blue margin-bottom-12">{{attachment.title}}</a>
+            </div>
+            <div class="padding-20 background-white">
+               <div>
                   <b v-if="event.date_from === event.date_to">Дата:</b>
-                  <b v-else="event.date_from === event.date_to">Даты:</b>
+                  <b v-else>Даты:</b>
                   {{getPeriod(event.date_from, event.date_to, true, true)}}
                </div>
-               <div v-if="event.what_time" class="margin-bottom-12">
+               <div v-if="event.what_time" class="margin-top-6">
                   <b>Время:</b> {{event.what_time}}
                </div>
-               <div class="margin-bottom-12" v-if="event.tags">
+               <div v-if="event.tags" class="margin-top-6">
                   <b>Упомянутые студии:</b>
-                  <div>
-                     <div v-for="tag in tags" class="event__tag padding-6">
-                        {{tag}}
-                     </div>
+                  <div class="event__tag-container">
+                     <router-link
+                        v-for="(tag, i) in event.tags"
+                        class="event__tag"
+                        :title="tag.name"
+                        :to="tag.url"
+                        :key="i"
+                        tag="a"
+                     >{{tag.name}}</router-link>
                   </div>
                </div>
                <a
@@ -65,11 +82,13 @@
       computed: {
          event() {
             return this.$store.state.event;
-         },
+         }
+      },
 
-         tags() {
-            let tags = this.$store.state.event.tags;
-            return tags.split(' ');
+      methods: {
+         openLink(attachment) {
+            let url = attachment.type == 'link' ? attachment.path : `https://доммолодежи.рф/public/attachments/${event.id}/${attachment.path}`;
+            window.open(url, '_blank');
          }
       }
    };
@@ -107,14 +126,26 @@
          width: 100%;
       }
 
+      &__link {
+         text-decoration: underline;
+      }
+
       &__tag {
-         display: inline;
+         &-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+         }
          color: #00897b;
          background-color: #E0F2F1;
-         margin: 6px 12px 6px 0px;
-         line-height: 40px;
+         margin: 6px 12px 6px 0;
+         padding: 6px;
          font-size: 14px;
          cursor: pointer;
+         text-decoration: none;
+         text-overflow: ellipsis;
+         overflow: hidden;
+         white-space: nowrap;
 
          &:hover {
             background-color: #c8e0df;
