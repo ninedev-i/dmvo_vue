@@ -9,7 +9,7 @@ let apiHost = process.env.NODE_ENV === 'production' ? 'https://доммолод�
 const requestData = {
    closestEvents: {
       state: 'events_closest',
-      method: 'get_closest_events',
+      method: 'get_all_closest_events',
    },
    contacts: {
       state: 'contacts',

@@ -66,6 +66,13 @@
    import eventsList from '../components/events/List.vue';
    import psyForm from '../components/forms/Psy.vue';
    export default {
+      data() {
+         return {
+            category: 'all',
+            price: '',
+            age: ''
+         }
+      },
       components: {
          eventsList,
          psyForm

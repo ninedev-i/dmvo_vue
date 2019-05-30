@@ -6,14 +6,14 @@
          <form method="POST" action="" class="form-psy">
             <div class="form-psy__block-right">
                <b class="form-psy__title">Направление работы</b>
-               <span><input name="choice" type="radio" id="consult" value="Психологическое консультирование" v-model="direction" /><label for="consult">Психологическое консультирование</label></span>
-               <span><input name="choice" type="radio" id="group" value="Групповые формы работы" v-model="direction" /><label for="group">Групповые формы работы</label></span>
-               <span><input name="choice" type="radio" id="prof" value="Профориентация и диагностика" v-model="direction" /><label for="prof">Профориентация и диагностика</label></span>
-               <span><input name="choice" type="radio" id="training" value="Тренинги" v-model="direction" /><label for="training">Тренинги</label></span>
+               <span><input name="choice" type="radio" id="consult" value="Психологическое консультирование" v-model="direction"><label for="consult">Психологическое консультирование</label></span>
+               <span><input name="choice" type="radio" id="group" value="Групповые формы работы" v-model="direction"><label for="group">Групповые формы работы</label></span>
+               <span><input name="choice" type="radio" id="prof" value="Профориентация и диагностика" v-model="direction"><label for="prof">Профориентация и диагностика</label></span>
+               <span><input name="choice" type="radio" id="training" value="Тренинги" v-model="direction"><label for="training">Тренинги</label></span>
                <b class="form-psy__title">Специалист</b>
-               <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="specialist" /><label for="defaultVal">Не имеет значения</label></span>
+               <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="specialist"><label for="defaultVal">Не имеет значения</label></span>
                <span v-for="(specialist, id) in specialists">
-                  <input name="specialist" type="radio" :id="`spec_${id}`" :value="specialist.name" /><label :for="`spec_${id}`">{{specialist.name}}</label>
+                  <input name="specialist" type="radio" :id="`spec_${id}`" :value="specialist.name"><label :for="`spec_${id}`">{{specialist.name}}</label>
                </span>
             </div>
 
@@ -55,10 +55,6 @@
 </script>
 
 <style lang="less">
-   /* Временное решение */
-   .nice-box {
-      padding: 0;
-   }
    .form-psy {
       display: flex;
       flex-direction: row;

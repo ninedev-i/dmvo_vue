@@ -4,27 +4,6 @@
          <h1 class="padding-20">{{$store.state.contact_page_title}}</h1>
          <div id="map"></div>
          <h2 class="padding-20">Руководство Дома молодежи</h2>
-
-         <!--<masonry
-            :cols="{default: 2, 1600: 1}"
-            :gutter="{default: '20px'}"
-            >
-            <div v-for="specialist in contacts" class="contact__specialist">
-               <div class="contact__specialist-info">
-                  <b>{{specialist.name}}</b>
-                  <div class="contact__specialist-position">{{specialist.position}}</div>
-                  <div v-if="specialist.phone"><a :href="`tel:${specialist.phone}`">{{specialist.phone}}</a></div>
-                  <div v-if="specialist.email"><a :href="`mailto:${specialist.email}?subject=Письмо от пользователя сайта`">{{specialist.email}}</a></div>
-                  <div v-if="specialist.reception_time">Часы приема: {{specialist.reception_time}}</div>
-               </div>
-               <div
-                  :style="`background-image: url(https://xn&#45;&#45;d1aadekogaqcb.xn&#45;&#45;p1ai/public/img/users/${specialist.username}.jpg);`"
-                  class="contact__specialist-photo"
-                  :title="specialist.name"
-                  :alt="specialist.name"
-               />
-            </div>
-         </masonry>-->
          <peopleList :people="contacts" :showReception="false" />
       </article>
 

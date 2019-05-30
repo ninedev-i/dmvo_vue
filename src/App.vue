@@ -127,8 +127,13 @@
       &-bottom-12 {
          margin-bottom: 12px;
       }
-      &-top-6 {
-         margin-top: 6px;
+      &-top {
+         &-6 {
+            margin-top: 6px;
+         }
+         &-12 {
+            margin-top: 12px;
+         }
       }
    }
    .padding {
