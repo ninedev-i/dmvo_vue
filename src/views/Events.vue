@@ -33,6 +33,7 @@
             <div class="padding-20 background-white margin-bottom-12">
                <h3>Фильтр</h3>
                <b>Направления:</b>
+               <!--<radioButtons :data="eventTypes" :selectedItem="eventType"  v-on:changeSelectedItem="changeSelectedItem" />-->
                <div class="events__filter">
                   <div><input type="radio" id="all" value="all" v-model="eventType"><label for="all">Все</label></div>
                   <div><input type="radio" id="exhibitions" value="exhibitions" v-model="eventType"><label for="exhibitions">Выставки</label></div>
@@ -53,15 +54,22 @@
 </template>
 <script>
    import widgetAddress from '../components/widgets/Address.vue';
+   import radioButtons from '../components/RadioButtons.vue';
 
    export default {
       components: {
-         widgetAddress
+         widgetAddress,
+         radioButtons
       },
 
       data() {
          return {
-            eventType: 'all'
+            eventType: 'all',
+            eventTypes: [
+               {id: 'all', caption: 'Все'},
+               {id: 'exhibitions', caption: 'Выставки'},
+               {id: 'other', caption: 'Городские и районные'}
+            ]
          }
       },
 
@@ -92,6 +100,9 @@
       },
 
       methods: {
+         changeSelectedItem(id) {
+            this.eventType = id;
+         },
          resetFilter() {
             this.eventType = 'all';
          }
@@ -257,10 +268,6 @@
             cursor: pointer;
             color: #1392BD;
          }
-      }
-      &__filter {
-         display: flex;
-         flex-direction: column;
       }
    }
 
