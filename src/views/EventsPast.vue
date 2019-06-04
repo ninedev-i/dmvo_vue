@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div class="padding-20 background-white">
+      <article class="padding-20 background-white">
          <h1>{{$store.state.events_past_title}}</h1>
 
          <div v-for="(events, month) in pastEvents" class="pastEvents__month">
@@ -18,12 +18,34 @@
                </router-link>
             </div>
          </div>
-      </div>
+         <div
+            v-if="!Object.keys(pastEvents).length"
+            class="pastEvents__emptyList"
+            >
+            Нет мероприятий, удовлетворяющих условиям фильтрации. <u v-on:click="resetFilter()">Сбросить фильтр</u>
+         </div>
+      </article>
 
       <aside>
          <div class="sidebar background-white">
             <div class="padding-20">
-               Тут будет фильтр по годам
+               <h3>Фильтр</h3>
+               <div class="margin-bottom-12">
+                  <input type="text" placeholder="Поиск по названию" class="pastEvents__search" v-model="searchString" />
+               </div>
+               <b>Год:</b>
+               <div class="events__filter">
+                  <div v-for="year in years">
+                     <input type="radio" :id="`year_${year}`" :value="`${year}`" v-model="yearFilter" v-on:change="changeYearFilter(year)" />
+                     <label :for="`year_${year}`">{{year}}</label>
+                  </div>
+               </div>
+               <div
+                     v-if="searchString || yearFilter != new Date().getFullYear()"
+                     v-on:click="resetFilter()"
+                     class="button-red margin-top-12">
+                  Сбросить фильтр
+               </div>
             </div>
          </div>
       </aside>
@@ -31,17 +53,49 @@
 </template>
 <script>
    export default {
+      data() {
+         return {
+            searchString: '',
+            yearFilter: new Date().getFullYear()
+         };
+      },
+
       title () {
          return this.$store.state.events_past_title;
       },
 
       asyncData({store, route}) {
-         return store.dispatch('getData', {name: 'eventsPast'});
+         return store.dispatch('getPastEvents', {year: new Date().getFullYear()});
       },
 
       computed: {
          pastEvents() {
-            return this.$store.state.events_past;
+            let data = this.$store.state.events_past;
+            let output = {};
+            for (let month in data) {
+               let filtered = data[month].filter((ev) => ev.title.toLocaleLowerCase().search(this.searchString.toLocaleLowerCase()) >= 0);
+               if (filtered.length) {
+                  output[month] = filtered;
+               }
+            }
+            return output;
+         },
+         years() {
+            let yearArray = [];
+            for (let year = new Date().getFullYear(); year >= 2014; year--) {
+               yearArray.push(year);
+            }
+            return yearArray;
+         }
+      },
+
+      methods: {
+         changeYearFilter(year) {
+            this.$store.dispatch('getPastEvents', {year: year});
+         },
+         resetFilter() {
+            this.searchString = '';
+            this.yearFilter = new Date().getFullYear();
          }
       }
    };
@@ -58,7 +112,7 @@
          }
 
          &:last-child .pastEvents__item-link-line {
-            border: 0px;
+            border: 0;
          }
 
          &-link {
@@ -67,8 +121,6 @@
 
             &:hover span {
                cursor: pointer;
-               border-bottom: 1px solid #384047;
-               margin-bottom: -1px;
             }
 
             &:hover .pastEvents__item-link-circle {
@@ -112,6 +164,20 @@
                }
             }
          }
+      }
+
+      &__emptyList {
+         width: 100%;
+         text-align: center;
+
+         & u:hover {
+            cursor: pointer;
+            color: #1392BD;
+         }
+      }
+
+      &__search {
+         width: calc(100% - 12px);
       }
    }
 </style>

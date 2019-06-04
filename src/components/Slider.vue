@@ -57,7 +57,6 @@
          display: flex;
          position: relative;
          width: 100%;
-         z-index: 1;
          box-sizing: content-box;
          cursor: pointer;
       }

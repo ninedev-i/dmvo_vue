@@ -15,10 +15,6 @@ const requestData = {
       state: 'contacts',
       method: 'get_contacts'
    },
-   eventsPast: {
-      state: 'events_past',
-      method: `get_past_events/${new Date().getFullYear()}`
-   },
    family: {
       state: 'family',
       method: 'get_family'
@@ -110,6 +106,12 @@ export function createStore () {
             });
          },
 
+         getPastEvents({commit}, request) {
+            return axios.get(`${apiHost}/get_past_events/${request.year}`).then((response) => {
+               commit('setPastEventsData', response.data);
+            });
+         },
+
          getStudio({commit}, request) {
             return axios.get(`${apiHost}/get_studio/${request.id}`).then((response) => {
                commit('setStudioData', response.data);
@@ -164,6 +166,10 @@ export function createStore () {
 
          setEventData(state, data) {
             Vue.set(state, 'event', data);
+         },
+
+         setPastEventsData(state, data) {
+            Vue.set(state, 'events_past', data);
          },
 
          setStudioData(state, data) {
