@@ -12,7 +12,7 @@
 
       <aside>
          <div class="sidebar volunteer__sidebar">
-            <div class="button-blue volunteer__button">Напиши нам</div>
+            <volunteerForm class="volunteer__button" />
 
             <!-- <widgetVk group="145772884" /> -->
 
@@ -36,10 +36,12 @@
 <script>
    // import widgetVk from '../components/widgets/Vk.vue';
    import photoGallery from '../components/events/PhotoGallery.vue';
+   import volunteerForm from '../components/forms/Volunteer.vue';
 
    export default {
       components: {
          photoGallery,
+         volunteerForm,
          // widgetVk
       },
       data() {
@@ -66,7 +68,7 @@
 <style lang="less">
    .volunteer {
       &__sidebar {
-         & .button-blue {
+         & .volunteer__button.button-blue {
             margin-bottom: 12px;
          }
          & .widget-vk {

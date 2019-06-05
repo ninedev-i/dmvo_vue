@@ -18,7 +18,7 @@
 
       <aside>
          <div class="sidebar transforce__sidebar">
-            <div class="button-blue transforce__button">Оставить заявку на посещение</div>
+            <transforceForm :shows="shows" />
             <h3 class="padding-20">Руководитель:</h3>
             <div v-for="specialist in page.people" class="transforce__specialist">
                <b>{{specialist.name}}</b>
@@ -38,7 +38,11 @@
    </div>
 </template>
 <script>
+   import transforceForm from '../components/forms/Transforce.vue';
    export default {
+      components: {
+         transforceForm
+      },
       title () {
          return this.page.title;
       },
@@ -50,6 +54,9 @@
       computed: {
          page() {
             return this.$store.state.transforce;
+         },
+         shows() {
+            return JSON.parse(this.page.additional);
          }
       }
    };

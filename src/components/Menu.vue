@@ -1,10 +1,15 @@
 <template>
    <nav class="nav">
-      <div class="nav__container">
+      <div class="nav__hamburger" v-on:click="toggleMenu()">
+         <div class="nav__hamburger-line"></div>
+         <div class="nav__hamburger-line"></div>
+         <div class="nav__hamburger-line"></div>
+      </div>
+      <div :class="`nav__container ${menuOpened}`">
          <router-link to="/" class="nav__logo" tag="a">
-            <img src="/public/logo.png" alt="Дом молодежи Василеостровского района" title="Дом молодежи Василеостровского района" />
+            <img src="/public/logo.svg" alt="Дом молодежи Василеостровского района" title="Дом молодежи Василеостровского района" v-on:click="toggleMenu(true)" />
          </router-link>
-         <div class="nav__menu">
+         <div :class="`nav__menu ${menuOpened}`">
             <router-link
                v-for="item in menuArray"
                :to="item.link"
@@ -20,9 +25,10 @@
                      :src="item.icon"
                      :alt="item.caption"
                      :title="item.caption"
+                      v-on:click="toggleMenu(true)"
                   />
                </div>
-               <div class="nav__menu-item-caption">{{item.caption}}</div>
+               <div class="nav__menu-item-caption" v-on:click="toggleMenu(true)">{{item.caption}}</div>
             </router-link>
          </div>
       </div>
@@ -32,6 +38,7 @@
    export default {
       data() {
          return {
+            menuOpened: '',
             menuArray: [
                // {
                //    name: 'admin',
@@ -43,7 +50,7 @@
                   name: 'aboutInfo',
                   link: '/about',
                   caption: 'О Доме молодежи',
-                  icon: '/public/menuIcons/about.svg'
+                  icon: '/public/menuIcons/about1.svg'
                },
                {
                   name: 'aboutTeam',
@@ -170,6 +177,11 @@
                }
             ]
          };
+      },
+      methods: {
+         toggleMenu(hide = null) {
+            this.menuOpened = hide || this.menuOpened ? '' : 'nav__hiddenMenu-show';
+         }
       }
    };
 </script>
@@ -212,7 +224,7 @@
       &__logo {
          padding: 16px;
          display: block;
-         width: 228px;
+         width: 215px;
 
          & img {
             width: 100%;
@@ -260,16 +272,63 @@
 
    @media (max-width: 450px) {
       nav {
-         width: 65px;
-         min-width: 65px;
+         position: fixed;
+         width: 100vw;
+         height: auto;
+         z-index: 10;
       }
       .nav {
+         &__hamburger {
+            width: 35px;
+            height: 20px;
+            position: absolute;
+            z-index: 100;
+            top: 25px;
+            left: 18px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &-line {
+               height: 2px;
+               background-color: #fff;
+            }
+         }
          &__logo {
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            img {
+               width: 200px;
+               margin-left: 30px;
+            }
+         }
+
+         &__container {
+            height: 70px;
+            box-shadow: 0 5px 10px -2px grey;
+
+            &:not(.nav__hiddenMenu-show) {
+               &::-webkit-scrollbar-thumb {
+                  background-color: inherit;
+               }
+            }
+
+            &.nav__hiddenMenu-show {
+               height: 100%;
+            }
+         }
+         &__menu {
             display: none;
+
+            &.nav__hiddenMenu-show {
+               height: 100%;
+               display: block;
+            }
          }
          &__menu-item {
             &-caption {
-               display: none;
+               /*display: none;*/
             }
          }
       }
