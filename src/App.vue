@@ -175,6 +175,10 @@
          }
       }
    }
+   .notValide {
+      border: 1px solid #ffa3a3;
+      background-color: #ffe8e8;
+   }
 
    // Сайдбар
    aside {

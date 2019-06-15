@@ -4,32 +4,31 @@
 
       <div id="psyForm" class="hidden" v-on:click.self.prevent>
          <div>
-            <form method="POST" action="" class="form-psy">
+            <form class="form-psy">
                <div class="form-psy__block-right">
                   <b class="form-psy__title">Направление работы</b>
-                  <!--<radioButtons :data="eventTypes" :selectedItem="eventType" v-on:changeSelectedItem="changeSelectedItem" />-->
                   <span v-for="type in eventTypes">
-                     <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="direction" :key="`direction_${type.id}`"><label :for="type.id">{{type.caption}}</label>
+                     <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="formDirection" :key="`direction_${type.id}`"><label :for="type.id">{{type.caption}}</label>
                   </span>
                   <b class="form-psy__title">Специалист</b>
-                  <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="specialist"><label for="defaultVal">Не имеет значения</label></span>
+                  <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="formSpecialist" key="specialist_none"><label for="defaultVal">Не имеет значения</label></span>
                   <span v-for="(specialist, id) in specialists">
-                     <input name="specialist" type="radio" :id="`spec_${id}`" :value="specialist.name" :key="`specialist_${id}`"><label :for="`spec_${id}`">{{specialist.name}}</label>
+                     <input name="specialist" type="radio" :id="`spec_${id}`" :value="specialist.name" v-model="formSpecialist" :key="`specialist_${id}`"><label :for="`spec_${id}`">{{specialist.name}}</label>
                   </span>
                </div>
 
                <div class="form-psy__block-left">
                   <b class="form-psy__title">Ваши контактные данные</b>
-                  <input required="required" name="name" type="text" id="name" placeholder="Ваше имя" autofocus />
+                  <input name="name" type="text" id="name" placeholder="Ваше имя" v-model="formName" ref="formName" v-on:input="checkValidity('formName')" autofocus />
                   <span>
-                  <input required="required" name="email" type="email" id="email" placeholder="E-mail" />
-                  <input required="required" name="phone" type="text" id="phone" placeholder="Телефон" />
-               </span>
-                  <input required="required" name="age" type="text" id="age" placeholder="Возраст (от 14 до 30 лет)" />
-                  <input required="required" name="date" type="text" id="date" placeholder="Удобная дата и время консультации">
-                  <textarea required="required" name="textmessage" cols="40" rows="3" id="textmessage" placeholder="Комментарий"></textarea>
+                     <input name="email" type="email" id="email" placeholder="E-mail" v-model="formEmail" ref="formEmail" v-on:input="checkValidity('formEmail')" />
+                     <input name="phone" type="text" id="phone" placeholder="Телефон" v-model="formPhone" ref="formPhone" v-on:input="checkValidity('formPhone')" />
+                  </span>
+                  <input name="age" type="text" id="age" placeholder="Возраст (от 14 до 30 лет)" v-model="formAge" ref="formAge" v-on:input="checkValidity('formAge')" />
+                  <input name="date" type="text" id="date" placeholder="Удобная дата и время консультации" v-model="formDate" ref="formDate" v-on:input="checkValidity('formDate')" />
+                  <textarea name="textmessage" cols="40" rows="3" id="textmessage" placeholder="Комментарий" v-model="formTextmessage"></textarea>
 
-                  <div class="button-blue">Записаться</div>
+                  <div class="button-blue" v-on:click="sendRequest">Записаться</div>
                </div>
             </form>
          </div>
@@ -40,16 +39,20 @@
 
 <script>
    import {NicePopup} from 'nice-popup';
-   // import radioButtons from '../../components/RadioButtons.vue';
+   import axios from 'axios';
+   import qs from 'qs';
 
    export default {
-      // components: {
-      //    radioButtons
-      // },
       data() {
         return {
-           direction: 'consult',
-           specialist: 'Не имеет значения',
+           formDirection: 'consult',
+           formSpecialist: 'Не имеет значения',
+           formName: '',
+           formEmail: '',
+           formPhone: '',
+           formAge: '',
+           formDate: '',
+           formTextmessage: '',
 
            eventType: 'all',
            eventTypes: [
@@ -69,6 +72,50 @@
       methods: {
          changeSelectedItem(id) {
             this.eventType = id;
+         },
+
+         sendRequest() {
+            if (!this.validateForm()) {
+               return;
+            }
+
+            let formData = {
+               direction: this.formDirection,
+               specialist: this.formSpecialist,
+               name: this.formName,
+               email: this.formEmail,
+               phone: this.formPhone,
+               age: this.formAge,
+               date: this.formDate,
+               message: this.formTextmessage
+            };
+
+            axios.post(
+               this.$store.state.apiHost + '/mail_psy', qs.stringify(formData)
+            ).then((response) => {
+               // TODO закрывать форму
+               console.error('Отправлено!');
+            }).catch((error) => {
+               console.error(error);
+            });
+         },
+
+         validateForm() {
+            let fieldsCompleted = true;
+            for (let input in this.$refs) {
+               let isEmpty = !this.$refs[input].value;
+               if (isEmpty) {
+                  this.$refs[input].className = 'notValide';
+                  fieldsCompleted = false;
+               }
+            }
+            return fieldsCompleted;
+         },
+
+         checkValidity(name) {
+            if (this.$refs[name].value) {
+               this.$refs[name].className = '';
+            }
          }
       }
    }

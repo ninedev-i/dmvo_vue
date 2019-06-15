@@ -44,6 +44,7 @@ const requestData = {
 export function createStore () {
    return new Vuex.Store({
       state: {
+         apiHost: apiHost,
          index_carousel: [],
          index_closestEvents: [],
          index_closestExhibitions: [],
