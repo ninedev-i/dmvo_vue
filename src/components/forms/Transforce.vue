@@ -6,24 +6,24 @@
          <div>
             <form method="POST" action="" class="form-transforce">
                <div class="form-transforce__block-right">
-                  <b class="form-transforce__title">Программа</b>
-                  <select v-model="selectedShow">
+                  <b class="title form-transforce__title">Программа</b>
+                  <select v-model="selectedShow" ref="show">
                      <option v-for="(show, key) in shows" :value="key">{{show.title}}</option>
                   </select>
                   <div>{{selectedShow ? shows[selectedShow].description : ''}}</div>
                </div>
 
                <div class="form-transforce__block-left">
-                  <b class="form-transforce__title">Контактные данные</b>
-                  <input required="required" name="name" type="text" id="name" placeholder="Название учреждения" autofocus />
-                  <input required="required" name="name" type="text" id="name" placeholder="Ф.И.О. сопровождающего" />
+                  <b class="title form-transforce__title">Контактные данные</b>
+                  <input name="name" type="text" placeholder="Название учреждения" v-model="formName" ref="formName" v-on:input="checkValidity('formName')" autofocus />
+                  <input name="name" type="text" placeholder="Ф.И.О. сопровождающего" v-model="formFio" ref="formFio" v-on:input="checkValidity('formFio')" />
                   <span>
-                     <input required="required" name="email" type="email" id="email" placeholder="E-mail" />
-                     <input required="required" name="phone" type="text" id="phone" placeholder="Телефон" />
+                     <input name="email" type="email" placeholder="E-mail" v-model="formEmail" ref="formEmail" v-on:input="checkValidity('formEmail')" />
+                     <input name="phone" type="text" placeholder="Телефон" v-model="formPhone" ref="formPhone" v-on:input="checkValidity('formPhone')" />
                   </span>
-                  <textarea required="required" name="textmessage" cols="40" rows="3" id="textmessage" placeholder="Дата, Ф.И.О. учащихся, возраст, cостоят ли на учете в ОДН"></textarea>
+                  <textarea name="textmessage" cols="40" rows="3" placeholder="Дата, Ф.И.О. учащихся, возраст, cостоят ли на учете в ОДН"  v-model="textmessage"></textarea>
 
-                  <div class="button-blue">Записаться</div>
+                  <div class="button-blue" v-on:click="sendRequest">Записаться</div>
                </div>
             </form>
          </div>
@@ -34,11 +34,18 @@
 
 <script>
    import {NicePopup} from 'nice-popup';
+   import axios from 'axios';
+   import qs from 'qs';
 
    export default {
       data() {
         return {
-           selectedShow: 'show1'
+           selectedShow: 'show1',
+           formName: '',
+           formFio: '',
+           formEmail: '',
+           formPhone: '',
+           textmessage: '',
         }
       },
       props: {
@@ -50,6 +57,48 @@
       methods: {
          changeSelectedItem(id) {
             this.eventType = id;
+         },
+
+         sendRequest() {
+            if (!this.validateForm()) {
+               return;
+            }
+
+            let formData = {
+               organisation: this.formName,
+               fio: this.formFio,
+               email: this.formEmail,
+               phone: this.formPhone,
+               message: this.textmessage,
+               show: this.$refs.show.options[this.$refs.show.selectedIndex].text
+            };
+
+            axios.post(
+               this.$store.state.apiHost + '/mail_transforce', qs.stringify(formData)
+            ).then((response) => {
+               // TODO закрывать форму
+               console.error('Отправлено!');
+            }).catch((error) => {
+               console.error(error);
+            });
+         },
+
+         validateForm() {
+            let fieldsCompleted = true;
+            for (let input in this.$refs) {
+               let isEmpty = !this.$refs[input].value;
+               if (isEmpty) {
+                  this.$refs[input].className = 'notValide';
+                  fieldsCompleted = false;
+               }
+            }
+            return fieldsCompleted;
+         },
+
+         checkValidity(name) {
+            if (this.$refs[name].value) {
+               this.$refs[name].className = '';
+            }
          }
       }
    }

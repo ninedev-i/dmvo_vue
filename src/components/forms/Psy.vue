@@ -6,11 +6,11 @@
          <div>
             <form class="form-psy">
                <div class="form-psy__block-right">
-                  <b class="form-psy__title">Направление работы</b>
+                  <b class="title form-psy__title">Направление работы</b>
                   <span v-for="type in eventTypes">
                      <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="formDirection" :key="`direction_${type.id}`"><label :for="type.id">{{type.caption}}</label>
                   </span>
-                  <b class="form-psy__title">Специалист</b>
+                  <b class="title form-psy__title">Специалист</b>
                   <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="formSpecialist" key="specialist_none"><label for="defaultVal">Не имеет значения</label></span>
                   <span v-for="(specialist, id) in specialists">
                      <input name="specialist" type="radio" :id="`spec_${id}`" :value="specialist.name" v-model="formSpecialist" :key="`specialist_${id}`"><label :for="`spec_${id}`">{{specialist.name}}</label>
@@ -18,15 +18,15 @@
                </div>
 
                <div class="form-psy__block-left">
-                  <b class="form-psy__title">Ваши контактные данные</b>
-                  <input name="name" type="text" id="name" placeholder="Ваше имя" v-model="formName" ref="formName" v-on:input="checkValidity('formName')" autofocus />
+                  <b class="title form-psy__title">Ваши контактные данные</b>
+                  <input name="name" type="text" placeholder="Ваше имя" v-model="formName" ref="formName" v-on:input="checkValidity('formName')" autofocus />
                   <span>
-                     <input name="email" type="email" id="email" placeholder="E-mail" v-model="formEmail" ref="formEmail" v-on:input="checkValidity('formEmail')" />
-                     <input name="phone" type="text" id="phone" placeholder="Телефон" v-model="formPhone" ref="formPhone" v-on:input="checkValidity('formPhone')" />
+                     <input name="email" type="email" placeholder="E-mail" v-model="formEmail" ref="formEmail" v-on:input="checkValidity('formEmail')" />
+                     <input name="phone" type="text" placeholder="Телефон" v-model="formPhone" ref="formPhone" v-on:input="checkValidity('formPhone')" />
                   </span>
-                  <input name="age" type="text" id="age" placeholder="Возраст (от 14 до 30 лет)" v-model="formAge" ref="formAge" v-on:input="checkValidity('formAge')" />
-                  <input name="date" type="text" id="date" placeholder="Удобная дата и время консультации" v-model="formDate" ref="formDate" v-on:input="checkValidity('formDate')" />
-                  <textarea name="textmessage" cols="40" rows="3" id="textmessage" placeholder="Комментарий" v-model="formTextmessage"></textarea>
+                  <input name="age" type="text" placeholder="Возраст (от 14 до 30 лет)" v-model="formAge" ref="formAge" v-on:input="checkValidity('formAge')" />
+                  <input name="date" type="text" placeholder="Удобная дата и время консультации" v-model="formDate" ref="formDate" v-on:input="checkValidity('formDate')" />
+                  <textarea name="textmessage" cols="40" rows="3" placeholder="Комментарий" v-model="formTextmessage"></textarea>
 
                   <div class="button-blue" v-on:click="sendRequest">Записаться</div>
                </div>

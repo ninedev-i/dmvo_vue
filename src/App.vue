@@ -95,6 +95,9 @@
          .input();
       }
    }
+   b.title {
+      font-family: 'Open Sans', sans-serif;
+   }
 
    // Контейнер
    #app {
@@ -158,6 +161,8 @@
       }
       &-blue {
          .buttonCommon;
+         font-family: 'Open Sans', sans-serif;
+         font-size: 16px;
          background-color: #1392bd;
          &:hover {
             background-color: #47b3d8;
@@ -166,6 +171,8 @@
       }
       &-red {
          .buttonCommon;
+         font-family: 'Open Sans', sans-serif;
+         font-size: 16px;
          padding: 6px 12px;
          background-color: #DC3522;
          display: inline-block;
