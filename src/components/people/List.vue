@@ -21,7 +21,7 @@
                </div>
             </div>
             <div
-               :style="`background-image: url(https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/${user.username}.jpg);`"
+               :style="`background-image: url(https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/${user.username}.jpg);`"
                class="peopleList__user-photo"
                :title="user.name"
                :alt="user.name"

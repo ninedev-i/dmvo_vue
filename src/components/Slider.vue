@@ -8,7 +8,7 @@
          <router-link v-for="event in slides" v-bind:to="'events/' + event.id" class="swiper-slide" :key="event.id">
             <img
                class="swiper-slide-img"
-               :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/events/covers/event_id' + event.id + '.jpg'"
+               :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/events/covers/event_id' + event.id + '.jpg'"
                :title="event.title"
                :alt="event.title"
             >

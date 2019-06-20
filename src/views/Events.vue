@@ -6,7 +6,7 @@
             <router-link v-for="(event, i) in closestEvents" v-bind:to="'events/' + event.id" class="events__list-block" :title="event.title" :key="event.id">
                <div
                   :class="`events__list-block-container background-${i.toString()[i.toString().length - 1]} events__list-block-container-${event.cover ? 'cover' : 'withbg'}`"
-                  :style="event.cover ? `background-image: url('https://xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}')` : ''"
+                  :style="event.cover ? `background-image: url('https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}')` : ''"
                   >
                   <div v-if="!!event.cover" :class="`events__list-block-shadow events__list-block-shadow-${i.toString()[i.toString().length - 1]}`"></div>
                   <div :class="`events__list-block-title ${!event.cover ? '' : 'events__list-block-title-bottom-' + i.toString()[i.toString().length - 1]}`">

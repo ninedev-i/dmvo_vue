@@ -4,7 +4,7 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
-let apiHost = process.env.NODE_ENV === 'production' ? 'https://доммолодежи.рф/api' : 'http://dmvo.local/api';
+let apiHost = process.env.NODE_ENV === 'production' ? 'https://old.доммолодежи.рф/api' : 'http://dmvo.local/api';
 
 const requestData = {
    closestEvents: {

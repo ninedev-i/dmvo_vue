@@ -12,7 +12,7 @@
                   class="news__item-picture"
                   v-if="event.pictures.length"
                   :title="event.title"
-                  :style="'background-image: url(https://xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
+                  :style="'background-image: url(https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
                </div>
                <div class="news__item-title" :title="event.title">{{slicedTitle(event.title)}}</div>
                <div class="news__item-text" v-if="showText || !event.pictures.length" v-html="getDescription(event.post_reliz)"></div>

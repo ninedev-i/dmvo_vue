@@ -8,7 +8,7 @@
                <div class="form-psy__block-right">
                   <b class="title form-psy__title">Направление работы</b>
                   <span v-for="type in eventTypes">
-                     <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="formDirection" :key="`direction_${type.id}`"><label :for="type.id">{{type.caption}}</label>
+                     <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="formDirection" :key="`direction_${type.id}`" ref="direction"><label :for="type.id">{{type.caption}}</label>
                   </span>
                   <b class="title form-psy__title">Специалист</b>
                   <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="formSpecialist" key="specialist_none"><label for="defaultVal">Не имеет значения</label></span>

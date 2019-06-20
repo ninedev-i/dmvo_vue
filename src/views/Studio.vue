@@ -45,7 +45,7 @@
             </h3>
             <div v-for="teacher in studio.teachers" v-if="studio.teacher" class="padding-20 background-white">
                <b>{{teacher.name}}</b>
-               <img :src="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/${teacher.username}.jpg`" style="width: 100%;">
+               <img :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/${teacher.username}.jpg`" style="width: 100%;">
             </div>
          </div>
       </aside>

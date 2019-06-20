@@ -45,7 +45,7 @@
             <div v-for="(specialist, key) in page.people" class="psychological__specialist">
                <div>
                   <img
-                     :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
+                     :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
                      class="psychological__specialist-photo"
                      :title="specialist.name"
                      :alt="specialist.name"

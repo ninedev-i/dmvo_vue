@@ -14,22 +14,22 @@
                {
                   title: 'Администрация Василеостровского района',
                   url: 'https://voadm.spb.ru/',
-                  img: 'https://xn--d1aadekogaqcb.xn--p1ai/public/img/admvo.jpg'
+                  img: 'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/admvo.jpg'
                },
                {
                   title: 'Комитет по молодежной политике',
                   url: 'https://gov.spb.ru/gov/otrasl/kpmp/',
-                  img: 'https://xn--d1aadekogaqcb.xn--p1ai/public/img/commol.jpg'
+                  img: 'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/commol.jpg'
                },
                {
                   title: 'Проект «Твой Бюджет»',
                   url: 'https://tvoybudget.spb.ru/',
-                  img: 'https://xn--d1aadekogaqcb.xn--p1ai/public/img/budget.jpg'
+                  img: 'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/budget.jpg'
                },
                {
                   title: 'Специальная линия «Нет коррупции!»',
                   url: 'https://zakon.gov.spb.ru/hot_line/',
-                  img: 'https://xn--d1aadekogaqcb.xn--p1ai/public/img/corrupt.jpg'
+                  img: 'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/corrupt.jpg'
                }
             ]
          };

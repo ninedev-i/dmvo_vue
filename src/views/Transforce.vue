@@ -24,7 +24,7 @@
                <b>{{specialist.name}}</b>
                <div class="">
                   <img
-                     :src="'https://xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
+                     :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
                      class="transforce__specialist-photo"
                      :title="specialist.name"
                      :alt="specialist.name"

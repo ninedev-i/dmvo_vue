@@ -9,13 +9,13 @@
             <a
                v-if="photos.length"
                v-for="photo in photos"
-               :href="`https://доммолодежи.рф/${path}/${photo}`"
+               :href="`https://old.доммолодежи.рф/${path}/${photo}`"
                data-nice="gallery"
                class="swiper-slide"
                >
                <img
                   class="swiper-slide-img"
-                  :src="`https://доммолодежи.рф/${path}/${photo}`"
+                  :src="`https://old.доммолодежи.рф/${path}/${photo}`"
                   :title="title"
                   :alt="title"
                />

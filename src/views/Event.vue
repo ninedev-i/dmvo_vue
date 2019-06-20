@@ -50,12 +50,12 @@
                </div>
                <a
                   v-if="!!event.cover"
-                  :href="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
+                  :href="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
                   data-nice="gallery"
                   >
                   <img
                      class="event__cover"
-                     :src="`https://xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
+                     :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
                      :alt="event.title"
                      :title="event.title"
                   />
@@ -87,7 +87,7 @@
 
       methods: {
          openLink(attachment) {
-            let url = attachment.type == 'link' ? attachment.path : `https://доммолодежи.рф/public/attachments/${event.id}/${attachment.path}`;
+            let url = attachment.type == 'link' ? attachment.path : `https://old.доммолодежи.рф/public/attachments/${event.id}/${attachment.path}`;
             window.open(url, '_blank');
          }
       }
