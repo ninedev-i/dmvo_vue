@@ -43,8 +43,8 @@
 
       <aside>
          <div class="sidebar">
-            <div class="background-white padding-20">
-               <h3>Фильтр</h3>
+            <div class="background-white padding-20 margin-bottom-12">
+               <h3 class="margin-bottom-6">Фильтр</h3>
                <b>Направления:</b>
                <div>
                   <input type="radio" id="all" value="all" v-model="category"><label for="all">Все</label>
@@ -52,9 +52,9 @@
                <div v-for="direction in directions">
                   <input type="radio" :id="direction.name" :value="direction.name" v-model="category"><label :for="direction.name">{{direction.filterTitle}}</label>
                </div>
-               <b>Возраст:</b><br />
-               <input type="number" class="studio__filter-age" value="" min="1" placeholder="16 лет" v-model="age">
-               <b>Стоимость:</b><br />
+               <!--<b>Возраст:</b><br />-->
+               <input type="number" class="studio__filter-age" value="" min="1" placeholder="Возраст" v-model="age">
+               <!--<b>Стоимость:</b><br />-->
                <input type="checkbox" id="price" value="бесплатно" v-model="price"><label for="price">Бесплатно</label>
 
                <div
@@ -64,6 +64,8 @@
                   Сбросить фильтр
                </div>
             </div>
+            <!--<h3 class="studio__widgetTitle padding-20">Руководитель направления</h3>-->
+            <person :specialists="$store.state.studio_page.specialists" phone="+7 (812) 321-00-03" :showEmail="true" />
          </div>
       </aside>
    </div>
@@ -72,11 +74,13 @@
    import Vue from 'vue';
    import VueMasonry from 'vue-masonry-css';
    import studioBlock from '../components/StudioDirection.vue';
+   import person from '../components/widgets/Person.vue';
    Vue.use(VueMasonry);
 
    export default {
       components: {
-         studioBlock
+         studioBlock,
+         person
       },
 
       data() {
@@ -97,7 +101,7 @@
 
       computed: {
          directions() {
-            let service_data = JSON.parse(JSON.stringify(this.$store.state.studio_page));
+            let service_data = JSON.parse(JSON.stringify(this.$store.state.studio_page.directions));
             let additional_data = {
                patriot : {
                   name: 'patriot',
@@ -206,12 +210,16 @@
       &__filter {
          &-age {
             display: block;
-            width: 62px;
+            width: 80px;
          }
 
          &-reset{
             margin-top: 12px;
          }
+      }
+
+      &__widgetTitle {
+         padding-right: 0 !important;
       }
    }
 </style>

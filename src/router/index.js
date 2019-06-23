@@ -18,6 +18,8 @@ const Empty = () => import('../views/Empty.vue');
 const Page = () => import('../views/Page.vue');
 const Team = () => import('../views/Team.vue');
 
+const Login = () => import('../views/Login.vue');
+
 Vue.use(Router);
 
 export const createRouter = () => {
@@ -53,7 +55,9 @@ export const createRouter = () => {
          {path: '/volunteer', name: 'volunteer', component: Volunteer},
          {path: '/transforce', name: 'transforce', component: Transforce},
          {path: '/family', name: 'family', component: Family},
-         {path: '/contact', name: 'contact', component: Contact}
+         {path: '/contact', name: 'contact', component: Contact},
+
+         {path: '/login', name: 'login', component: Login}
       ]
    });
 };

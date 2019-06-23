@@ -271,7 +271,7 @@
       }
    }
 
-   @bg0: 247, 65, 44;
+   /*@bg0: 247, 65, 44;
    @bg1: 236, 21, 98;
    @bg2: 157, 29, 178;
    @bg3: 104, 52, 188;
@@ -280,8 +280,19 @@
    @bg6: 0, 188, 215;
    @bg7: 71, 176, 75;
    @bg8: 137, 197, 65;
-   @bg9: 205, 222, 32;
+   @bg9: 205, 222, 32;*/
+   @bg0: 19, 146, 189;
+   @bg1: 19, 146, 189;
+   @bg2: 19, 146, 189;
+   @bg3: 19, 146, 189;
+   @bg4: 19, 146, 189;
+   @bg5: 19, 146, 189;
+   @bg6: 19, 146, 189;
+   @bg7: 19, 146, 189;
+   @bg8: 19, 146, 189;
+   @bg9: 19, 146, 189;
 
+   .background-main {background-color: rgb(@bg1); color: #fff;}
    .background-1 {background-color: rgb(@bg1); color: #fff;}
    .background-2 {background-color: rgb(@bg2); color: #fff;}
    .background-3 {background-color: rgb(@bg3); color: #fff;}

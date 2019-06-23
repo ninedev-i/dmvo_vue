@@ -17,18 +17,7 @@
             <!-- <widgetVk group="145772884" /> -->
 
             <h3 class="padding-20">Руководитель:</h3>
-            <div v-for="specialist in page.people" class="volunteer__specialist">
-               <b>{{specialist.name}}</b>
-               <div class="">
-                  <img
-                     :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
-                     class="volunteer__specialist-photo"
-                     :title="specialist.name"
-                     :alt="specialist.name"
-                  />
-                  <div><b>Телефон: </b><a :href="`tel:${specialist.phone}`">{{specialist.phone}}</a></div>
-               </div>
-            </div>
+            <person :specialists="page.people" />
          </div>
       </aside>
    </div>
@@ -37,11 +26,13 @@
    // import widgetVk from '../components/widgets/Vk.vue';
    import photoGallery from '../components/events/PhotoGallery.vue';
    import volunteerForm from '../components/forms/Volunteer.vue';
+   import person from '../components/widgets/Person.vue';
 
    export default {
       components: {
          photoGallery,
          volunteerForm,
+         person
          // widgetVk
       },
       data() {

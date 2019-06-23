@@ -14,19 +14,8 @@
          <div class="sidebar family__sidebar">
             <widgetVk group="105742526" />
 
-            <h3 class="padding-20">Руководитель:</h3>
-            <div v-for="specialist in page.people" class="family__specialist">
-               <b>{{specialist.name}}</b>
-               <div class="">
-                  <img
-                     :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
-                     class="family__specialist-photo"
-                     :title="specialist.name"
-                     :alt="specialist.name"
-                  />
-                  <div><b>Телефон: </b><a :href="`tel:${specialist.phone}`">{{specialist.phone}}</a></div>
-               </div>
-            </div>
+               <h3 class="padding-20">Руководитель:</h3>
+               <person :specialists="page.people" />
          </div>
 
       </aside>
@@ -35,10 +24,13 @@
 <script>
    // import eventsList from '../components/events/List.vue';
    import widgetVk from '../components/widgets/Vk.vue';
+   import person from '../components/widgets/Person.vue';
+
    export default {
       components: {
          // eventsList,
-         widgetVk
+         widgetVk,
+         person
       },
       title () {
          return this.page.title;
@@ -61,19 +53,6 @@
          & .widget-vk {
             height: 208px;
             max-height: 208px;
-         }
-      }
-      &__specialist {
-         display: flex;
-         flex-grow: 1;
-         flex-direction: column;
-         background-color: white;
-         padding: 10px 20px 15px;
-         margin-bottom: 12px;
-
-         &-photo {
-            width: 100%;
-            margin: 10px 0 0;
          }
       }
    }

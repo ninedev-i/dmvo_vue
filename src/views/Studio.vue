@@ -43,10 +43,7 @@
             <h3 class="padding-20" v-if="studio.teachers.length">
                {{studio.teachers.length === 1 ? 'Руководитель' : 'Руководители'}}
             </h3>
-            <div v-for="teacher in studio.teachers" v-if="studio.teacher" class="padding-20 background-white">
-               <b>{{teacher.name}}</b>
-               <img :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/${teacher.username}.jpg`" style="width: 100%;">
-            </div>
+            <person :specialists="studio.teachers" :showPhone="false" :showEmail="false" />
          </div>
       </aside>
    </div>
@@ -54,10 +51,13 @@
 <script>
    import photoGallery from '../components/events/PhotoGallery.vue';
    import news from '../components/events/News.vue';
+   import person from '../components/widgets/Person.vue';
+
    export default {
       components: {
          photoGallery,
-         news
+         news,
+         person
       },
       title () {
          return this.studio.studio_name;

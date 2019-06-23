@@ -59,6 +59,7 @@
             ).then((response) => {
                // TODO закрывать форму
                console.error('Отправлено!');
+               this.resetForm();
             }).catch((error) => {
                console.error(error);
             });
@@ -79,6 +80,12 @@
          checkValidity(name) {
             if (this.$refs[name].value) {
                this.$refs[name].className = '';
+            }
+         },
+
+         resetForm() {
+            for (let input in this.$refs) {
+               this.$refs[input].value = '';
             }
          }
       }
