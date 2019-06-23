@@ -40,6 +40,8 @@
    export default {
       data() {
         return {
+           popup: null,
+
            selectedShow: 'show1',
            formName: '',
            formFio: '',
@@ -52,7 +54,7 @@
          shows: Object
       },
       mounted() {
-         new NicePopup();
+         this.popup = new NicePopup();
       },
       methods: {
          changeSelectedItem(id) {
@@ -76,8 +78,8 @@
             axios.post(
                this.$store.state.apiHost + '/mail_transforce', qs.stringify(formData)
             ).then((response) => {
-               // TODO закрывать форму
-               console.error('Отправлено!');
+               this.popup.close();
+               this.resetForm();
             }).catch((error) => {
                console.error(error);
             });
@@ -98,6 +100,12 @@
          checkValidity(name) {
             if (this.$refs[name].value) {
                this.$refs[name].className = '';
+            }
+         },
+
+         resetForm() {
+            for (let input in this.$refs) {
+               this.$refs[input].value = '';
             }
          }
       }

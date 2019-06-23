@@ -201,28 +201,6 @@
    .sidebar {
       position: fixed;
       width: inherit;
-      height: 100%;
-
-      &:hover {
-         overflow-y: auto;
-         overflow-x: hidden;
-         -webkit-overflow-scrolling: touch;
-         -moz-overflow-scrolling: touch;
-         -ms-overflow-scrolling: touch;
-         -o-overflow-scrolling: touch;
-         overflow-scrolling: touch;
-      }
-      &::-webkit-scrollbar {
-         -webkit-appearance: none;
-         width: 5px;
-         cursor: pointer;
-      }
-      &::-webkit-scrollbar-thumb {
-         border-radius: 10px;
-         background-color: #47b3d8;
-         cursor: pointer !important;
-         -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
-      }
    }
 
 

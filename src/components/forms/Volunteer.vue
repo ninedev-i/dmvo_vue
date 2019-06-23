@@ -30,6 +30,8 @@
    export default {
       data() {
          return {
+            popup: null,
+
             formName: '',
             formEmail: '',
             formPhone: '',
@@ -38,7 +40,7 @@
       },
 
       mounted() {
-         new NicePopup();
+         this.popup = new NicePopup();
       },
 
       methods: {
@@ -57,8 +59,7 @@
             axios.post(
                this.$store.state.apiHost + '/mail_volunteer', qs.stringify(formData)
             ).then((response) => {
-               // TODO закрывать форму
-               console.error('Отправлено!');
+               this.popup.close();
                this.resetForm();
             }).catch((error) => {
                console.error(error);

@@ -8,7 +8,7 @@
                <div class="form-psy__block-right">
                   <b class="title form-psy__title">Направление работы</b>
                   <span v-for="type in eventTypes">
-                     <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="formDirection" :key="`direction_${type.id}`" ref="direction"><label :for="type.id">{{type.caption}}</label>
+                     <input name="choice" type="radio" :id="type.id" :value="type.id" v-model="formDirection" :key="`direction_${type.id}`"><label :for="type.id">{{type.caption}}</label>
                   </span>
                   <b class="title form-psy__title">Специалист</b>
                   <span><input name="specialist" type="radio" id="defaultVal" value="Не имеет значения" v-model="formSpecialist" key="specialist_none"><label for="defaultVal">Не имеет значения</label></span>
@@ -45,6 +45,8 @@
    export default {
       data() {
         return {
+           popup: null,
+
            formDirection: 'consult',
            formSpecialist: 'Не имеет значения',
            formName: '',
@@ -67,7 +69,7 @@
          specialists: Array
       },
       mounted() {
-         new NicePopup();
+         this.popup = new NicePopup();
       },
       methods: {
          changeSelectedItem(id) {
@@ -93,8 +95,8 @@
             axios.post(
                this.$store.state.apiHost + '/mail_psy', qs.stringify(formData)
             ).then((response) => {
-               // TODO закрывать форму
-               console.error('Отправлено!');
+               this.popup.close();
+               this.resetForm();
             }).catch((error) => {
                console.error(error);
             });
@@ -115,6 +117,12 @@
          checkValidity(name) {
             if (this.$refs[name].value) {
                this.$refs[name].className = '';
+            }
+         },
+
+         resetForm() {
+            for (let input in this.$refs) {
+               this.$refs[input].value = '';
             }
          }
       }

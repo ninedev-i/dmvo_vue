@@ -297,11 +297,11 @@
    .background-2 {background-color: rgb(@bg2); color: #fff;}
    .background-3 {background-color: rgb(@bg3); color: #fff;}
    .background-4 {background-color: rgb(@bg4); color: #fff;}
-   .background-5 {background-color: rgb(@bg5);}
-   .background-6 {background-color: rgb(@bg6);}
-   .background-7 {background-color: rgb(@bg7);}
-   .background-8 {background-color: rgb(@bg8);}
-   .background-9 {background-color: rgb(@bg9);}
+   .background-5 {background-color: rgb(@bg5);   color: #fff;}
+   .background-6 {background-color: rgb(@bg6);   color: #fff;}
+   .background-7 {background-color: rgb(@bg7);   color: #fff;}
+   .background-8 {background-color: rgb(@bg8);   color: #fff;}
+   .background-9 {background-color: rgb(@bg9);   color: #fff;}
    .background-0 {background-color: rgb(@bg0); color: #fff;}
 
    @media (min-width: 1601px) {

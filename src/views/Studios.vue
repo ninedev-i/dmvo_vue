@@ -58,7 +58,7 @@
                <input type="checkbox" id="price" value="бесплатно" v-model="price"><label for="price">Бесплатно</label>
 
                <div
-                  v-if="age !== '' || category !== 'all' || price !== ''"
+                  v-if="age !== '' || category !== 'all' || price"
                   v-on:click="resetFilter()"
                   class="button-red studio__filter-reset">
                   Сбросить фильтр
@@ -86,7 +86,7 @@
       data() {
          return {
             category: 'all',
-            price: '',
+            price: false,
             age: ''
          }
       },
@@ -186,7 +186,7 @@
          resetFilter() {
             this.category = 'all';
             this.age = '';
-            this.price = '';
+            this.price = false;
          }
       }
    };
@@ -214,6 +214,7 @@
          }
 
          &-reset{
+            display: block;
             margin-top: 12px;
          }
       }
