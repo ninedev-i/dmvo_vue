@@ -13,9 +13,8 @@
       <aside>
          <div class="sidebar family__sidebar">
             <widgetVk group="105742526" />
-
-               <h3 class="padding-20">Руководитель:</h3>
-               <person :specialists="page.people" />
+            <h3 class="padding-20">Руководитель:</h3>
+            <widgetPerson :specialists="page.people" />
          </div>
 
       </aside>
@@ -24,13 +23,13 @@
 <script>
    // import eventsList from '../components/events/List.vue';
    import widgetVk from '../components/widgets/Vk.vue';
-   import person from '../components/widgets/Person.vue';
+   import widgetPerson from '../components/widgets/Person.vue';
 
    export default {
       components: {
          // eventsList,
-         widgetVk,
-         person
+         widgetPerson,
+         widgetVk
       },
       title () {
          return this.page.title;

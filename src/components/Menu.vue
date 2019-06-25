@@ -53,49 +53,25 @@
                   icon: '/public/menuIcons/about1.svg'
                },
                {
-                  name: 'aboutTeam',
-                  link: '/about/team',
-                  caption: 'Коллектив',
-                  parent: 'aboutInfo'
-               },
-               {
-                  name: 'aboutHalls',
-                  link: '/about/halls',
-                  caption: 'Материальная база',
-                  parent: 'aboutInfo'
-               },
-               {
-                  name: 'aboutStudio',
-                  link: '/about/studio',
-                  caption: 'Формы досуга',
-                  parent: 'aboutInfo'
-               },
-               {
-                  name: 'aboutVolunteer',
-                  link: '/about/volunteer',
-                  caption: 'Инициативы',
-                  parent: 'aboutInfo'
-               },
-               /*{
-                  name: 'aboutMassmedia',
-                  link: '/about/massmedia',
-                  caption: 'СМИ о нас',
-                  parent: 'aboutInfo',
-                  className: 'nav__menu-emptyLink'
-               },*/
-               {
                   name: 'aboutHistory',
                   link: '/about/history',
                   caption: 'История здания',
                   parent: 'aboutInfo'
                },
-               /*{
-                  name: 'aboutBoard',
-                  link: '/about/board',
-                  caption: 'Информационный стенд',
+               {
+                  name: 'aboutMassmedia',
+                  link: '/about/massmedia',
+                  caption: 'СМИ о нас',
                   parent: 'aboutInfo',
                   className: 'nav__menu-emptyLink'
-               },*/
+               },
+               {
+                  name: 'aboutProjects',
+                  link: '/about/projects',
+                  caption: 'Проекты',
+                  parent: 'aboutInfo',
+                  className: 'nav__menu-emptyLink'
+               },
 
                {
                   name: 'closestEvents',
@@ -109,13 +85,6 @@
                   caption: 'Прошедшие',
                   parent: 'closestEvents'
                },
-               /*{
-                  name: 'otherEvents',
-                  link: '/events/other',
-                  caption: 'Городские и районные',
-                  parent: 'closestEvents',
-                  className: 'nav__menu-emptyLink'
-               },*/
 
                {
                   name: 'studio',
@@ -131,10 +100,24 @@
                   icon: '/public/menuIcons/psychological.svg'
                },
                {
+                  name: 'freud',
+                  link: '/psychological/freud',
+                  caption: 'Клуб «У Фрейда»',
+                  parent: 'psychological',
+                  className: 'nav__menu-emptyLink'
+               },
+               {
                   name: 'volunteer',
                   link: '/volunteer',
                   caption: 'Волонтерский центр',
                   icon: '/public/menuIcons/volunteer.svg'
+               },
+               {
+                  name: 'initiative',
+                  link: '/volunteer/initiative',
+                  caption: 'Инициативы',
+                  parent: 'volunteer',
+                  className: 'nav__menu-emptyLink'
                },
                {
                   name: 'family',
@@ -168,7 +151,12 @@
                   parent: 'aboutService',
                   className: 'nav__menu-emptyLink'
                },
-
+               {
+                  name: 'board',
+                  link: '/board',
+                  caption: 'Информация',
+                  className: 'nav__menu-emptyLink'
+               },
                {
                   name: 'contact',
                   link: '/contact',
@@ -251,7 +239,7 @@
             }
 
             &-caption {
-               padding: 15px 10px 15px 0px;
+               padding: 15px 10px 15px 0;
             }
          }
 

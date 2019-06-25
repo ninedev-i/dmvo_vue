@@ -39,9 +39,10 @@
       </article>
 
       <aside>
-         <div class="sidebar">
-            <psyForm class="psychological__button" :specialists="page.people.slice(1)" />
-            <h3 class="padding-12">Наши специалисты:</h3>
+         <div class="sidebar psychological__sidebar">
+            <psyForm class="psychological__button margin-bottom-12" :specialists="page.people.slice(1)" />
+            <widgetVk group="123029997" />
+            <h3 class="padding-12 psychological__sidebar-title">Наши специалисты:</h3>
             <div v-for="(specialist, key) in page.people" class="psychological__specialist">
                <div>
                   <img
@@ -65,6 +66,7 @@
 <script>
    import eventsList from '../components/events/List.vue';
    import psyForm from '../components/forms/Psy.vue';
+   import widgetVk from '../components/widgets/Vk.vue';
    export default {
       data() {
          return {
@@ -75,7 +77,8 @@
       },
       components: {
          eventsList,
-         psyForm
+         psyForm,
+         widgetVk
       },
       title () {
          return this.page.title;
@@ -94,6 +97,16 @@
 </script>
 <style lang="less">
    .psychological {
+      &__sidebar {
+         &-title {
+            padding-top: 0 !important;
+         }
+         & .widget-vk {
+            height: 208px;
+            max-height: 208px;
+         }
+      }
+
       &__specialist {
          display: flex;
          flex-grow: 1;
@@ -125,7 +138,7 @@
             }
 
             &:last-of-type {
-               margin: 0px;
+               margin: 0;
             }
          }
       }

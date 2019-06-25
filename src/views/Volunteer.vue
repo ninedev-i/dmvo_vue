@@ -12,28 +12,26 @@
 
       <aside>
          <div class="sidebar volunteer__sidebar">
-            <volunteerForm class="volunteer__button" />
-
-            <!-- <widgetVk group="145772884" /> -->
-
+            <volunteerForm class="volunteer__button margin-bottom-12" />
+            <widgetVk group="182689576" />
             <h3 class="padding-20">Руководитель:</h3>
-            <person :specialists="page.people" />
+            <widgetPerson :specialists="page.people" />
          </div>
       </aside>
    </div>
 </template>
 <script>
-   // import widgetVk from '../components/widgets/Vk.vue';
    import photoGallery from '../components/events/PhotoGallery.vue';
    import volunteerForm from '../components/forms/Volunteer.vue';
-   import person from '../components/widgets/Person.vue';
+   import widgetPerson from '../components/widgets/Person.vue';
+   import widgetVk from '../components/widgets/Vk.vue';
 
    export default {
       components: {
          photoGallery,
          volunteerForm,
-         person
-         // widgetVk
+         widgetPerson,
+         widgetVk
       },
       data() {
          return {

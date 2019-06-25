@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import Cookie from 'cookie-universal'
+import qs from 'qs';
 
 Vue.use(Vuex);
 
@@ -42,9 +44,13 @@ const requestData = {
 };
 
 export function createStore () {
+   const cookies = Cookie();
    return new Vuex.Store({
       state: {
+         token: cookies.get('user-token') || '',
+
          apiHost: apiHost,
+
          index_carousel: [],
          index_closestEvents: [],
          index_closestExhibitions: [],
@@ -126,7 +132,7 @@ export function createStore () {
          },
 
          getNews({commit}, request) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                let url = request.tag ? `${apiHost}/get_news/${request.offset}/${request.tag}` : `${apiHost}/get_news/${request.offset}`;
                return axios.get(url).then((response) => {
                   response.tag = request.tag;
@@ -134,12 +140,27 @@ export function createStore () {
                   resolve(response.data);
                });
             });
+         },
 
+         login({commit}, request) {
+            const options = {
+               method: 'POST',
+               headers: {'content-type': 'application/x-www-form-urlencoded'},
+               data: qs.stringify({'email': request.email, 'password': request.password}),
+               url: `${apiHost}/login`
+            };
+            return axios(options).then(res => {
+               const token = res.data.success.token;
+               commit('setAuth', token);
+            }).catch(() => {
+               commit('setAuth', '');
+            });
          }
       },
 
       mutations: {
          /**
+          * @param state
           * @param data – возвращаем то что вернулось в запросе. в data.name лежит имя поля, куда все записываем
           */
          setData(state, data) {
@@ -183,6 +204,18 @@ export function createStore () {
 
          setTeamData(state, data) {
             Vue.set(state, 'team', data);
+         },
+
+
+         setAuth(state, token) {
+            cookies.set('user-token', token);
+            Vue.set(state, 'token', token);
+         }
+      },
+
+      getters: {
+         isAuthenticated: () => {
+            return !!cookies.get('user-token');
          }
       }
    })
