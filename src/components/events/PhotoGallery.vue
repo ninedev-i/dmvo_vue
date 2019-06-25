@@ -62,6 +62,9 @@
 
 <style lang="less">
    .photogallery {
+      position: relative;
+      z-index: 0;
+
       .swiper {
          &-container {
             width: 100%;

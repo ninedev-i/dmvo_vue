@@ -113,6 +113,14 @@
       line-height: 1.5em;
       font-family: 'PT Serif', serif;
       font-size: 18px;
+
+      &-scroll {
+         max-height: 100%;
+         width: 100%;
+         z-index: 1000;
+         overflow-x: hidden;
+         overflow-y: auto;
+      }
    }
    article {
       width: 100%;
@@ -123,8 +131,17 @@
    .hidden {
       display: none;
    }
-   .background-white {
-      background-color: white;
+   .background {
+      &-white {
+         background-color: white;
+      }
+      &-link {
+         &:hover {
+            cursor: pointer;
+            background-color: #e8f5f9;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+         }
+      }
    }
    .margin {
       &-bottom {
