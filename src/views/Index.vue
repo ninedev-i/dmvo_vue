@@ -2,7 +2,7 @@
    <div>
       <article>
          <div :class="whiteBgIfEvents()">
-            <h1 class="padding-20">{{$store.state.index_title}}</h1>
+            <h1 class="padding-20 margin-top-6">{{$store.state.index_title}}</h1>
             <slider data-server-rendered="true" />
             <eventsList title="Ближайшие мероприятия" titleTag="h2" type="index_closestEvents" data-server-rendered="true" />
             <eventsList title="Конкурсы и выставки" titleTag="h2" type="index_closestExhibitions" data-server-rendered="true" />

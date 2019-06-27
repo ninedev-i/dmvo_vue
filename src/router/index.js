@@ -16,6 +16,7 @@ const Studio = () => import('../views/Studio.vue');
 const Contact = () => import('../views/Contact.vue');
 const Empty = () => import('../views/Empty.vue');
 const Page = () => import('../views/Page.vue');
+const Board = () => import('../views/Board.vue');
 // const Team = () => import('../views/Team.vue');
 
 const Login = () => import('../views/Login.vue');
@@ -55,7 +56,7 @@ export const createRouter = () => {
          {path: '/transforce', name: 'transforce', component: Transforce},
          {path: '/family', name: 'family', component: Family},
          {path: '/contact', name: 'contact', component: Contact},
-         {path: '/board', name: 'board', component: Empty},
+         {path: '/board', name: 'board', component: Board},
          {path: '/login', name: 'login', component: Login}
       ]
    });

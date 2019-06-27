@@ -83,6 +83,9 @@ export function createStore () {
 
          transforce: {},
 
+         board_title: 'Информационный стенд',
+         board_posts: [],
+
          contact_page_title: 'Контактная информация Дома молодежи Василеостровского района',
          contacts: []
       },
@@ -139,6 +142,12 @@ export function createStore () {
                   commit('setNews', response);
                   resolve(response.data);
                });
+            });
+         },
+
+         getPosts({commit}) {
+            return axios.get(`${apiHost}/get_board_posts`).then(response => {
+               commit('setPostsData', response.data);
             });
          },
 
@@ -206,6 +215,9 @@ export function createStore () {
             Vue.set(state, 'team', data);
          },
 
+         setPostsData(state, data) {
+            Vue.set(state, 'board_posts', data);
+         },
 
          setAuth(state, token) {
             cookies.set('user-token', token);

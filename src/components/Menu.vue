@@ -151,12 +151,12 @@
                   parent: 'aboutService',
                   className: 'nav__menu-emptyLink'
                },
-               // {
-               //    name: 'board',
-               //    link: '/board',
-               //    caption: 'Информация',
-               //    className: 'nav__menu-emptyLink'
-               // },
+               {
+                  name: 'board',
+                  link: '/board',
+                  caption: 'Информация',
+                  icon: '/public/menuIcons/board.svg'
+               },
                {
                   name: 'contact',
                   link: '/contact',
