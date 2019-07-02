@@ -19,7 +19,7 @@
             </router-link>
          </div>
       </masonry>
-      <div class="button-blue padding-6" v-on:click="addMore()" v-if="showMore">Еще…</div>
+      <div class="button-blue padding-6" v-on:click="addMore()" v-if="showMore && news && news.length >= 12">Еще…</div>
    </div>
 </template>
 <script>
@@ -45,7 +45,15 @@
 
       computed: {
          news() {
-            return this.directionTag ? this.$store.state.studio_news : this.$store.state.index_news;
+            let output;
+            if (this.directionTag === 'psychological') {
+               output = this.$store.state.psychological.events;
+            } else if (this.directionTag) {
+               output = this.$store.state.studio.events;
+            } else {
+               output = this.$store.state.index_news;
+            }
+            return output;
          }
       },
       methods: {
@@ -103,14 +111,14 @@
          }
 
          &-text {
-            padding: 0px 20px 15px;
+            padding: 0 20px 15px;
             color: #8a8a8a;
          }
 
          a, p, b, i {
             text-decoration: none;
             font-weight: normal;
-            margin: 0px;
+            margin: 0;
             font-style: normal;
          }
       }

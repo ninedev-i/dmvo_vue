@@ -36,6 +36,8 @@
                </div>
            </div>
          </div>
+
+         <news title="Архив мероприятий" v-bind:showText="false" directionTag="psychological" data-server-rendered="true" />
       </article>
 
       <aside>
@@ -64,6 +66,7 @@
    </div>
 </template>
 <script>
+   import news from '../components/events/News.vue';
    import eventsList from '../components/events/List.vue';
    import psyForm from '../components/forms/Psy.vue';
    import widgetVk from '../components/widgets/Vk.vue';
@@ -78,7 +81,8 @@
       components: {
          eventsList,
          psyForm,
-         widgetVk
+         widgetVk,
+         news
       },
       title () {
          return this.page.title;

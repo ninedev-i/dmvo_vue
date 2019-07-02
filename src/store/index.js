@@ -68,7 +68,7 @@ export function createStore () {
 
          studio: {},
          studio_page: [],
-         studio_news: [],
+         studio_news: {},
          studio_page_title: 'Студии и секции дома молодежи Василеостровского района',
 
          page: {},
@@ -184,10 +184,12 @@ export function createStore () {
          },
 
          setNews(state, response) {
-            if (response.tag) {
-               let newArray = state.studio_news.concat(response.data);
-               state.studio_news.concat(response.data);
-               Vue.set(state, 'studio_news', newArray);
+            if (response.tag === 'psychological') {
+               let psyEvents = state.psychological.events.concat(response.data);
+               Vue.set(state.psychological, 'events', psyEvents);
+            } else if (response.tag) {
+               let studioEvents = state.studio.events.concat(response.data);
+               Vue.set(state.studio, 'events', studioEvents);
             } else {
                let newArray = state.index_news.concat(response.data);
                state.index_news.concat(response.data);

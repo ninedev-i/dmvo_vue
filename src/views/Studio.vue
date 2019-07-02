@@ -15,7 +15,7 @@
             </div>-->
          </div>
          <photoGallery :title="studio.title" :photos="studio.images" />
-<!--         <news title="Участие в мероприятиях" v-bind:showText="false" directionTag="icebreaker" data-server-rendered="true" />-->
+         <news title="Участие в мероприятиях" v-bind:showText="false" :directionTag="studio.shortname" data-server-rendered="true" />
       </article>
       <aside>
          <div class="sidebar">
@@ -65,10 +65,6 @@
 
       asyncData({store, route}) {
          return store.dispatch('getStudio', {id: route.params.shortName});
-      },
-
-      mounted() {
-         this.$store.dispatch('getNews', {offset: 0, tag: this.studio.shortname});
       },
 
       computed: {
