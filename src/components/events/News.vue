@@ -1,6 +1,6 @@
 <template>
    <div class="news__container">
-      <h2 class="padding-20">{{title}}</h2>
+      <h2 class="padding-20" v-if="news.length">{{title}}</h2>
       <masonry
          :cols="{default: 3, 1450: 2, 1200: 1}"
          :gutter="{default: '20px'}"

@@ -55,8 +55,7 @@ module.exports = {
            ? ExtractTextPlugin.extract({
                use: [
                  {
-                   loader: 'css-loader',
-                   options: { minimize: true }
+                   loader: 'css-loader'
                  },
                  'less-loader'
                ],
