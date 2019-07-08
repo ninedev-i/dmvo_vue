@@ -8,6 +8,7 @@
             </div>
          </div>
          <photoGallery :title="page.title" :photos="photos" />
+         <news title="Архив мероприятий" v-bind:showText="false" directionTag="online" data-server-rendered="true" />
       </article>
 
       <aside>
@@ -22,6 +23,7 @@
 </template>
 <script>
    import photoGallery from '../components/events/PhotoGallery.vue';
+   import news from '../components/events/News.vue';
    import volunteerForm from '../components/forms/Volunteer.vue';
    import widgetPerson from '../components/widgets/Person.vue';
    import widgetVk from '../components/widgets/Vk.vue';
@@ -29,6 +31,7 @@
    export default {
       components: {
          photoGallery,
+         news,
          volunteerForm,
          widgetPerson,
          widgetVk

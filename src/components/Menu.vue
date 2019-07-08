@@ -271,8 +271,9 @@
             height: 20px;
             position: absolute;
             z-index: 100;
-            top: 25px;
-            left: 18px;
+            top: 10px;
+            left: 3px;
+            padding: 15px;
 
             display: flex;
             flex-direction: column;

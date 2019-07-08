@@ -14,6 +14,7 @@
                <div v-html="page.description"></div>
             </div>
          </div>
+         <news title="Архив мероприятий" v-bind:showText="false" directionTag="transforce" data-server-rendered="true" />
       </article>
 
       <aside>
@@ -27,11 +28,13 @@
    </div>
 </template>
 <script>
+   import news from '../components/events/News.vue';
    import transforceForm from '../components/forms/Transforce.vue';
    import person from '../components/widgets/Person.vue';
 
    export default {
       components: {
+         news,
          transforceForm,
          person
       },

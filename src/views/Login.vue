@@ -1,8 +1,12 @@
 <template>
    <div>
-      <button v-on:click="register()">Регистрация</button>
-      <button v-on:click="login()">Логин</button>
-      <div v-if="$store.getters.isAuthenticated">Авторизован</div>
+      <div class="loginContainer">
+         <div><b v-if="$store.getters.isAuthenticated">Авторизован</b></div>
+         <div><input type="email" v-model="email" placeholder="Email" /></div>
+         <div><input type="text" v-model="password" placeholder="Пароль" /></div>
+         <div><button v-on:click="login()">Логин</button></div>
+      </div>
+      <!--<button v-on:click="register()">Регистрация</button>-->
    </div>
 </template>
 
@@ -10,9 +14,10 @@
    import axios from 'axios';
 
    export default {
-      computed: {
-         isAuthorized() {
-            return this.$store.state.token;
+      data() {
+         return {
+            email: '',
+            password: ''
          }
       },
 
@@ -27,12 +32,19 @@
          },
 
          login() {
-            this.$store.dispatch('login', {email: 'email@email.ru', password: 'password'});
+            this.$store.dispatch('login', {email: this.email, password: this.password})
+               // .then(res => location.href = 'login');
          }
       }
    }
 </script>
 
-<style scoped>
-
+<style lang="less">
+   .loginContainer {
+      display: flex;
+      flex-direction: column;
+      div {
+         margin-bottom: 12px;
+      }
+   }
 </style>

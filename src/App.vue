@@ -103,6 +103,7 @@
    #app {
       width: 100%;
       display: flex;
+      overflow-x: hidden;
    }
    .container {
       display: flex;

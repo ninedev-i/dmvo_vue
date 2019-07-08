@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-import Cookie from 'cookie-universal'
+import Cookie from 'cookie-universal';
 import qs from 'qs';
 
 Vue.use(Vuex);
@@ -184,16 +184,26 @@ export function createStore () {
          },
 
          setNews(state, response) {
+            let eventsArray = [];
             if (response.tag === 'psychological') {
-               let psyEvents = state.psychological.events.concat(response.data);
-               Vue.set(state.psychological, 'events', psyEvents);
+               eventsArray = state.psychological.events.concat(response.data);
+               Vue.set(state.psychological, 'events', eventsArray);
+            } else if (response.tag === 'online') {
+               eventsArray = state.volunteer.events.concat(response.data);
+               Vue.set(state.volunteer, 'events', eventsArray);
+            } else if (response.tag === 'family') {
+               eventsArray = state.family.events.concat(response.data);
+               Vue.set(state.family, 'events', eventsArray);
+            } else if (response.tag === 'transforce') {
+               eventsArray = state.transforce.events.concat(response.data);
+               Vue.set(state.transforce, 'events', eventsArray);
             } else if (response.tag) {
-               let studioEvents = state.studio.events.concat(response.data);
-               Vue.set(state.studio, 'events', studioEvents);
+               eventsArray = state.studio.events.concat(response.data);
+               Vue.set(state.studio, 'events', eventsArray);
             } else {
-               let newArray = state.index_news.concat(response.data);
+               eventsArray = state.index_news.concat(response.data);
                state.index_news.concat(response.data);
-               Vue.set(state, 'index_news', newArray);
+               Vue.set(state, 'index_news', eventsArray);
             }
          },
 
@@ -222,7 +232,13 @@ export function createStore () {
          },
 
          setAuth(state, token) {
-            cookies.set('user-token', token);
+            if (process.browser) {
+               cookies.set('user-token', token);
+            } else {
+               let cookies = new Cookies(req.headers.cookie);
+               cookies.set('user-token', token);
+            }
+
             Vue.set(state, 'token', token);
          }
       },

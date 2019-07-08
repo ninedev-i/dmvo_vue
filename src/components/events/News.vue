@@ -48,6 +48,12 @@
             let output;
             if (this.directionTag === 'psychological') {
                output = this.$store.state.psychological.events;
+            } else if (this.directionTag === 'online') {
+               output = this.$store.state.volunteer.events;
+            } else if (this.directionTag === 'family') {
+               output = this.$store.state.family.events;
+            } else if (this.directionTag === 'transforce') {
+               output = this.$store.state.transforce.events;
             } else if (this.directionTag) {
                output = this.$store.state.studio.events;
             } else {
@@ -70,7 +76,6 @@
                   this.showMore = false;
                }
             });
-            // return this.$store.dispatch('getNews', {offset: offset, tag: this.directionTag});
          },
 
          slicedTitle(title) {

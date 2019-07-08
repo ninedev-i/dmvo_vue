@@ -6,8 +6,8 @@
                <h1>{{page.title}}</h1>
                <div v-html="page.description"></div>
             </div>
-            <!-- <eventsList title="Ближайшие мероприятия" titleTag="h3" type="family_closestEvents" data-server-rendered="true" /> -->
          </div>
+         <news title="Архив мероприятий" v-bind:showText="false" directionTag="online" data-server-rendered="true" />
       </article>
 
       <aside>
@@ -21,13 +21,13 @@
    </div>
 </template>
 <script>
-   // import eventsList from '../components/events/List.vue';
+   import news from '../components/events/News.vue';
    import widgetVk from '../components/widgets/Vk.vue';
    import widgetPerson from '../components/widgets/Person.vue';
 
    export default {
       components: {
-         // eventsList,
+         news,
          widgetPerson,
          widgetVk
       },

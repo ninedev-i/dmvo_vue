@@ -14,7 +14,7 @@
                <div v-html="studio.achievements"></div>
             </div>-->
          </div>
-         <photoGallery :title="studio.title" :photos="studio.images" />
+         <photoGallery class="studio-gallery" :title="studio.title" :photos="studio.images" />
          <news title="Участие в мероприятиях" v-bind:showText="false" :directionTag="studio.shortname" data-server-rendered="true" />
       </article>
       <aside>
@@ -76,6 +76,8 @@
 </script>
 <style lang="less">
    .studio {
-
+      &-gallery .swiper-container {
+         height: 220px;
+      }
    }
 </style>
