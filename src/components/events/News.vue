@@ -1,6 +1,6 @@
 <template>
    <div class="news__container">
-      <h2 class="padding-20" v-if="news.length">{{title}}</h2>
+      <h2 class="padding-20" v-if="news && news.length">{{title}}</h2>
       <masonry
          :cols="{default: 3, 1450: 2, 1200: 1}"
          :gutter="{default: '20px'}"
@@ -19,7 +19,7 @@
             </router-link>
          </div>
       </masonry>
-      <div class="button-blue padding-6" v-on:click="addMore()" v-if="showMore && news && news.length >= 12">Еще…</div>
+      <div class="button-blue padding-6" v-on:click="addMore()" v-if="showMore && news && news.length>= 12">Еще…</div>
    </div>
 </template>
 <script>
@@ -45,7 +45,7 @@
 
       computed: {
          news() {
-            let output;
+            let output = [];
             if (this.directionTag === 'psychological') {
                output = this.$store.state.psychological.events;
             } else if (this.directionTag === 'online') {

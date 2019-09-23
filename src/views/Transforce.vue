@@ -21,9 +21,8 @@
          <div class="sidebar transforce__sidebar">
             <transforceForm :shows="shows" />
             <h3 class="padding-20">Руководитель:</h3>
-            <person :specialists="page.people" />
+            <person :specialists="page.people" :isSmall="true"  :showPhone="true" />
          </div>
-
       </aside>
    </div>
 </template>

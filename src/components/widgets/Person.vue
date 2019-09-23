@@ -1,17 +1,34 @@
 <template>
-   <div class="background-white padding-20 margin-bottom-12 background-link">
+   <div :class="`${isSmall ? '' : 'background-white padding-20 background-link margin-bottom-12'}`">
       <a v-for="specialist in specialists" class="widget-person" data-nice="inline" href="#widgetPerson">
          <div v-on:click="getUserInfo(specialist.id)">
-            <b>{{specialist.name}}</b>
-            <div>
-               <img
-                  :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
-                  class="widget-person__photo"
-                  :title="specialist.name"
-                  :alt="specialist.name"
-               />
-               <div v-if="showPhone"><b>Телефон: </b><a :href="`tel:${specialist.phone}`" v-on:click="phoneCall(specialist.phone)">{{specialist.phone}}</a></div>
-               <div v-if="showEmail"><b>E-mail: </b><a :href="`mailto:${specialist.email}?subject=Письмо с сайта`" v-on:click="textMessage(specialist.email)">{{specialist.email}}</a></div>
+            <div v-if="isSmall" class="widget-person__specialist background-white background-link">
+               <div>
+                  <img
+                     :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/${specialist.username}.jpg`"
+                     class="widget-person__specialist-photo"
+                     :title="specialist.name"
+                     :alt="specialist.name"
+                  />
+                  <div class="widget-person__specialist-position">
+                     <b>{{specialist.name}}</b>
+                     <div style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" :title="specialist.position">{{specialist.position}}</div>
+                     <div v-if="showPhone"><a :href="`tel:${specialist.phone}`" v-on:click="phoneCall(specialist.phone)">{{specialist.phone}}</a></div>
+                  </div>
+               </div>
+            </div>
+            <div v-else>
+               <b>{{specialist.name}}</b>
+               <div>
+                  <img
+                     :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/${specialist.username}.jpg`"
+                     class="widget-person__photo"
+                     :title="specialist.name"
+                     :alt="specialist.name"
+                  />
+                  <div v-if="showPhone"><b>Телефон: </b><a :href="`tel:${specialist.phone}`" v-on:click="phoneCall(specialist.phone)">{{specialist.phone}}</a></div>
+                  <div v-if="showEmail"><b>E-mail: </b><a :href="`mailto:${specialist.email}?subject=Письмо с сайта`" v-on:click="textMessage(specialist.email)">{{specialist.email}}</a></div>
+               </div>
             </div>
          </div>
       </a>
@@ -49,6 +66,10 @@
       props: {
          specialists: Array,
          phone: String,
+         isSmall: {
+            type: Boolean,
+            default: false
+         },
          showPhone: {
             type: Boolean,
             default: true
@@ -126,6 +147,24 @@
       &__photo {
          width: 100%;
          margin: 10px 0 0;
+      }
+
+      &__specialist {
+         display: flex;
+         flex-grow: 1;
+         flex-direction: column;
+         background-color: white;
+         padding: 15px;
+
+         &-position {
+            text-transform: capitalize;
+         }
+         &-photo {
+            display: block;
+            float: left;
+            height: 120px;
+            margin-right: 12px;
+         }
       }
    }
 </style>

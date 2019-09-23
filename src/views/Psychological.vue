@@ -45,23 +45,8 @@
             <psyForm class="psychological__button margin-bottom-12" :specialists="page.people.slice(1)" />
             <widgetVk group="123029997" />
             <h3 class="padding-12 psychological__sidebar-title">Наши специалисты:</h3>
-            <div v-for="(specialist, key) in page.people" class="psychological__specialist">
-               <div>
-                  <img
-                     :src="'https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/users/' + specialist.username + '.jpg'"
-                     class="psychological__specialist-photo"
-                     :title="specialist.name"
-                     :alt="specialist.name"
-                  />
-                  <div class="psychological__specialist-position">
-                     <b>{{specialist.name}}</b>
-                     <div v-if="key === 0">Заведующая отделом</div>
-                     <div v-else>{{specialist.position}}</div>
-                  </div>
-               </div>
-            </div>
+            <person :specialists="page.people" :showPhone="false" :showEmail="false" :isSmall="true" />
          </div>
-
       </aside>
    </div>
 </template>
@@ -70,6 +55,8 @@
    import eventsList from '../components/events/List.vue';
    import psyForm from '../components/forms/Psy.vue';
    import widgetVk from '../components/widgets/Vk.vue';
+   import person from '../components/widgets/Person.vue';
+
    export default {
       data() {
          return {
@@ -82,7 +69,8 @@
          eventsList,
          psyForm,
          widgetVk,
-         news
+         news,
+         person
       },
       title () {
          return this.page.title;
@@ -108,25 +96,6 @@
          & .widget-vk {
             height: 208px;
             max-height: 208px;
-         }
-      }
-
-      &__specialist {
-         display: flex;
-         flex-grow: 1;
-         flex-direction: column;
-         background-color: white;
-         padding: 15px;
-         margin-bottom: 12px;
-
-         &-position {
-            text-transform: capitalize;
-         }
-         &-photo {
-            display: block;
-            float: left;
-            height: 120px;
-            margin-right: 12px;
          }
       }
 
