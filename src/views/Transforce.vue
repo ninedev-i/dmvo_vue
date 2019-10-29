@@ -7,7 +7,6 @@
                <iframe
                   class="transforce__youtube"
                   width="100%"
-                  frameborder="0"
                   src="https://www.youtube.com/embed/fdUSuqtskxs?controls=0"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                </iframe>
@@ -21,7 +20,7 @@
          <div class="sidebar transforce__sidebar">
             <transforceForm :shows="shows" />
             <h3 class="padding-20">Руководитель:</h3>
-            <person :specialists="page.people" :isSmall="true"  :showPhone="true" />
+            <person :specialists="page.people" :isSmall="true" :showPhone="true" />
          </div>
       </aside>
    </div>
@@ -59,6 +58,7 @@
    .transforce {
       &__youtube {
          height: 450px;
+         border: 0;
       }
       &__table {
          border-collapse: collapse;

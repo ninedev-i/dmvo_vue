@@ -15,7 +15,7 @@
                   :style="'background-image: url(https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
                </div>
                <div class="news__item-title" :title="event.title">{{slicedTitle(event.title)}}</div>
-               <div class="news__item-text" v-if="showText || !event.pictures.length" v-html="getDescription(event.post_reliz)"></div>
+               <div class="news__item-text" v-if="showText || !event.pictures.length" v-html="getDescription(event.post_reliz || event.content)"></div>
             </router-link>
          </div>
       </masonry>

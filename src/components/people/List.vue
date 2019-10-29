@@ -4,8 +4,8 @@
          :cols="{default: 2, 1600: 1}"
          :gutter="{default: '20px'}"
          >
-         <div v-for="user in people" class="peopleList__user">
-            <div class="peopleList__user-info">
+         <div v-for="user in people" :class="`peopleList__user user__${user.id}`">
+            <div class="peopleList__user-info" :key="user.id">
                <b>{{user.name}}</b>
                <div class="peopleList__user-position">{{user.position}}</div>
                <div v-if="user.phone"><a :href="`tel:${user.phone}`">{{user.phone}}</a></div>

@@ -7,7 +7,7 @@
                <div v-html="page.description"></div>
             </div>
          </div>
-         <news title="Архив мероприятий" v-bind:showText="false" directionTag="online" data-server-rendered="true" />
+         <news title="Архив мероприятий" :showText="false" directionTag="family" data-server-rendered="true" />
       </article>
 
       <aside>
@@ -16,7 +16,6 @@
             <h3 class="padding-20">Руководитель:</h3>
             <widgetPerson :specialists="page.people" />
          </div>
-
       </aside>
    </div>
 </template>
