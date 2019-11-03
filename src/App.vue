@@ -11,6 +11,10 @@
    export default {
       components: {
          sidebarMenu
+      },
+
+      beforeCreate() {
+         this.$store.getters.isAuthenticated;
       }
    };
 </script>

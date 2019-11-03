@@ -17,7 +17,8 @@ const Contact = () => import('../views/Contact.vue');
 const Empty = () => import('../views/Empty.vue');
 const Page = () => import('../views/Page.vue');
 const Board = () => import('../views/Board.vue');
-// const Team = () => import('../views/Team.vue');
+
+const EditContact = () => import('../views/Admin/Contact.vue');
 
 const Login = () => import('../views/Login.vue');
 
@@ -57,7 +58,9 @@ export const createRouter = () => {
          {path: '/family', name: 'family', component: Family},
          {path: '/contact', name: 'contact', component: Contact},
          {path: '/board', name: 'board', component: Board},
-         {path: '/login', name: 'login', component: Login}
+         {path: '/login', name: 'login', component: Login},
+
+         {path: '/contact/edit', name: 'editContact', component: EditContact},
       ]
    });
 };

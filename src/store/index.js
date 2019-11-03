@@ -4,6 +4,8 @@ import axios from 'axios';
 import Cookie from 'cookie-universal';
 import qs from 'qs';
 
+const cookies = new Cookie();
+
 Vue.use(Vuex);
 
 let apiHost = process.env.NODE_ENV === 'production' ? 'https://old.доммолодежи.рф/api' : 'http://dmvo.local/api';
@@ -87,7 +89,9 @@ export function createStore () {
          board_posts: [],
 
          contact_page_title: 'Контактная информация Дома молодежи Василеостровского района',
-         contacts: []
+         contacts: [],
+
+         isAdmin: false
       },
 
       actions: {
@@ -152,18 +156,19 @@ export function createStore () {
          },
 
          login({commit}, request) {
-            const options = {
-               method: 'POST',
-               headers: {'content-type': 'application/x-www-form-urlencoded'},
-               data: qs.stringify({'email': request.email, 'password': request.password}),
-               url: `${apiHost}/login`
-            };
-            return axios(options).then(res => {
-               const token = res.data.success.token;
-               commit('setAuth', token);
-            }).catch(() => {
-               commit('setAuth', '');
-            });
+            try {
+               return axios.post('http://dmvo.local/api/ping', request)
+                  .then(res => {
+                     commit('setAuth', res);
+                  });
+            } catch(err) {
+               alert(err);
+            }
+
+         },
+
+         logout({commit}) {
+            commit('logout');
          }
       },
 
@@ -231,21 +236,23 @@ export function createStore () {
             Vue.set(state, 'board_posts', data);
          },
 
-         setAuth(state, token) {
-            if (process.browser) {
-               cookies.set('user-token', token);
-            } else {
-               let cookies = new Cookies(req.headers.cookie);
-               cookies.set('user-token', token);
+         setAuth(state, res) {
+            if (res.data) {
+               Vue.set(state, 'isAdmin', true);
+               cookies.set('isAdmin', true);
             }
-
-            Vue.set(state, 'token', token);
+         },
+         logout(state, res) {
+            Vue.set(state, 'isAdmin', false);
+            cookies.set('isAdmin', false);
          }
       },
 
       getters: {
-         isAuthenticated: () => {
-            return !!cookies.get('user-token');
+         isAuthenticated: (state) => {
+            if (cookies.get('isAdmin')) {
+               Vue.set(state, 'isAdmin', true);
+            }
          }
       }
    })

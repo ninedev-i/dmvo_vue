@@ -9,6 +9,11 @@
 
       <aside>
          <div class="sidebar">
+            <admin>
+               <template>
+                  <router-link to="/contact/edit" tag="a">Редактировать</router-link>
+               </template>
+            </admin>
             <widgetAddress />
             <widgetVk group="20668429" />
          </div>
@@ -18,12 +23,14 @@
 <script>
    import ymaps from 'ymaps';
    import peopleList from '../components/people/List.vue';
+   import admin from '../components/widgets/Admin.vue';
    import widgetAddress from '../components/widgets/Address.vue';
    import widgetVk from '../components/widgets/Vk.vue';
 
    export default {
       components: {
          peopleList,
+         admin,
          widgetAddress,
          widgetVk
       },
