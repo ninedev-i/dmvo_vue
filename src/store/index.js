@@ -9,7 +9,7 @@ const apiHost = process.env.NODE_ENV === 'production' ? 'https://old.доммо�
 
 const requestData = {
    closestEvents: {
-      state: 'events_closest',
+      state: 'events',
       method: 'get_all_closest_events',
    },
    contacts: {
@@ -58,7 +58,7 @@ export function createStore () {
          team: [],
 
          event: {},
-         events_closest: [],
+         events: {},
          events_past: [],
 
          studio: {},

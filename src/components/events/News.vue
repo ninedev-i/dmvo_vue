@@ -13,6 +13,7 @@
                   v-if="event.pictures.length"
                   :title="event.title"
                   :style="'background-image: url(https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/' + event.pictures[0] + ');'">
+                  <div class="news__item-date">{{getPeriod(event.date_from, event.date_to, true, true)}}</div>
                </div>
                <div class="news__item-title" :title="event.title">{{slicedTitle(event.title)}}</div>
                <div class="news__item-text" v-if="showText || !event.pictures.length" v-html="getDescription(event.post_reliz || event.content)"></div>
@@ -99,6 +100,7 @@
          }
 
          &-picture {
+            position: relative;
             background-color: #1392BD;
             background-size: cover;
             background-position: 50% 20%;
@@ -107,6 +109,15 @@
             @media (min-width: 2000px) {
                height: 240px;
              }
+         }
+
+         &-date {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(19, 146, 189, 0.9, 0.8);
+            color: #fff;
+            padding: 4px 10px;
          }
 
          &-title {

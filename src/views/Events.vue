@@ -3,7 +3,7 @@
       <article class="padding-20 background-white">
          <h1>{{title}}</h1>
          <div class="events__list">
-            <router-link v-for="(event, i) in closestEvents" v-bind:to="'events/' + event.id" class="events__list-block" :title="event.title" :key="event.id">
+            <router-link v-for="event in $store.state.events.closestEvents" v-bind:to="'events/' + event.id" class="events__list-block" :title="event.title" :key="event.id">
                <div
                   :class="`events__list-block-container background-main events__list-block-container-${event.cover ? 'cover' : 'withbg'}`"
                   :style="event.cover ? `background-image: url('https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}')` : ''"
@@ -17,20 +17,40 @@
                   </div>
                </div>
             </router-link>
-            <div
-               v-if="closestEvents.length === 0"
+            <!--<div
+               v-if="$store.state.events.closestEvents.length === 0"
                class="events__emptyList"
                >
                Нет мероприятий, удовлетворяющих условиям фильтрации. <u v-on:click="resetFilter()">Сбросить фильтр</u>
-            </div>
+            </div>-->
+         </div>
+
+         <h2 v-if="$store.state.events.exhibitions.length">Выставки и конкурсы</h2>
+         <div class="events__list" v-if="$store.state.events.exhibitions.length">
+            <router-link v-for="event in $store.state.events.exhibitions" v-bind:to="'events/' + event.id" class="events__list-block" :title="event.title" :key="event.id">
+               <div
+                  :class="`events__list-block-container background-main events__list-block-container-${event.cover ? 'cover' : 'withbg'}`"
+                  :style="event.cover ? `background-image: url('https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}')` : ''"
+                  >
+                  <div :class="`events__list-block-title ${!event.cover ? '' : 'events__list-block-title-bottom events__list-block-title-animation'}`">
+                     <span>{{event.title}}</span>
+                     <div class="events__list-block-dateInfo">
+                        {{getPeriod(event.date_from, event.date_to, true, true)}}
+                     </div>
+                  </div>
+               </div>
+            </router-link>
+         </div>
+         <div v-if="!$store.state.events.closestEvents.length && !$store.state.events.exhibitions.length" class="events__emptyList">
+            В данный момент мероприятия не анонсированы.
          </div>
       </article>
       <aside>
          <div class="sidebar">
-            <div class="padding-20 background-white margin-bottom-12">
+            <!--<div class="padding-20 background-white margin-bottom-12">
                <h3>Фильтр</h3>
                <b>Направления:</b>
-               <!--<radioButtons :data="eventTypes" :selectedItem="eventType"  v-on:changeSelectedItem="changeSelectedItem" />-->
+               &lt;!&ndash;<radioButtons :data="eventTypes" :selectedItem="eventType"  v-on:changeSelectedItem="changeSelectedItem" />&ndash;&gt;
                <div class="events__filter">
                   <div><input type="radio" id="all" value="all" v-model="eventType"><label for="all">Все</label></div>
                   <div><input type="radio" id="exhibitions" value="exhibitions" v-model="eventType"><label for="exhibitions">Выставки</label></div>
@@ -42,7 +62,7 @@
                   class="button-red margin-top-12">
                   Сбросить фильтр
                </div>
-            </div>
+            </div>-->
 
             <widgetAddress />
          </div>
@@ -79,32 +99,32 @@
          return store.dispatch('getData', {name: 'closestEvents'});
       },
 
-      computed: {
-         closestEvents() {
-            let data = this.$store.state.events_closest;
-            return data.filter(event => {
-               switch (this.eventType) {
-                  case 'all':
-                     return true;
-                  case 'exhibitions':
-                     return event.tags.search('exhibition') >= 0;
-                  case 'other':
-                     return event.tags.search('news') >= 0;
-                  default:
-                     return false;
-               }
-            });
-         }
-      },
-
-      methods: {
-         changeSelectedItem(id) {
-            this.eventType = id;
-         },
-         resetFilter() {
-            this.eventType = 'all';
-         }
-      }
+      // computed: {
+      //    closestEvents() {
+      //       let data = this.$store.state.events_closest;
+      //       return data.filter(event => {
+      //          switch (this.eventType) {
+      //             case 'all':
+      //                return true;
+      //             case 'exhibitions':
+      //                return event.tags.search('exhibition') >= 0;
+      //             case 'other':
+      //                return event.tags.search('news') >= 0;
+      //             default:
+      //                return false;
+      //          }
+      //       });
+      //    }
+      // },
+      //
+      // methods: {
+      //    changeSelectedItem(id) {
+      //       this.eventType = id;
+      //    },
+      //    resetFilter() {
+      //       this.eventType = 'all';
+      //    }
+      // }
    };
 </script>
 <style lang="less">
