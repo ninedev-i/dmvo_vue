@@ -2,7 +2,7 @@
    <div>
       <article>
          <div class="padding-20">
-            <h1>{{$store.state.team_title}}</h1>
+            <h1>{{title}}</h1>
             <peopleList :people="team" :showReception="false" />
          </div>
       </article>
@@ -28,12 +28,13 @@
 
       data() {
          return {
+            title: 'Коллектив Дома молодежи',
             position: '',
          }
       },
 
       title () {
-         return this.$store.state.team_title;
+         return this.title;
       },
 
       asyncData({store}) {

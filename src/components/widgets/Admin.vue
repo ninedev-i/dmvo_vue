@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div v-if="$store.state.isAdmin" class="background-white padding-20 margin-bottom-12">
+      <div v-if="$store.state.admin.isAdmin" class="background-white padding-20 margin-bottom-12">
          <slot></slot>
       </div>
    </div>

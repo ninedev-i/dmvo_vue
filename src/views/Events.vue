@@ -1,7 +1,7 @@
 <template>
    <div>
       <article class="padding-20 background-white">
-         <h1>{{$store.state.events_closest_title}}</h1>
+         <h1>{{title}}</h1>
          <div class="events__list">
             <router-link v-for="(event, i) in closestEvents" v-bind:to="'events/' + event.id" class="events__list-block" :title="event.title" :key="event.id">
                <div
@@ -61,6 +61,7 @@
 
       data() {
          return {
+            title: 'Ближайшие мероприятия дома молодежи Василеостровского района',
             eventType: 'all',
             eventTypes: [
                {id: 'all', caption: 'Все'},
@@ -71,7 +72,7 @@
       },
 
       title () {
-         return this.$store.state.events_closest_title;
+         return this.title;
       },
 
       asyncData({store, route}) {

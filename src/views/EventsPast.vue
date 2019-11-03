@@ -1,7 +1,7 @@
 <template>
    <div>
       <article class="padding-20 background-white">
-         <h1>{{$store.state.events_past_title}}</h1>
+         <h1>{{title}}</h1>
 
          <div v-for="(events, month) in pastEvents" class="pastEvents__month">
             <div v-if="events.length && month!== 'name'" class="pastEvents__item">
@@ -55,13 +55,14 @@
    export default {
       data() {
          return {
+            title: 'Архив мероприятий',
             searchString: '',
             yearFilter: new Date().getFullYear()
          };
       },
 
       title () {
-         return this.$store.state.events_past_title;
+         return this.title;
       },
 
       asyncData({store, route}) {

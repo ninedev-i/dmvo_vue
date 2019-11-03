@@ -1,7 +1,7 @@
 <template>
    <div>
       <div class="loginContainer">
-         <div v-if="$store.state.isAdmin">
+         <div v-if="$store.state.admin.isAdmin">
             <div><button v-on:click="logout()">Выход</button></div>
          </div>
          <div v-else>

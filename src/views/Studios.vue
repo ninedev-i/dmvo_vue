@@ -3,7 +3,7 @@
       <article>
          <div class="background-white">
             <div class="padding-20">
-               <h1>{{$store.state.studio_page_title}}</h1>
+               <h1>{{title}}</h1>
                <!-- Все направления -->
                <div v-if="directionsCounter > 1">
                   <masonry
@@ -85,6 +85,7 @@
 
       data() {
          return {
+            title: 'Студии и секции дома молодежи Василеостровского района',
             category: 'all',
             price: false,
             age: ''
@@ -92,7 +93,7 @@
       },
 
       title () {
-         return this.$store.state.studio_page_title;
+         return this.title;
       },
 
       asyncData({store}) {

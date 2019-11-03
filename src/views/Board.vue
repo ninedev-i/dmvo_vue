@@ -2,7 +2,7 @@
    <div>
       <article>
          <div>
-            <h1 class="margin-bottom-6 margin-top-6 padding-20">{{$store.state.board_title}}</h1>
+            <h1 class="margin-bottom-6 margin-top-6 padding-20">{{title}}</h1>
             <div v-for="(post, i) in posts" class="board__post padding-20 background-white" :key="`post_${i}`" :id="`post-${i}`">
                <div class="board__post-title">{{post.title}}</div>
                <div v-html="post.content" class="board__post-content board__post-overflowed"></div>
@@ -32,8 +32,14 @@
          widgetImportantLinks
       },
 
+      data() {
+         return {
+            title: 'Информационный стенд'
+         }
+      },
+
       title () {
-         return this.$store.state.board_title;
+         return this.title;
       },
 
       asyncData({store}) {

@@ -1,7 +1,7 @@
 <template>
    <div>
       <article>
-         <h1 class="padding-20">{{$store.state.contact_page_title}}</h1>
+         <h1 class="padding-20">{{title}}</h1>
          <div id="map"></div>
          <h2 class="padding-20">Руководство Дома молодежи</h2>
          <peopleList :people="contacts" :showReception="false" />
@@ -34,8 +34,14 @@
          widgetAddress,
          widgetVk
       },
+      data() {
+         return {
+            title: 'Контактная информация Дома молодежи Василеостровского района'
+         }
+      },
+
       title () {
-         return this.$store.state.contact_page_title;
+         return this.title;
       },
 
       asyncData({store}) {

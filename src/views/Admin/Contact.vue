@@ -43,18 +43,22 @@
       },
 
       beforeMount() {
-         if (!this.$store.state.isAdmin) {
-            this.$router.push({name: 'login'})
+         if (!this.$store.state.admin.isAdmin) {
+            this.$router.push({name: 'login'});
          }
       },
 
       methods: {
          addPerson() {
-            this.$store.state.contacts.push({id: 1111, name: 'Имя и фамилия'})
+            this.$store.state.contacts.push({id: 1111, name: 'Имя и фамилия'});
          },
 
          save() {
-
+            this.$store.dispatch('editContacts', {
+               data: this.$store.state.contacts.map(employee => employee.id).toString()
+            }).then(() => {
+               this.$router.push({name: 'contact'});
+            });
          }
       }
    };

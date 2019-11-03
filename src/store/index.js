@@ -1,14 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-import Cookie from 'cookie-universal';
-import qs from 'qs';
-
-const cookies = new Cookie();
+import {admin} from './admin';
 
 Vue.use(Vuex);
 
-let apiHost = process.env.NODE_ENV === 'production' ? 'https://old.доммолодежи.рф/api' : 'http://dmvo.local/api';
+const apiHost = process.env.NODE_ENV === 'production' ? 'https://old.доммолодежи.рф/api' : 'http://dmvo.local/api';
 
 const requestData = {
    closestEvents: {
@@ -46,32 +43,27 @@ const requestData = {
 };
 
 export function createStore () {
-   const cookies = Cookie();
    return new Vuex.Store({
+      modules: {
+         admin: admin
+      },
       state: {
-         token: cookies.get('user-token') || '',
-
          apiHost: apiHost,
 
          index_carousel: [],
          index_closestEvents: [],
          index_closestExhibitions: [],
          index_news: [],
-         index_title: 'Дом молодежи Василеостровского района Санкт-Петербурга',
 
-         team_title: 'Коллектив Дома молодежи',
          team: [],
 
          event: {},
-         events_closest_title: 'Ближайшие мероприятия дома молодежи Василеостровского района',
          events_closest: [],
-         events_past_title: 'Архив мероприятий',
          events_past: [],
 
          studio: {},
          studio_page: [],
          studio_news: {},
-         studio_page_title: 'Студии и секции дома молодежи Василеостровского района',
 
          page: {},
          psychological: {},
@@ -85,13 +77,9 @@ export function createStore () {
 
          transforce: {},
 
-         board_title: 'Информационный стенд',
          board_posts: [],
 
-         contact_page_title: 'Контактная информация Дома молодежи Василеостровского района',
          contacts: [],
-
-         isAdmin: false
       },
 
       actions: {
@@ -154,22 +142,6 @@ export function createStore () {
                commit('setPostsData', response.data);
             });
          },
-
-         login({commit}, request) {
-            try {
-               return axios.post('http://dmvo.local/api/ping', request)
-                  .then(res => {
-                     commit('setAuth', res);
-                  });
-            } catch(err) {
-               alert(err);
-            }
-
-         },
-
-         logout({commit}) {
-            commit('logout');
-         }
       },
 
       mutations: {
@@ -235,25 +207,10 @@ export function createStore () {
          setPostsData(state, data) {
             Vue.set(state, 'board_posts', data);
          },
-
-         setAuth(state, res) {
-            if (res.data) {
-               Vue.set(state, 'isAdmin', true);
-               cookies.set('isAdmin', true);
-            }
-         },
-         logout(state, res) {
-            Vue.set(state, 'isAdmin', false);
-            cookies.set('isAdmin', false);
-         }
       },
 
       getters: {
-         isAuthenticated: (state) => {
-            if (cookies.get('isAdmin')) {
-               Vue.set(state, 'isAdmin', true);
-            }
-         }
+
       }
    })
 }
