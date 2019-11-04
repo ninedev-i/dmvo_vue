@@ -18,7 +18,9 @@ const Empty = () => import('../views/Empty.vue');
 const Page = () => import('../views/Page.vue');
 const Board = () => import('../views/Board.vue');
 
+const Admin = () => import('../views/Admin/Index.vue');
 const EditContact = () => import('../views/Admin/Contact.vue');
+const EditEvent = () => import('../views/Admin/EventEdit.vue');
 
 const Login = () => import('../views/Login.vue');
 
@@ -43,9 +45,9 @@ export const createRouter = () => {
          {path: '/events/', component: ViewContainer, children: [
             {path: '', name: 'closestEvents', component: Events, meta: {parent: 'closestEvents'}},
             {path: 'past', name: 'pastEvents', component: EventsPast, meta: {parent: 'closestEvents'}},
-            {path: 'other', name: 'otherEvents', component: Empty, meta: {parent: 'closestEvents'}},
             {path: ':id', name: 'event', component: Event, meta: {parent: 'closestEvents'}},
-            {path: ':id/post', name: 'event', component: Event, meta: {parent: 'closestEvents', post: true}}
+            {path: ':id/post', name: 'event', component: Event, meta: {parent: 'closestEvents', post: true}},
+            // {path: ':id/edit', name: 'editEvent', component: EditEvent, meta: {parent: 'closestEvents', post: true}}
          ]},
          {path: '/studio', component: ViewContainer, children: [
             {path: '', name: 'studios', component: Studios, meta: {parent: 'studios'}},
@@ -60,7 +62,12 @@ export const createRouter = () => {
          {path: '/board', name: 'board', component: Board},
          {path: '/login', name: 'login', component: Login},
 
-         {path: '/contact/edit', name: 'editContact', component: EditContact},
+         // {path: '/admin/', name: 'admin', component: Admin, children: [
+         //    {path: 'edit/contact', name: 'editContact', component: EditContact, meta: {parent: 'admin'}},
+         //    {path: 'edit/event/:id', name: 'editEvent', component: EditEvent, meta: {parent: 'admin'}},
+         // ]},
+         // {path: '/admin/edit/contact', name: 'editContact', component: EditContact},
+         // {path: '/admin/edit/event/:id', name: 'editEvent', component: EditEvent},
       ]
    });
 };

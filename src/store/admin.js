@@ -43,6 +43,7 @@ export const admin = {
       },
       logout(state, res) {
          Vue.set(state, 'isAdmin', false);
+         Vue.set(state, 'mySecretKey', '');
          cookies.removeAll();
       },
    },

@@ -11,7 +11,7 @@
          <div class="sidebar">
             <admin>
                <template>
-                  <router-link to="/contact/edit" tag="a">Редактировать</router-link>
+                  <router-link to="/admin/edit/contact" tag="a">Редактировать</router-link>
                </template>
             </admin>
             <widgetAddress />

@@ -20,6 +20,12 @@
       </article>
       <aside>
          <div class="sidebar">
+            <admin>
+               <template>
+                  <!--<router-link :to="`/admin/edit/event/${event.id}`" tag="a">Редактировать</router-link>-->
+                  <router-link :to="`/events/${event.id}/edit`" tag="a">Редактировать</router-link>
+               </template>
+            </admin>
             <!-- Вложения в виде кнопок -->
             <div v-if="event.attachments.length" v-for="attachment in event.attachments">
                <a v-if="attachment.exists == 'true' && attachment.is_button == 'true'"
@@ -67,9 +73,12 @@
 </template>
 <script>
    import photoGallery from '../components/events/PhotoGallery.vue';
+   import admin from '../components/widgets/Admin.vue';
+
    export default {
       components: {
-         photoGallery
+         photoGallery,
+         admin,
       },
       title () {
          return this.event.title;
