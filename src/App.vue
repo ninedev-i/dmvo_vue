@@ -36,17 +36,17 @@
       font-family: 'Open Sans', sans-serif;
    }
    h1 {
-      margin-top: 0px;
+      margin-top: 0;
       font-size: 34px;
       padding-top: 16px !important;
    }
    h2 {
-      margin: 15px 0px;
+      margin: 15px 0;
    }
    h2, h3 {
       &.padding-20 {
          padding: 5px 20px;
-         margin: 10px 0px;
+         margin: 10px 0;
       }
       &.padding-12 {
          padding: 5px 12px;
@@ -54,8 +54,8 @@
       }
    }
    ul {
-      margin: 0px;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
    }
    ul li {
       margin-left: 20px;
@@ -179,17 +179,26 @@
    }
    .button {
       .buttonCommon {
+         font-family: 'Open Sans', sans-serif;
          color: #fff;
          padding: 12px;
+         font-size: 16px;
          text-align: center;
          cursor: pointer;
          text-decoration: none;
          display: block;
       }
+      &-gray {
+         .buttonCommon;
+         background-color: #e2e2e2;
+         color: #384047;
+         &:hover {
+            background-color: #1392bd;
+            color: white;
+         }
+      }
       &-blue {
          .buttonCommon;
-         font-family: 'Open Sans', sans-serif;
-         font-size: 16px;
          background-color: #1392bd;
          &:hover {
             background-color: #47b3d8;
@@ -198,8 +207,6 @@
       }
       &-red {
          .buttonCommon;
-         font-family: 'Open Sans', sans-serif;
-         font-size: 16px;
          padding: 6px 12px;
          background-color: #DC3522;
          display: inline-block;

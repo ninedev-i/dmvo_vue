@@ -78,6 +78,7 @@ export function createStore () {
          transforce: {},
 
          board_posts: [],
+         board_filter: '',
 
          contacts: [],
       },
@@ -141,7 +142,7 @@ export function createStore () {
             return axios.get(`${apiHost}/get_board_posts`).then(response => {
                commit('setPostsData', response.data);
             });
-         },
+         }
       },
 
       mutations: {
@@ -206,6 +207,10 @@ export function createStore () {
 
          setPostsData(state, data) {
             Vue.set(state, 'board_posts', data);
+         },
+
+         changeBoardFilter(state, value) {
+            Vue.set(state, 'board_filter', value);
          },
       },
 
