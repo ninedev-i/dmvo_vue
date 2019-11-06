@@ -47,7 +47,7 @@ export const createRouter = () => {
             {path: 'past', name: 'pastEvents', component: EventsPast, meta: {parent: 'closestEvents'}},
             {path: ':id', name: 'event', component: Event, meta: {parent: 'closestEvents'}},
             {path: ':id/post', name: 'event', component: Event, meta: {parent: 'closestEvents', post: true}},
-            // {path: ':id/edit', name: 'editEvent', component: EditEvent, meta: {parent: 'closestEvents', post: true}}
+            {path: ':id/edit', name: 'editEvent', component: EditEvent, meta: {parent: 'closestEvents'}}
          ]},
          {path: '/studio', component: ViewContainer, children: [
             {path: '', name: 'studios', component: Studios, meta: {parent: 'studios'}},
@@ -61,13 +61,7 @@ export const createRouter = () => {
          {path: '/contact', name: 'contact', component: Contact},
          {path: '/board', name: 'board', component: Board},
          {path: '/login', name: 'login', component: Login},
-
-         // {path: '/admin/', name: 'admin', component: Admin, children: [
-         //    {path: 'edit/contact', name: 'editContact', component: EditContact, meta: {parent: 'admin'}},
-         //    {path: 'edit/event/:id', name: 'editEvent', component: EditEvent, meta: {parent: 'admin'}},
-         // ]},
-         // {path: '/admin/edit/contact', name: 'editContact', component: EditContact},
-         // {path: '/admin/edit/event/:id', name: 'editEvent', component: EditEvent},
+         {path: '/contact/edit', name: 'editContact', component: EditContact},
       ]
    });
 };
