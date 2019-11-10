@@ -41,7 +41,7 @@
                <div v-if="event.what_time" class="margin-top-6">
                   <b>Время:</b> {{event.what_time}}
                </div>
-               <div v-if="event.tags" class="margin-top-6">
+               <div v-if="event.tags && event.tags.length" class="margin-top-6">
                   <b>Упомянутые студии:</b>
                   <div class="event__tag-container">
                      <router-link

@@ -1,17 +1,6 @@
 <template>
    <div>
-      <article class="padding-20 background-white">
-         <h1>{{title}}</h1>
-         <eventEdit />
-      </article>
-
-      <aside>
-         <div class="sidebar background-white">
-            <div class="padding-20">
-               <div @click="save()">Сохранить</div>
-            </div>
-         </div>
-      </aside>
+      <eventEdit :event="$store.state.event" @save="save()" :title="title" />
    </div>
 </template>
 
@@ -25,7 +14,7 @@
 
       data() {
          return {
-            title: '_____'
+            title: 'Редактирование мероприятия'
          }
       },
 
@@ -33,9 +22,9 @@
          return `Редактирование | ${this.title}`;
       },
 
-      // asyncData({store}) {
-      //    return store.dispatch('getData', {name: 'contacts'});
-      // },
+      asyncData({store, route}) {
+         return store.dispatch('getEvent', {id: route.params.id});
+      },
 
       beforeMount() {
          if (!this.$store.state.admin.isAdmin) {
@@ -56,5 +45,7 @@
 </script>
 
 <style lang="less">
-
+   .edit_title {
+      margin-bottom: 12px;
+   }
 </style>
