@@ -148,6 +148,11 @@
                   name: 'family',
                   title: 'Работа с семьями',
                   filterTitle: 'Семья'
+               },
+               psy: {
+                  name: 'psy',
+                  title: 'Психологическая поддержка молодежи',
+                  filterTitle: 'Психология'
                }
             };
 
