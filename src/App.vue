@@ -65,6 +65,13 @@
       &:hover {
          color: #1392BD;
       }
+      &.dashed {
+         border-bottom: 1px dashed;
+         text-decoration: none;
+         display: inline-block;
+         height: 1em;
+         line-height: 1em;
+      }
    }
    p {
       margin: 10px 0;

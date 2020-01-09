@@ -15,7 +15,7 @@
          <div class="sidebar volunteer__sidebar">
             <volunteerForm class="volunteer__button margin-bottom-12" />
             <widgetVk group="182689576" />
-            <h3 class="padding-20">Руководитель:</h3>
+            <h3 class="padding-20">Сотрудники:</h3>
             <widgetPerson :specialists="page.people" :isSmall="true" />
          </div>
       </aside>

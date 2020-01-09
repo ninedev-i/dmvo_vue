@@ -239,9 +239,25 @@
 
    .background-main {background-color: rgba(@bg); color: #fff;}
 
-   @media (min-width: 1601px) {
+   @media (min-width: 2051px) {
       .events__list-block {
          &:nth-child(6n+6) {
+            margin-right: 0;
+         }
+      }
+   }
+   @media (min-width: 1851px) and (max-width: 2050px) {
+      .events__list-block {
+         width: calc(20% - 10px);
+         &:nth-child(5n+5) {
+            margin-right: 0;
+         }
+      }
+   }
+   @media (min-width: 1601px) and (max-width: 1850px) {
+      .events__list-block {
+         width: calc(25% - 9px);
+         &:nth-child(4n+4) {
             margin-right: 0;
          }
       }

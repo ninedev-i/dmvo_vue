@@ -11,22 +11,19 @@
 
          <h3 class="padding-20">Направления работы</h3>
          <div class="psychological__directions">
-            <div class="psychological__directions-item padding-20 background-white">
-               <b>Консультирование</b>
-               <div>Оказание психологом помощи людям, которые нуждаются в ней, испытывают трудности с самоопределением, с отношениями в семье, со сверстниками, страдают от неуверенности в себе, переживаний обиды, гнева, апатии, испытывают зависимость от чего-либо.</div>
+            <div
+               v-for="(course, key) in courses"
+               :value="key"
+               class="psychological__directions-item padding-20 background-white"
+            >
+               <a data-nice="inline" :href="`#${key}`">
+                  <b>{{course.title}}</b>
+                  <div>{{course.description}}</div>
+               </a>
+               <div :id="key" style="display: none;">
+                  <div class="psychological__directions-box" v-html="course.content"></div>
+               </div>
             </div>
-            <div class="psychological__directions-item padding-20 background-white">
-               <b>Групповые формы работы</b>
-               <div>Особое направление в консультировании, которое часто оказывается эффективным средством помощи в решении личностных и межличностных проблем. Групповое взаимодействие весьма важно для самовыражения личности.</div>
-            </div>
-            <div class="psychological__directions-item padding-20 background-white">
-               <b>Профориентация и диагностика</b>
-               <div>Программа профориентации создана для подростков и молодёжи. Она помогает понять, кем ты хочешь быть, какие у вас есть склонности, способности, интересы. Вы сможете ответить себе на вопрос - как сделать самостоятельный осознанный правильный выбор.</div>
-           </div>
-            <div class="psychological__directions-item padding-20 background-white">
-               <b>Тренинги</b>
-               <div>Тренинг – это активная форма работы, направленная на изменение мировоззрения, поведения, способа самовыражения посредством разыгрывания социальных ситуаций, выполнения упражнений с последующим анализом результатов.</div>
-           </div>
          </div>
 
          <news title="Архив мероприятий" v-bind:showText="false" directionTag="psychological" data-server-rendered="true" />
@@ -43,6 +40,7 @@
    </div>
 </template>
 <script>
+   import {NicePopup} from 'nice-popup';
    import news from '../components/events/News.vue';
    import eventsList from '../components/events/List.vue';
    import psyForm from '../components/forms/Psy.vue';
@@ -71,10 +69,16 @@
       asyncData({store}) {
          return store.dispatch('getData', {name: 'psychological'});
       },
+      mounted() {
+         new NicePopup();
+      },
 
       computed: {
          page() {
             return this.$store.state.psychological;
+         },
+         courses() {
+            return JSON.parse(this.page.additional);
          }
       }
    };
@@ -105,6 +109,17 @@
             &:last-of-type {
                margin: 0;
             }
+            a {
+               text-decoration: none;
+            }
+         }
+
+         &-box {
+            max-width: 60%;
+            padding: 12px;
+            max-height: 80%;
+            overflow-y: scroll;
+            overflow-x: hidden;
          }
       }
    }

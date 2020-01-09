@@ -19,7 +19,7 @@
       <aside>
          <div class="sidebar transforce__sidebar">
             <transforceForm :shows="shows" />
-            <h3 class="padding-20">Руководитель:</h3>
+            <h3 class="padding-20">Сотрудники:</h3>
             <person :specialists="page.people" :isSmall="true" :showPhone="true" />
          </div>
       </aside>
@@ -59,6 +59,10 @@
       &__youtube {
          height: 450px;
          border: 0;
+      }
+      &__box {
+         max-width: 60%;
+         padding: 12px;
       }
       &__table {
          border-collapse: collapse;

@@ -8,7 +8,7 @@
                <h4 class="pastEvents__item-monthTitle">{{month}}</h4>
             </div>
             <div v-for="event in events" class="pastEvents__item" :key="event.id">
-               <router-link tag="a" v-bind:to="'/events/' + event.id" class="pastEvents__item-link" :title="event.title" v-if="event.date_from">
+               <router-link tag="a" :to="'/events/' + event.id" class="pastEvents__item-link" :title="event.title" v-if="event.date_from">
                   <div class="pastEvents__item-link-line"></div>
                   <div class="pastEvents__item-link-circle"></div>
                   <div class="pastEvents__item-link-content">
