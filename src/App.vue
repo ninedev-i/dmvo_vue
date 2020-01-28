@@ -134,10 +134,6 @@
          overflow-y: auto;
       }
    }
-   article {
-      width: 100%;
-      min-width: 1px;
-   }
 
    // Общие классы
    .hidden {
@@ -227,18 +223,6 @@
       border: 1px solid #ffa3a3;
       background-color: #ffe8e8;
    }
-
-   // Сайдбар
-   aside {
-      width: 320px;
-      min-width: 320px;
-      margin-left: 16px;
-   }
-   .sidebar {
-      position: fixed;
-      width: inherit;
-   }
-
 
    @media (max-width: 450px) {
       body, html {

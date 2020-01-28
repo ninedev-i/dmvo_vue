@@ -1,82 +1,84 @@
 <template>
-   <div>
-      <article>
-         <div class="padding-20 background-white">
-            <h1>{{event.title}}</h1>
-            <div v-if="event.post_reliz && event.content" class="event__tab-container">
-               <router-link tag="a" :to="`/events/${event.id}/post`" class="event__tab-box">Пост-релиз</router-link>
-               <router-link tag="a" :to="`/events/${event.id}`" class="event__tab-box">Анонс</router-link>
-            </div>
-            <div v-if="$route.meta.post" v-html="event.post_reliz"></div>
-            <div v-else v-html="event.content"></div>
-            <!-- Вложения в виде ссылок -->
-            <div v-if="event.attachments.length" v-for="attachment in event.attachments">
-               <a v-if="attachment.exists == 'true' && attachment.is_button != 'true'"
-                  v-on:click="openLink(attachment)"
-                  class="event__link">{{attachment.title}}</a>
-            </div>
+   <layout :padding="20">
+      <template #pageContent>
+         <h1>{{event.title}}</h1>
+         <div v-if="event.post_reliz && event.content" class="event__tab-container">
+            <router-link tag="a" :to="`/events/${event.id}/post`" class="event__tab-box">Пост-релиз</router-link>
+            <router-link tag="a" :to="`/events/${event.id}`" class="event__tab-box">Анонс</router-link>
          </div>
+         <div v-if="$route.meta.post" v-html="event.post_reliz"></div>
+         <div v-else v-html="event.content"></div>
+         <!-- Вложения в виде ссылок -->
+         <div v-if="event.attachments.length" v-for="attachment in event.attachments">
+            <a v-if="attachment.exists == 'true' && attachment.is_button != 'true'"
+               v-on:click="openLink(attachment)"
+               class="event__link">{{attachment.title}}</a>
+         </div>
+      </template>
+
+      <template #bottomContent>
          <photoGallery :title="event.title" :photos="event.pictures" />
-      </article>
-      <aside>
-         <div class="sidebar">
-            <admin>
-               <template>
-                  <!--<router-link :to="`/admin/edit/event/${event.id}`" tag="a">Редактировать</router-link>-->
-                  <router-link :to="`/events/${event.id}/edit`" tag="a">Редактировать</router-link>
-               </template>
-            </admin>
-            <!-- Вложения в виде кнопок -->
-            <div v-if="event.attachments.length" v-for="attachment in event.attachments">
-               <a v-if="attachment.exists == 'true' && attachment.is_button == 'true'"
-                  v-on:click="openLink(attachment)"
-                  class="button-blue margin-bottom-12">{{attachment.title}}</a>
-            </div>
-            <div class="padding-20 background-white">
-               <div>
-                  <b v-if="event.date_from === event.date_to">Дата:</b>
-                  <b v-else>Даты:</b>
-                  {{getPeriod(event.date_from, event.date_to, true, true)}}
-               </div>
-               <div v-if="event.what_time" class="margin-top-6">
-                  <b>Время:</b> {{event.what_time}}
-               </div>
-               <div v-if="event.tags && event.tags.length" class="margin-top-6">
-                  <b>Упомянутые студии:</b>
-                  <div class="event__tag-container">
-                     <router-link
-                        v-for="(tag, i) in event.tags"
-                        class="event__tag"
-                        :title="tag.name"
-                        :to="tag.url"
-                        :key="i"
-                        tag="a"
-                     >{{tag.name}}</router-link>
-                  </div>
-               </div>
-               <a
-                  v-if="!!event.cover"
-                  :href="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
-                  data-nice="gallery"
-                  >
-                  <img
-                     class="event__cover"
-                     :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
-                     :alt="event.title"
-                     :title="event.title"
-                  />
-               </a>
-            </div>
+      </template>
+
+      <template #sidebar>
+         <admin>
+            <template>
+               <!--<router-link :to="`/admin/edit/event/${event.id}`" tag="a">Редактировать</router-link>-->
+               <router-link :to="`/events/${event.id}/edit`" tag="a">Редактировать</router-link>
+            </template>
+         </admin>
+         <!-- Вложения в виде кнопок -->
+         <div v-if="event.attachments.length" v-for="attachment in event.attachments">
+            <a v-if="attachment.exists == 'true' && attachment.is_button == 'true'"
+               v-on:click="openLink(attachment)"
+               class="button-blue margin-bottom-12">{{attachment.title}}</a>
          </div>
-      </aside>
-   </div>
+         <div class="padding-20 background-white">
+            <div>
+               <b v-if="event.date_from === event.date_to">Дата:</b>
+               <b v-else>Даты:</b>
+               {{getPeriod(event.date_from, event.date_to, true, true)}}
+            </div>
+            <div v-if="event.what_time" class="margin-top-6">
+               <b>Время:</b> {{event.what_time}}
+            </div>
+            <div v-if="event.tags && event.tags.length" class="margin-top-6">
+               <b>Упомянутые студии:</b>
+               <div class="event__tag-container">
+                  <router-link
+                     v-for="(tag, i) in event.tags"
+                     class="event__tag"
+                     :title="tag.name"
+                     :to="tag.url"
+                     :key="i"
+                     tag="a"
+                  >{{tag.name}}</router-link>
+               </div>
+            </div>
+            <a
+               v-if="!!event.cover"
+               :href="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
+               data-nice="gallery"
+               >
+               <img
+                  class="event__cover"
+                  :src="`https://old.xn--d1aadekogaqcb.xn--p1ai/public/img/${event.cover}`"
+                  :alt="event.title"
+                  :title="event.title"
+               />
+            </a>
+         </div>
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import photoGallery from '../components/events/PhotoGallery.vue';
    import admin from '../components/widgets/Admin.vue';
 
    export default {
       components: {
+         layout,
          photoGallery,
          admin,
       },

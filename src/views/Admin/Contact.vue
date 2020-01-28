@@ -1,6 +1,6 @@
 <template>
-   <div>
-      <article class="padding-20 background-white">
+   <layout :padding="20" :sidebarWithBg="true">
+      <template #pageContent>
          <h1>{{title}}</h1>
          <!--{{$store.state.contacts.map(employee => employee.id)}}
          <div @click="addPerson()">добавить еще</div>-->
@@ -9,22 +9,23 @@
                <b>{{employee.name}}</b>
             </div>
          </draggable>
-      </article>
-      <aside>
-         <div class="sidebar background-white">
-            <div class="padding-20">
-               <div @click="save()">Сохранить</div>
-            </div>
+      </template>
+
+      <template #sidebar>
+         <div class="padding-20">
+            <div @click="save()">Сохранить</div>
          </div>
-      </aside>
-   </div>
+      </template>
+   </layout>
 </template>
 
 <script>
+   import layout from '../../components/Layout.vue';
    import draggable from 'vuedraggable'
 
    export default {
       components: {
+         layout,
          draggable,
       },
 

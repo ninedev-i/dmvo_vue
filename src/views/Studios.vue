@@ -1,77 +1,75 @@
 <template>
-   <div class="studio">
-      <article>
-         <div class="background-white">
-            <div class="padding-20">
-               <h1>{{title}}</h1>
-               <!-- Все направления -->
-               <div v-if="directionsCounter > 1">
-                  <masonry
-                     ref="masonry"
-                     :cols="{default: 2, 1400: 1}"
-                     :gutter="{default: '16px'}"
+   <layout>
+      <template #pageContent>
+         <div class="padding-20">
+            <h1>{{title}}</h1>
+            <!-- Все направления -->
+            <div v-if="directionsCounter > 1">
+               <masonry
+                  ref="masonry"
+                  :cols="{default: 2, 1400: 1}"
+                  :gutter="{default: '16px'}"
+                  >
+                  <div
+                     v-for="direction in directions"
+                     v-if="direction.studios.length"
+                     class="studio__direction"
                      >
-                     <div
-                        v-for="direction in directions"
-                        v-if="direction.studios.length"
-                        class="studio__direction"
-                        >
-                        <studioBlock :direction="direction" />
-                     </div>
-                  </masonry>
-               </div>
+                     <studioBlock :direction="direction" />
+                  </div>
+               </masonry>
+            </div>
 
-               <!-- Только одно направление -->
-               <div
-                  v-for="direction in directions"
-                  v-if="directionsCounter === 1 && direction.studios.length"
-                  class="studio__direction"
-                  >
-                  <studioBlock :direction="direction" />
-               </div>
+            <!-- Только одно направление -->
+            <div
+               v-for="direction in directions"
+               v-if="directionsCounter === 1 && direction.studios.length"
+               class="studio__direction"
+               >
+               <studioBlock :direction="direction" />
+            </div>
 
-               <!-- Список пуст -->
-               <div
-                  v-if="directionsCounter === 0"
-                  class="studio__emptyList"
-                  >
-                  Нет студий, удовлетворяющих условиям фильтрации. <u v-on:click="resetFilter()">Сбросить фильтр</u>
-               </div>
+            <!-- Список пуст -->
+            <div
+               v-if="directionsCounter === 0"
+               class="studio__emptyList"
+               >
+               Нет студий, удовлетворяющих условиям фильтрации. <u v-on:click="resetFilter()">Сбросить фильтр</u>
             </div>
          </div>
-      </article>
+      </template>
 
-      <aside>
-         <div class="sidebar">
-            <div class="background-white padding-20 margin-bottom-12">
-               <h3 class="margin-bottom-6">Фильтр</h3>
-               <b>Направления:</b>
-               <div>
-                  <input type="radio" id="all" value="all" v-model="category"><label for="all">Все</label>
-               </div>
-               <div v-for="direction in directions">
-                  <input type="radio" :id="direction.name" :value="direction.name" v-model="category"><label :for="direction.name">{{direction.filterTitle}}</label>
-               </div>
-               <!--<b>Возраст:</b><br />-->
-               <input type="number" class="studio__filter-age" value="" min="1" placeholder="Возраст" v-model="age">
-               <!--<b>Стоимость:</b><br />-->
-               <input type="checkbox" id="price" value="бесплатно" v-model="price"><label for="price">Бесплатно</label>
-
-               <div
-                  v-if="age !== '' || category !== 'all' || price"
-                  v-on:click="resetFilter()"
-                  class="button-red studio__filter-reset">
-                  Сбросить фильтр
-               </div>
+      <template #sidebar>
+         <div class="background-white padding-20 margin-bottom-12">
+            <h3 class="margin-bottom-6">Фильтр</h3>
+            <b>Направления:</b>
+            <div>
+               <input type="radio" id="all" value="all" v-model="category"><label class="studio__label" for="all">Все</label>
             </div>
-            <!--<h3 class="studio__widgetTitle padding-20">Руководитель направления</h3>-->
-            <person :specialists="$store.state.studio_page.specialists" phone="+7 (812) 321-00-03" :showEmail="true" />
+            <div v-for="direction in directions">
+               <input type="radio" :id="direction.name" :value="direction.name" v-model="category"><label class="studio__label" :for="direction.name">{{direction.filterTitle}}</label>
+            </div>
+            <!--<b>Возраст:</b><br />-->
+            <input type="number" class="studio__filter-age" value="" min="1" placeholder="Возраст" v-model="age">
+            <!--<b>Стоимость:</b><br />-->
+            <input type="checkbox" id="price" value="бесплатно" v-model="price"><label class="studio__label" for="price">Бесплатно</label>
+
+            <div
+               v-if="age !== '' || category !== 'all' || price"
+               v-on:click="resetFilter()"
+               class="button-red studio__filter-reset">
+               Сбросить фильтр
+            </div>
          </div>
-      </aside>
-   </div>
+         <!--<h3 class="studio__widgetTitle padding-20">Руководитель направления</h3>-->
+         <person :specialists="$store.state.studio_page.specialists" phone="+7 (812) 321-00-03" :showEmail="true" />
+      </template>
+   </layout>
 </template>
+
 <script>
    import Vue from 'vue';
+   import layout from '../components/Layout.vue';
    import VueMasonry from 'vue-masonry-css';
    import studioBlock from '../components/StudioDirection.vue';
    import person from '../components/widgets/Person.vue';
@@ -79,6 +77,7 @@
 
    export default {
       components: {
+         layout,
          studioBlock,
          person
       },
@@ -200,10 +199,6 @@
 
 <style lang="less">
    .studio {
-      label {
-         padding-left: 6px;
-      }
-
       &__emptyList {
          text-align: center;
 
@@ -223,6 +218,10 @@
             display: block;
             margin-top: 12px;
          }
+      }
+
+      &__label {
+         padding-left: 6px;
       }
 
       &__widgetTitle {

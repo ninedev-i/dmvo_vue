@@ -1,15 +1,21 @@
 <template>
-   <div>
-      <article class="padding-20 background-white">
+   <layout :padding="20" sidebarClass="volunteer__sidebar">
+      <template #pageContent>
          <h1>Страница заглушка</h1>
          <p>Тут пока ничего нет</p>
-      </article>
-      <aside>
-         <div class="sidebar background-white">
-            <div class="padding-20">
-               Сайдбар
-            </div>
-         </div>
-      </aside>
-   </div>
+      </template>
+
+      <template #sidebar>
+         Сайдбар
+      </template>
+   </layout>
 </template>
+
+<script>
+   import layout from '../components/Layout.vue';
+   export default {
+      components: {
+         layout,
+      }
+   }
+</script>

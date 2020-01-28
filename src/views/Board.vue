@@ -1,39 +1,37 @@
 <template>
-   <div>
-      <article>
+   <layout :whiteBackground="false">
+      <template #pageContent>
+         <h1 class="margin-bottom-6 margin-top-6 padding-20">{{title}}</h1>
          <div>
-            <h1 class="margin-bottom-6 margin-top-6 padding-20">{{title}}</h1>
-            <div>
-               <div
+            <div
                   v-for="item in filter"
                   @click="changeFilter(item.name)"
                   :class="`${item.name === $store.state.board_filter ? 'button-blue' : 'button-gray'} board__button`"
                   :key="item.name">{{item.title}}</div>
-            </div>
-            <div v-for="(post, i) in posts" class="board__post padding-20 background-white" :key="`post_${i}`" :id="`post-${i}`">
-               <div class="board__post-title">{{post.title}}</div>
-               <div v-html="post.content" class="board__post-content board__post-overflowed"></div>
-               <div v-on:click="expand(i)" class="board__post-expander">Показать полностью</div>
-            </div>
          </div>
-      </article>
+         <div v-for="(post, i) in posts" class="board__post padding-20 background-white" :key="`post_${i}`" :id="`post-${i}`">
+            <div class="board__post-title">{{post.title}}</div>
+            <div v-html="post.content" class="board__post-content board__post-overflowed"></div>
+            <div v-on:click="expand(i)" class="board__post-expander">Показать полностью</div>
+         </div>
+      </template>
 
-      <aside>
-         <div class="sidebar">
-            <widgetAddress />
-            <widgetVk group="20668429" />
-            <widgetImportantLinks />
-         </div>
-      </aside>
-   </div>
+      <template #sidebar>
+         <widgetAddress />
+         <widgetVk group="20668429" />
+         <widgetImportantLinks />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import widgetAddress from '../components/widgets/Address.vue';
    import widgetVk from '../components/widgets/Vk.vue';
    import widgetImportantLinks from '../components/widgets/ImportantLinks.vue';
 
    export default {
       components: {
+         layout,
          widgetAddress,
          widgetVk,
          widgetImportantLinks

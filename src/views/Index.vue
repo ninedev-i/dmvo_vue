@@ -1,25 +1,25 @@
 <template>
-   <div>
-      <article>
-         <div :class="whiteBgIfEvents()">
-            <h1 class="padding-20 margin-top-6">{{title}}</h1>
-            <slider data-server-rendered="true" />
-            <eventsList title="Ближайшие мероприятия" titleTag="h2" type="index_closestEvents" data-server-rendered="true" />
-            <eventsList title="Конкурсы и выставки" titleTag="h2" type="index_closestExhibitions" data-server-rendered="true" />
-         </div>
-         <news title="Мероприятия" v-bind:showText="false" data-server-rendered="true" />
-      </article>
+   <layout :whiteBackground="whiteBgIfEvents()">
+      <template #pageContent>
+         <h1 class="padding-20 margin-top-6">{{title}}</h1>
+         <slider data-server-rendered="true" />
+         <eventsList title="Ближайшие мероприятия" titleTag="h2" type="index_closestEvents" data-server-rendered="true" />
+         <eventsList title="Конкурсы и выставки" titleTag="h2" type="index_closestExhibitions" data-server-rendered="true" />
+      </template>
 
-      <aside>
-         <div class="sidebar">
-            <widgetAddress />
-            <widgetVk group="20668429" />
-            <widgetImportantLinks />
-         </div>
-      </aside>
-   </div>
+      <template #bottomContent>
+         <news title="Мероприятия" v-bind:showText="false" data-server-rendered="true" />
+      </template>
+
+      <template #sidebar>
+         <widgetAddress />
+         <widgetVk group="20668429" />
+         <widgetImportantLinks />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import slider from '../components/Slider.vue';
    import eventsList from '../components/events/List.vue';
    import news from '../components/events/News.vue';
@@ -29,6 +29,7 @@
 
    export default {
       components: {
+         layout,
          slider,
          eventsList,
          news,
@@ -54,7 +55,7 @@
       methods: {
          whiteBgIfEvents() {
             let hasEvents = this.$store.state.index_carousel.length || this.$store.state.index_closestEvents.length || this.$store.state.index_closestExhibitions.length;
-            return hasEvents ? 'background-white' : '';
+            return !!hasEvents;
          },
       }
    };

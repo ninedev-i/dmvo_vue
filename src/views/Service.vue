@@ -1,28 +1,27 @@
 <template>
-   <div>
-      <article>
-         <div class="background-white">
-            <div class="padding-20">
-               <h1>{{page.title}}</h1>
-               <div v-html="page.description"></div>
-            </div>
-         </div>
-         <photoGallery :title="page.title" :photos="photos" />
-      </article>
+   <layout :padding="20" sidebarClass="transforce__sidebar">
+      <template #pageContent>
+         <h1>{{page.title}}</h1>
+         <div v-html="page.description"></div>
+      </template>
 
-      <aside>
-         <div class="sidebar">
-            <widgetAddress />
-         </div>
-      </aside>
-   </div>
+      <template #bottomContent>
+         <photoGallery :title="page.title" :photos="photos" />
+      </template>
+
+      <template #sidebar>
+         <widgetAddress />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import widgetAddress from '../components/widgets/Address.vue';
    import photoGallery from '../components/events/PhotoGallery.vue';
 
    export default {
       components: {
+         layout,
          photoGallery,
          widgetAddress
       },

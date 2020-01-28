@@ -1,26 +1,25 @@
 <template>
-   <div>
-      <article>
+   <layout :whiteBackground="false">
+      <template #pageContent>
          <h1 class="padding-20">{{title}}</h1>
          <div id="map"></div>
          <h2 class="padding-20">Руководство Дома молодежи</h2>
          <peopleList :people="contacts" :showReception="false" />
-      </article>
+      </template>
 
-      <aside>
-         <div class="sidebar">
-            <admin>
-               <template>
-                  <router-link to="/contact/edit" tag="a">Редактировать</router-link>
-               </template>
-            </admin>
-            <widgetAddress />
-            <widgetVk group="20668429" />
-         </div>
-      </aside>
-   </div>
+      <template #sidebar>
+         <admin>
+            <template>
+               <router-link to="/contact/edit" tag="a">Редактировать</router-link>
+            </template>
+         </admin>
+         <widgetAddress />
+         <widgetVk group="20668429" />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import ymaps from 'ymaps';
    import peopleList from '../components/people/List.vue';
    import admin from '../components/widgets/Admin.vue';
@@ -29,6 +28,7 @@
 
    export default {
       components: {
+         layout,
          peopleList,
          admin,
          widgetAddress,

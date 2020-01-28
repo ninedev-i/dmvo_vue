@@ -1,21 +1,18 @@
 <template>
-   <div>
-      <article>
-         <div class="background-white">
-            <div class="psychological__contentContainer padding-20">
-               <h1>{{page.title}}</h1>
-               <div v-html="page.description"></div>
-            </div>
-            <eventsList title="Ближайшие мероприятия" titleTag="h3" type="psychological_closestEvents" data-server-rendered="true" />
-         </div>
+   <layout :padding="20" sidebarClass="psychological__sidebar">
+      <template #pageContent>
+         <h1>{{page.title}}</h1>
+         <div v-html="page.description"></div>
+      </template>
 
+      <template #bottomContent>
          <h3 class="padding-20">Направления работы</h3>
          <div class="psychological__directions">
             <div
                v-for="(course, key) in courses"
                :value="key"
                class="psychological__directions-item padding-20 background-white"
-            >
+               >
                <a data-nice="inline" :href="`#${key}`">
                   <b>{{course.title}}</b>
                   <div>{{course.description}}</div>
@@ -26,20 +23,21 @@
             </div>
          </div>
 
-         <news title="Архив мероприятий" v-bind:showText="false" directionTag="psychological" data-server-rendered="true" />
-      </article>
+         <eventsList title="Ближайшие мероприятия" titleTag="h3" type="psychological_closestEvents" data-server-rendered="true" />
 
-      <aside>
-         <div class="sidebar psychological__sidebar">
-            <psyForm class="psychological__button margin-bottom-12" :specialists="page.people.slice(1)" />
-            <widgetVk group="123029997" />
-            <h3 class="padding-12 psychological__sidebar-title">Наши специалисты:</h3>
-            <person :specialists="page.people" :showPhone="false" :showEmail="false" :isSmall="true" />
-         </div>
-      </aside>
-   </div>
+         <news title="Архив мероприятий" v-bind:showText="false" directionTag="psychological" data-server-rendered="true" />
+      </template>
+
+      <template #sidebar>
+         <psyForm class="psychological__button margin-bottom-12" :specialists="page.people.slice(1)" />
+         <widgetVk group="123029997" />
+         <h3 class="padding-12 psychological__sidebar-title">Наши специалисты:</h3>
+         <person :specialists="page.people" :showPhone="false" :showEmail="false" :isSmall="true" />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import {NicePopup} from 'nice-popup';
    import news from '../components/events/News.vue';
    import eventsList from '../components/events/List.vue';
@@ -56,6 +54,7 @@
          }
       },
       components: {
+         layout,
          eventsList,
          psyForm,
          widgetVk,

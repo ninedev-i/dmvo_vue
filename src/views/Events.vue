@@ -1,6 +1,6 @@
 <template>
-   <div>
-      <article class="padding-20 background-white">
+   <layout :padding="20">
+      <template #pageContent>
          <h1>{{title}}</h1>
          <div class="events__list">
             <router-link v-for="event in $store.state.events.closestEvents" v-bind:to="'events/' + event.id" class="events__list-block" :title="event.title" :key="event.id">
@@ -44,37 +44,38 @@
          <div v-if="!$store.state.events.closestEvents.length && !$store.state.events.exhibitions.length" class="events__emptyList">
             В данный момент мероприятия не анонсированы.
          </div>
-      </article>
-      <aside>
-         <div class="sidebar">
-            <!--<div class="padding-20 background-white margin-bottom-12">
-               <h3>Фильтр</h3>
-               <b>Направления:</b>
-               &lt;!&ndash;<radioButtons :data="eventTypes" :selectedItem="eventType"  v-on:changeSelectedItem="changeSelectedItem" />&ndash;&gt;
-               <div class="events__filter">
-                  <div><input type="radio" id="all" value="all" v-model="eventType"><label for="all">Все</label></div>
-                  <div><input type="radio" id="exhibitions" value="exhibitions" v-model="eventType"><label for="exhibitions">Выставки</label></div>
-                  <div><input type="radio" id="other" value="other" v-model="eventType"><label for="other">Городские и районные</label></div>
-               </div>
-               <div
-                  v-if="eventType !== 'all'"
-                  v-on:click="resetFilter()"
-                  class="button-red margin-top-12">
-                  Сбросить фильтр
-               </div>
-            </div>-->
+      </template>
 
-            <widgetAddress />
-         </div>
-      </aside>
-   </div>
+      <template #sidebar>
+         <!--<div class="padding-20 background-white margin-bottom-12">
+            <h3>Фильтр</h3>
+            <b>Направления:</b>
+            &lt;!&ndash;<radioButtons :data="eventTypes" :selectedItem="eventType"  v-on:changeSelectedItem="changeSelectedItem" />&ndash;&gt;
+            <div class="events__filter">
+               <div><input type="radio" id="all" value="all" v-model="eventType"><label for="all">Все</label></div>
+               <div><input type="radio" id="exhibitions" value="exhibitions" v-model="eventType"><label for="exhibitions">Выставки</label></div>
+               <div><input type="radio" id="other" value="other" v-model="eventType"><label for="other">Городские и районные</label></div>
+            </div>
+            <div
+               v-if="eventType !== 'all'"
+               v-on:click="resetFilter()"
+               class="button-red margin-top-12">
+               Сбросить фильтр
+            </div>
+         </div>-->
+
+         <widgetAddress />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import widgetAddress from '../components/widgets/Address.vue';
    import radioButtons from '../components/RadioButtons.vue';
 
    export default {
       components: {
+         layout,
          widgetAddress,
          radioButtons
       },

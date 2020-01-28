@@ -1,27 +1,25 @@
 <template>
-   <div>
-      <article>
-         <div class="background-white">
-            <div class="padding-20">
-               <h1>{{page.title}}</h1>
-               <div v-html="page.description"></div>
-            </div>
-         </div>
+   <layout :padding="20" sidebarClass="volunteer__sidebar">
+      <template #pageContent>
+         <h1>{{page.title}}</h1>
+         <div v-html="page.description"></div>
+      </template>
+
+      <template #bottomContent>
          <photoGallery :title="page.title" :photos="photos" />
          <news title="Архив мероприятий" v-bind:showText="false" directionTag="online" data-server-rendered="true" />
-      </article>
+      </template>
 
-      <aside>
-         <div class="sidebar volunteer__sidebar">
-            <volunteerForm class="volunteer__button margin-bottom-12" />
-            <widgetVk group="182689576" />
-            <h3 class="padding-20">Сотрудники:</h3>
-            <widgetPerson :specialists="page.people" :isSmall="true" />
-         </div>
-      </aside>
-   </div>
+      <template #sidebar>
+         <volunteerForm class="volunteer__button margin-bottom-12" />
+         <widgetVk group="182689576" />
+         <h3 class="padding-20">Сотрудники:</h3>
+         <widgetPerson :specialists="page.people" :isSmall="true" />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import photoGallery from '../components/events/PhotoGallery.vue';
    import news from '../components/events/News.vue';
    import volunteerForm from '../components/forms/Volunteer.vue';
@@ -30,6 +28,7 @@
 
    export default {
       components: {
+         layout,
          photoGallery,
          news,
          volunteerForm,

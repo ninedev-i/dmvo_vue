@@ -1,26 +1,25 @@
 <template>
-   <div>
-      <article>
-         <div class="padding-20 background-white">
-            <h1>{{page.title}}</h1>
-            <div v-html="page.content"></div>
-         </div>
-      </article>
-      <aside>
-         <div class="sidebar">
-            <widgetAddress />
-            <widgetVk group="20668429" />
-            <widgetImportantLinks />
-         </div>
-      </aside>
-   </div>
+   <layout :padding="20">
+      <template #pageContent>
+         <h1>{{page.title}}</h1>
+         <div v-html="page.content"></div>
+      </template>
+
+      <template #sidebar>
+         <widgetAddress />
+         <widgetVk group="20668429" />
+         <widgetImportantLinks />
+      </template>
+   </layout>
 </template>
 <script>
+   import layout from '../components/Layout.vue';
    import widgetAddress from '../components/widgets/Address.vue';
    import widgetVk from '../components/widgets/Vk.vue';
    import widgetImportantLinks from '../components/widgets/ImportantLinks.vue';
    export default {
       components: {
+         layout,
          widgetAddress,
          widgetVk,
          widgetImportantLinks
